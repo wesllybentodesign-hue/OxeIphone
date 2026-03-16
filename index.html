@@ -6,414 +6,223 @@
   <title>OxeIphone — iPhones & Xiaomi em Recife</title>
   <meta name="description" content="Os melhores preços em iPhones lacrados, vitrine e Xiaomi em Recife. Tabela atualizada semanalmente." />
   <style>
-    /* ─── RESET & BASE ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --green: #00e676;
-      --green-dark: #00c853;
-      --green-dim: rgba(0,230,118,0.12);
-      --bg: #0e0e0e;
-      --bg2: #161616;
-      --bg3: #1e1e1e;
-      --bg4: #252525;
-      --border: rgba(255,255,255,0.08);
-      --border2: rgba(255,255,255,0.14);
-      --text: #f0f0f0;
-      --text2: #999;
-      --text3: #666;
+      --green: #00e676; --green-dark: #00c853;
+      --green-dim: rgba(0,230,118,0.10);
+      --gold: #e4ae27;
+      --bg: #0a0a0a; --bg2: #131313; --bg3: #1a1a1a; --bg4: #222;
+      --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.12);
+      --text: #f0f0f0; --text2: #aaa; --text3: #666;
       --wpp: #25d366;
-      --radius: 12px;
-      --radius-sm: 8px;
+      --radius: 10px; --radius-sm: 6px;
       --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      --font-head: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      font-size: 14px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
     /* ─── HEADER ─── */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(14,14,14,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-      height: 60px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
+    header { position: sticky; top: 0; z-index: 50; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
     .logo { display: flex; align-items: center; text-decoration: none; }
-    .logo-svg { height: 36px; width: auto; }
-    .header-right { display: flex; align-items: center; gap: 10px; }
-    .btn-wpp-header {
-      background: var(--wpp); color: #fff; border: none;
-      padding: 8px 16px; border-radius: var(--radius-sm);
-      font-family: var(--font); font-size: 13px; font-weight: 500;
-      cursor: pointer; display: flex; align-items: center; gap: 6px;
-      transition: opacity 0.2s;
-    }
+    .logo-svg { height: 32px; width: auto; }
+    .btn-wpp-header { background: var(--wpp); color: #fff; border: none; padding: 7px 14px; border-radius: var(--radius-sm); font-family: var(--font); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: opacity 0.2s; }
     .btn-wpp-header:hover { opacity: 0.88; }
 
     /* ─── HERO ─── */
-    .hero {
-      padding: 64px 24px 32px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,230,118,0.09), transparent);
-      pointer-events: none;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--green-dim); border: 1px solid rgba(0,230,118,0.25);
-      color: var(--green); font-size: 11px; font-weight: 500;
-      padding: 4px 12px; border-radius: 20px; margin-bottom: 20px;
-    }
-    .hero-badge::before { content: '●'; font-size: 7px; animation: pulse 2s infinite; }
+    .hero { padding: 52px 24px 28px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0,230,118,0.07), transparent); pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-dim); border: 1px solid rgba(0,230,118,0.2); color: var(--green); font-size: 11px; font-weight: 500; padding: 3px 11px; border-radius: 20px; margin-bottom: 18px; }
+    .hero-badge::before { content: '●'; font-size: 6px; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-    .hero h1 {
-      font-family: var(--font-head); font-size: clamp(28px, 6vw, 44px);
-      font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;
-      color: #fff; margin-bottom: 14px;
-    }
+    .hero h1 { font-size: clamp(26px, 5.5vw, 40px); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; color: #fff; margin-bottom: 12px; }
     .hero h1 span { color: var(--green); }
-    .hero p { font-size: 15px; color: var(--text2); max-width: 440px; margin: 0 auto 0; }
+    .hero p { font-size: 14px; color: var(--text2); max-width: 400px; margin: 0 auto; }
+    .hero-banner { display: block; max-width: 520px; margin: 24px auto 0; border-radius: var(--radius); overflow: hidden; position: relative; border: 1px solid var(--border); transition: border-color 0.2s; }
+    .hero-banner:hover { border-color: var(--border2); }
+    .hero-banner-img { width: 100%; height: auto; display: block; aspect-ratio: 2.5 / 1; object-fit: cover; background: var(--bg2); }
+    .hero-banner-cta { position: absolute; bottom: 8px; right: 8px; background: var(--green); color: #000; font-family: var(--font); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 5px; display: flex; align-items: center; gap: 3px; pointer-events: none; text-transform: uppercase; letter-spacing: 0.03em; }
 
-    /* ─── BANNER (dentro do hero, no lugar dos stats) ─── */
-    .hero-banner {
-      display: block; max-width: 520px; margin: 28px auto 0;
-      border-radius: var(--radius); overflow: hidden;
-      position: relative; border: 1px solid var(--border);
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .hero-banner:hover { border-color: var(--border2); transform: translateY(-2px); }
-    .hero-banner:active { transform: translateY(0); }
-    .hero-banner-img {
-      width: 100%; height: auto; display: block;
-      aspect-ratio: 2.5 / 1; object-fit: cover;
-      background: var(--bg2);
-    }
-    .hero-banner-cta {
-      position: absolute; bottom: 10px; right: 10px;
-      background: var(--green); color: #000;
-      font-family: var(--font); font-size: 11px; font-weight: 600;
-      padding: 5px 12px; border-radius: 6px;
-      display: flex; align-items: center; gap: 4px;
-      pointer-events: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .hero-banner-cta svg { width: 11px; height: 11px; }
+    /* ─── TRUST BAR ─── */
+    .trust-bar { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 16px 24px; border-bottom: 1px solid var(--border); }
+    .trust-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); white-space: nowrap; }
+    .trust-item svg { width: 13px; height: 13px; opacity: 0.5; flex-shrink: 0; }
 
     /* ─── OFFERS ─── */
-    .section { padding: 32px 24px; max-width: 900px; margin: 0 auto; }
-    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-    .section-title { font-family: var(--font-head); font-size: 16px; font-weight: 700; color: var(--text); }
-    .hot-pill {
-      background: #ff5722; color: #fff; font-size: 10px; font-weight: 500;
-      padding: 2px 9px; border-radius: 20px; margin-left: 8px;
-    }
-    .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 12px; }
-    .offer-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 16px;
-      position: relative; transition: border-color 0.2s, transform 0.2s;
-      cursor: pointer;
-    }
-    .offer-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-    .offer-card.top { border-color: rgba(0,230,118,0.35); }
-    .offer-top-tag {
-      position: absolute; top: -1px; right: 12px;
-      background: var(--green); color: #000;
-      font-size: 10px; font-weight: 700; padding: 3px 10px;
-      border-radius: 0 0 8px 8px;
-    }
-    .offer-marca { font-size: 10px; color: var(--text3); margin-bottom: 3px; }
-    .offer-modelo { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
-    .offer-storage { font-size: 11px; color: var(--text2); margin-bottom: 10px; }
+    .section { padding: 28px 24px; max-width: 900px; margin: 0 auto; }
+    .section-title { font-size: 15px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .hot-pill { background: #ff5722; color: #fff; font-size: 9px; font-weight: 600; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+    .offer-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; position: relative; transition: border-color 0.2s; cursor: pointer; }
+    .offer-card:hover { border-color: var(--border2); }
+    .offer-card.top { border-color: rgba(0,230,118,0.3); }
+    .offer-top-tag { position: absolute; top: -1px; right: 10px; background: var(--green); color: #000; font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 0 0 6px 6px; text-transform: uppercase; }
+    .offer-marca { font-size: 10px; color: var(--text3); margin-bottom: 2px; }
+    .offer-modelo { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 1px; }
+    .offer-storage { font-size: 11px; color: var(--text2); margin-bottom: 8px; }
     .offer-old { font-size: 11px; color: var(--text3); text-decoration: line-through; }
-    .offer-preco { font-family: var(--font-head); font-size: 20px; font-weight: 700; color: var(--green); }
-    .offer-parcel { font-size: 10px; color: var(--text3); margin-top: 2px; }
+    .offer-preco { font-size: 18px; font-weight: 700; color: var(--green); letter-spacing: -0.02em; }
+    .offer-parcel { font-size: 10px; color: var(--text3); margin-top: 1px; }
 
     /* ─── TABLE SECTION ─── */
-    .table-section { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
-    .table-header { margin-bottom: 18px; }
+    .table-section { max-width: 900px; margin: 0 auto; padding: 0 24px 50px; }
+    .table-header { margin-bottom: 14px; }
+    .update-tag { font-size: 11px; color: var(--text3); margin-bottom: 12px; }
 
-    /* ABAS */
-    .tabs-scroll { overflow-x: auto; padding-bottom: 2px; margin-bottom: 16px; }
-    .tabs-scroll::-webkit-scrollbar { height: 3px; }
-    .tabs-scroll::-webkit-scrollbar-track { background: transparent; }
-    .tabs-scroll::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
-    .tabs { display: flex; gap: 6px; width: max-content; }
-    .tab {
-      border: 1px solid var(--border); background: transparent;
-      color: var(--text2); padding: 7px 16px; border-radius: 20px;
-      font-family: var(--font); font-size: 12px; font-weight: 500;
-      cursor: pointer; transition: all 0.2s; white-space: nowrap;
-    }
+    /* TABS */
+    .tabs-scroll { overflow-x: auto; padding-bottom: 2px; margin-bottom: 12px; }
+    .tabs-scroll::-webkit-scrollbar { height: 0; }
+    .tabs { display: flex; gap: 5px; width: max-content; }
+    .tab { border: 1px solid var(--border); background: transparent; color: var(--text2); padding: 6px 14px; border-radius: 20px; font-family: var(--font); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
     .tab:hover { border-color: var(--border2); color: var(--text); }
     .tab.active { background: var(--green); color: #000; border-color: var(--green); font-weight: 700; }
 
     /* TOOLBAR */
-    .toolbar { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-    .search-wrap { flex: 1; min-width: 180px; position: relative; }
-    .search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); opacity: 0.4; width: 14px; height: 14px; }
-    .search-input {
-      width: 100%; background: var(--bg3); border: 1px solid var(--border);
-      color: var(--text); border-radius: var(--radius-sm);
-      padding: 8px 12px 8px 32px; font-family: var(--font); font-size: 13px;
-      outline: none; transition: border-color 0.2s;
-    }
+    .toolbar { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .search-wrap { flex: 1; min-width: 160px; position: relative; }
+    .search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); opacity: 0.35; width: 14px; height: 14px; }
+    .search-input { width: 100%; background: var(--bg3); border: 1px solid var(--border); color: var(--text); border-radius: var(--radius-sm); padding: 8px 10px 8px 30px; font-family: var(--font); font-size: 13px; outline: none; transition: border-color 0.2s; }
     .search-input:focus { border-color: var(--border2); }
     .search-input::placeholder { color: var(--text3); }
-    .btn-compare {
-      background: transparent; border: 1px solid var(--border);
-      color: var(--text2); padding: 8px 16px; border-radius: var(--radius-sm);
-      font-family: var(--font); font-size: 12px; font-weight: 500;
-      cursor: pointer; transition: all 0.2s; white-space: nowrap;
-      display: flex; align-items: center; gap: 6px;
-    }
+
+    /* FILTER & SORT (mobile) */
+    .mobile-filters { display: none; gap: 6px; margin-bottom: 10px; }
+    .btn-filter { flex: 1; background: var(--bg3); border: 1px solid var(--border); color: var(--text2); padding: 8px 12px; border-radius: var(--radius-sm); font-family: var(--font); font-size: 12px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; transition: all 0.2s; }
+    .btn-filter:hover { border-color: var(--border2); color: var(--text); }
+    .btn-filter.active { border-color: var(--green); color: var(--green); }
+    .btn-filter svg { width: 13px; height: 13px; }
+    .filter-panel { display: none; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
+    .filter-panel.show { display: block; }
+    .filter-group { margin-bottom: 10px; }
+    .filter-group:last-child { margin-bottom: 0; }
+    .filter-label { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .filter-chip { background: var(--bg3); border: 1px solid var(--border); color: var(--text2); padding: 4px 10px; border-radius: 14px; font-size: 11px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+    .filter-chip:hover { border-color: var(--border2); }
+    .filter-chip.on { background: var(--green-dim); border-color: rgba(0,230,118,0.3); color: var(--green); }
+
+    .btn-compare { background: transparent; border: 1px solid var(--border); color: var(--text2); padding: 8px 14px; border-radius: var(--radius-sm); font-family: var(--font); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 5px; }
     .btn-compare:hover { border-color: var(--border2); color: var(--text); }
     .btn-compare.on { background: #1565c0; border-color: #1976d2; color: #fff; }
-    .btn-compare .count-badge {
-      background: rgba(255,255,255,0.2); font-size: 11px;
-      padding: 1px 6px; border-radius: 10px;
-    }
-
-    /* COMPARE BAR */
-    .compare-bar {
-      display: none; align-items: center; justify-content: space-between;
-      background: #0d2a4d; border: 1px solid #1565c0;
-      border-radius: var(--radius-sm); padding: 10px 14px; margin-bottom: 12px;
-      font-size: 13px;
-    }
+    .btn-compare .count-badge { background: rgba(255,255,255,0.2); font-size: 11px; padding: 1px 6px; border-radius: 10px; }
+    .compare-bar { display: none; align-items: center; justify-content: space-between; background: #0d2a4d; border: 1px solid #1565c0; border-radius: var(--radius-sm); padding: 8px 12px; margin-bottom: 10px; font-size: 12px; }
     .compare-bar.show { display: flex; }
     .compare-bar-text { color: #90caf9; }
-    .btn-ver-compare {
-      background: #1976d2; color: #fff; border: none;
-      padding: 6px 16px; border-radius: 6px; font-size: 12px; font-weight: 500;
-      cursor: pointer; transition: background 0.2s;
-    }
-    .btn-ver-compare:hover { background: #1565c0; }
+    .btn-ver-compare { background: #1976d2; color: #fff; border: none; padding: 5px 14px; border-radius: 5px; font-size: 11px; font-weight: 600; cursor: pointer; }
 
-    /* TABLE */
+    /* DESKTOP TABLE */
     .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
     table { width: 100%; border-collapse: collapse; font-size: 13px; }
     thead { background: var(--bg3); }
-    th {
-      padding: 10px 12px; text-align: left;
-      font-size: 10px; font-weight: 500; color: var(--text3);
-      text-transform: uppercase; letter-spacing: 0.6px;
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-    }
-    td { padding: 11px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+    th { padding: 9px 12px; text-align: left; font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
     tbody tr:last-child td { border-bottom: none; }
     tbody tr { transition: background 0.15s; }
     tbody tr:hover td { background: var(--bg3); }
-    tbody tr.sel td { background: rgba(21,101,192,0.12); }
-
-    .pill { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 20px; }
-    .pill-apple { background: rgba(255,255,255,0.1); color: #ccc; }
-    .pill-xiaomi { background: rgba(255,152,0,0.15); color: #ffb74d; }
-    .pill-samsung { background: rgba(33,150,243,0.15); color: #64b5f6; }
-    .pill-outros { background: rgba(156,39,176,0.15); color: #ce93d8; }
-
+    .pill { display: inline-block; font-size: 10px; font-weight: 500; padding: 1px 7px; border-radius: 20px; }
+    .pill-apple { background: rgba(255,255,255,0.08); color: #bbb; }
+    .pill-xiaomi { background: rgba(255,152,0,0.12); color: #ffb74d; }
+    .pill-samsung { background: rgba(33,150,243,0.12); color: #64b5f6; }
+    .pill-outros { background: rgba(156,39,176,0.12); color: #ce93d8; }
     .cond { font-size: 11px; font-weight: 500; }
     .cond-lacrado { color: var(--green); }
     .cond-vitrine { color: #ffa726; }
     .cond-semi { color: #42a5f5; }
     .cond-novo { color: var(--green); }
-
-    .price-col { font-family: var(--font-head); font-weight: 700; color: var(--text); white-space: nowrap; }
-
-    .btn-interesse {
-      background: var(--wpp); color: #fff; border: none;
-      padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 500;
-      cursor: pointer; white-space: nowrap;
-      transition: opacity 0.2s; font-family: var(--font);
-    }
+    .price-col { font-weight: 700; color: var(--text); white-space: nowrap; }
+    .btn-interesse { background: var(--wpp); color: #fff; border: none; padding: 5px 10px; border-radius: 5px; font-size: 11px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: opacity 0.2s; font-family: var(--font); }
     .btn-interesse:hover { opacity: 0.85; }
+    .no-results { text-align: center; padding: 40px; color: var(--text3); font-size: 13px; }
 
-    .chk-compare { width: 16px; height: 16px; cursor: pointer; accent-color: #1976d2; }
-    .no-results { text-align: center; padding: 40px; color: var(--text3); font-size: 14px; }
+    /* ─── MOBILE GROUPED CARDS ─── */
+    .mobile-cards { display: none; }
+    .g-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px; }
+    .g-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+    .g-card-name { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.25; }
+    .g-card-price { font-size: 17px; font-weight: 700; color: var(--green); white-space: nowrap; letter-spacing: -0.02em; flex-shrink: 0; }
+    .g-card-from { font-size: 10px; font-weight: 400; color: var(--text2); display: block; }
+    .g-card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+    .g-tag { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 4px; }
+    .g-tag-storage { background: rgba(255,255,255,0.06); color: var(--text2); }
+    .g-tag-color { background: rgba(228,174,39,0.1); color: var(--gold); }
+    .g-tag-cond { font-weight: 600; }
+    .g-tag-cond.lacrado { background: rgba(0,230,118,0.1); color: var(--green); }
+    .g-tag-cond.vitrine { background: rgba(255,167,38,0.1); color: #ffa726; }
+    .g-card-footer { display: flex; align-items: center; gap: 8px; }
+    .g-card-btn { flex: 1; background: var(--wpp); color: #fff; border: none; padding: 9px 0; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: var(--font); display: flex; align-items: center; justify-content: center; gap: 5px; transition: opacity 0.2s; }
+    .g-card-btn:hover { opacity: 0.88; }
+    .g-card-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .g-card-variants { font-size: 10px; color: var(--text3); flex-shrink: 0; }
+    .m-no-results { text-align: center; padding: 36px 16px; color: var(--text3); font-size: 13px; }
 
     /* LOADING */
-    .loading-state { text-align: center; padding: 50px; color: var(--text3); }
-    .spinner {
-      width: 28px; height: 28px; border: 2px solid var(--bg4);
-      border-top-color: var(--green); border-radius: 50%;
-      animation: spin 0.8s linear infinite; margin: 0 auto 14px;
-    }
+    .loading-state { text-align: center; padding: 40px; color: var(--text3); }
+    .spinner { width: 24px; height: 24px; border: 2px solid var(--bg4); border-top-color: var(--green); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 10px; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* COMPARE MODAL */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.7); z-index: 200;
-      align-items: flex-start; justify-content: center;
-      padding: 24px 16px; overflow-y: auto;
-    }
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; align-items: flex-start; justify-content: center; padding: 24px 16px; overflow-y: auto; }
     .modal-overlay.show { display: flex; }
-    .modal {
-      background: var(--bg2); border: 1px solid var(--border2);
-      border-radius: 16px; padding: 24px; width: 100%; max-width: 700px;
-      margin-top: 20px;
-    }
-    .modal-title { font-family: var(--font-head); font-size: 17px; font-weight: 700; margin-bottom: 20px; color: var(--text); }
-    .modal-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-    .modal-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
-    .modal-card-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-    .modal-row { display: flex; justify-content: space-between; font-size: 12px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+    .modal { background: var(--bg2); border: 1px solid var(--border2); border-radius: 14px; padding: 20px; width: 100%; max-width: 700px; margin-top: 20px; }
+    .modal-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+    .modal-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+    .modal-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+    .modal-card-name { font-size: 13px; font-weight: 600; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    .modal-row { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-bottom: 1px solid var(--border); }
     .modal-row:last-child { border-bottom: none; }
     .modal-row-label { color: var(--text3); }
-    .modal-row-val { font-weight: 500; color: var(--text); }
-    .modal-row-val.best { color: var(--green); font-family: var(--font-head); font-size: 14px; }
-    .btn-modal-close {
-      margin-top: 18px; width: 100%; background: var(--bg3);
-      border: 1px solid var(--border); color: var(--text2);
-      padding: 10px; border-radius: var(--radius-sm); font-size: 13px;
-      cursor: pointer; font-family: var(--font); transition: all 0.2s;
-    }
-    .btn-modal-close:hover { border-color: var(--border2); color: var(--text); }
+    .modal-row-val { font-weight: 500; }
+    .modal-row-val.best { color: var(--green); font-weight: 700; }
+    .btn-modal-close { margin-top: 14px; width: 100%; background: var(--bg3); border: 1px solid var(--border); color: var(--text2); padding: 9px; border-radius: var(--radius-sm); font-size: 12px; cursor: pointer; font-family: var(--font); }
 
     /* FOOTER */
-    footer {
-      background: var(--bg2); border-top: 1px solid var(--border);
-      padding: 40px 24px; text-align: center;
-    }
-    .footer-title { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    .footer-sub { font-size: 13px; color: var(--text2); margin-bottom: 22px; }
-    .btn-wpp-big {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--wpp); color: #fff; border: none;
-      padding: 14px 32px; border-radius: var(--radius); font-size: 15px; font-weight: 500;
-      cursor: pointer; font-family: var(--font); transition: opacity 0.2s;
-    }
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 36px 24px; text-align: center; }
+    .footer-title { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+    .footer-sub { font-size: 13px; color: var(--text2); margin-bottom: 18px; }
+    .btn-wpp-big { display: inline-flex; align-items: center; gap: 7px; background: var(--wpp); color: #fff; border: none; padding: 12px 28px; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font); transition: opacity 0.2s; }
     .btn-wpp-big:hover { opacity: 0.88; }
-    .footer-info { margin-top: 20px; font-size: 11px; color: var(--text3); }
+    .footer-info { margin-top: 16px; font-size: 11px; color: var(--text3); }
 
     /* FAB */
-    .fab {
-      position: fixed; bottom: 20px; right: 20px; z-index: 90;
-      background: var(--wpp); color: #fff; border: none;
-      width: 52px; height: 52px; border-radius: 50%;
-      font-size: 22px; cursor: pointer;
-      box-shadow: 0 4px 16px rgba(37,211,102,0.35);
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .fab:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(37,211,102,0.45); }
+    .fab { position: fixed; bottom: 18px; right: 18px; z-index: 90; background: var(--wpp); color: #fff; border: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; box-shadow: 0 3px 14px rgba(37,211,102,0.3); display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+    .fab:hover { transform: scale(1.08); }
 
-    /* UPDATE TAG */
-    .update-tag { font-size: 11px; color: var(--text3); margin-bottom: 14px; }
-
-    /* ─── MOBILE CARDS (hidden on desktop) ─── */
-    .mobile-cards { display: none; }
-    .m-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 14px;
-      margin-bottom: 10px; transition: border-color 0.2s;
-    }
-    .m-card:active { border-color: var(--border2); }
-    .m-card.sel { border-color: #1565c0; background: rgba(21,101,192,0.08); }
-    .m-card-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .m-card-top .pill { flex-shrink: 0; }
-    .m-card-modelo { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.3; }
-    .m-card-mid { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-    .m-card-storage { font-size: 12px; color: var(--text2); background: var(--bg3); padding: 2px 8px; border-radius: 4px; }
-    .m-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .m-card-preco { font-family: var(--font-head); font-weight: 700; font-size: 18px; color: var(--text); white-space: nowrap; }
-    .m-card-btn {
-      background: var(--wpp); color: #fff; border: none;
-      padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
-      cursor: pointer; font-family: var(--font);
-      display: flex; align-items: center; gap: 6px;
-      white-space: nowrap; flex-shrink: 0;
-      min-height: 40px;
-    }
-    .m-card-btn svg { flex-shrink: 0; }
-    .m-card-compare { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-    .m-card-compare input { width: 18px; height: 18px; accent-color: #1976d2; }
-    .m-card-compare label { font-size: 12px; color: var(--text2); }
-    .m-no-results { text-align: center; padding: 40px 16px; color: var(--text3); font-size: 14px; }
-
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 640px) {
-      /* Show mobile cards, hide desktop table */
       .table-wrap { display: none; }
       .mobile-cards { display: block; }
-
-      /* General spacing */
-      header { padding: 0 14px; height: 56px; }
-      .logo-svg { height: 30px; }
+      .mobile-filters { display: flex; }
+      header { padding: 0 14px; }
       .section, .table-section { padding-left: 14px; padding-right: 14px; }
-
-      /* Hero mobile */
-      .hero { padding: 36px 14px 24px; }
-      .hero h1 { font-size: 24px; }
+      .hero { padding: 36px 14px 22px; }
+      .hero h1 { font-size: 23px; }
       .hero p { font-size: 13px; }
-      .hero-banner { max-width: 100%; margin-top: 22px; }
+      .hero-banner { max-width: 100%; margin-top: 18px; }
       .hero-banner-img { aspect-ratio: 2.2 / 1; }
-
-      /* Offers grid → 2 columns tight */
-      .offers-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .offers-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .offer-card { padding: 12px; }
-      .offer-preco { font-size: 17px; }
-
-      /* Tabs scroll */
-      .tabs { gap: 5px; }
-      .tab { padding: 6px 13px; font-size: 11px; }
-
-      /* Toolbar */
-      .toolbar { gap: 6px; }
-      .search-input { padding: 9px 12px 9px 32px; font-size: 14px; }
-      .btn-compare { padding: 9px 12px; font-size: 11px; }
-
-      /* Compare bar */
-      .compare-bar { padding: 8px 12px; font-size: 12px; }
-
-      /* Footer */
-      footer { padding: 32px 14px; }
-      .btn-wpp-big { padding: 12px 24px; font-size: 14px; width: 100%; justify-content: center; }
-
-      /* FAB position */
-      .fab { bottom: 16px; right: 16px; width: 48px; height: 48px; font-size: 20px; }
-
-      /* Table section less bottom padding */
-      .table-section { padding-bottom: 40px; }
-
-      /* Header WhatsApp btn compact */
-      .btn-wpp-header { padding: 7px 12px; font-size: 12px; }
-      .btn-wpp-header svg { width: 13px; height: 13px; }
+      .offer-preco { font-size: 16px; }
+      .tab { padding: 5px 12px; font-size: 11px; }
+      .btn-compare { display: none; }
+      .trust-bar { gap: 14px; padding: 12px 14px; }
+      footer { padding: 28px 14px; }
+      .btn-wpp-big { width: 100%; justify-content: center; padding: 11px 20px; font-size: 13px; }
+      .table-section { padding-bottom: 36px; }
+      .btn-wpp-header { padding: 6px 10px; font-size: 11px; }
     }
-
     @media (max-width: 380px) {
-      .hero h1 { font-size: 21px; }
+      .hero h1 { font-size: 20px; }
       .offers-grid { grid-template-columns: 1fr; }
-      .m-card-bottom { flex-direction: column; align-items: stretch; }
-      .m-card-preco { text-align: center; }
-      .m-card-btn { justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <a class="logo" href="#">
     <svg class="logo-svg" viewBox="0 0 434.73 249.03" xmlns="http://www.w3.org/2000/svg">
       <g>
-        <path fill="#30271a" d="M183.07,7.45c.57,1.78.93,3.55,1.04,5.43.6,10.98,1.17,30.42-.01,40.95-.51,4.56-1.84,4.59-4.03,7.19-.62.73-.49,2.4-1.22,3.02-3.53,2.99-41.03,5.21-48.17,6.21l-2.26,1.62c.42,27.5.38,55.13.72,82.68.31,24.64,3.41,52.23,1.09,76.79-.9,9.52-7.07,10.52-15.48,11.45l-107.31-1.03c-2.66-2.75-6.69-4.48-7.04-8.42.85-62.46-1.03-125.29.09-187.47.14-7.79-1.5-27.37.51-33.4.33-1,2.54-3.93,3.49-4.49,5.31-3.1,34.98-1.31,43.4-1.5,22.01-.5,46.9-3.2,68.82-1.05,1.25.12,8.58,1.88,9.2,2.28.73.46,2.4,4.24,3.27,4.71v18.95c1.65,0,3.33.01,4.99,0,3.49-.04,6.52-.53,9.93-1.05,1.43-9.71-4.19-23.66,6.65-28.76,5.64-2.65,23.12-1.83,28.26,1.46.81.52,2.68,3.18,4.06,4.42Z"/>
-        <path fill="#30271a" d="M313.8,241.77c-2.32-.07-4.67.05-6.99,0l-1.03-138.15c.24-2.57,2.83-11.68,4.33-13.12.64-.62,2.53-.64,3.79-1.69,1.07-.89,1.47-2.87,2.17-3.32,1.53-.98,10.86-3.09,13.17-3.3,25.94-2.29,56.65.92,82.82,2.07,5.81.26,11.71-.27,17.51-.05.07,1.32-.09,2.67,0,3.99,1.62,26.75-.62,54.46,1.05,81.32-.16,1.17-3.27,6.99-3.93,7.81-1.11,1.36-3.99-.49-4.54,2.47-22.78-3.9-45.79,1.2-68.75.09-3.82.91,2.24,18.14-.67,21.97,1.27.17,2.8-.21,3.99,0,20.01,3.7,44.42-3.07,64.3.06,4.11.65,7.23,5.7,9.54,8.91-2.38,9.68,3.07,28.5-10.54,30.85-8.4,1.45-21.95.86-30.86,1.07-1.97.05-3.99,1.16-6.04,1.1-1.87-.06-.93-1.94-2.89-2.19-18.97-2.42-46.21.65-66.43.08Z"/>
+        <path fill="#f0f0f0" d="M183.07,7.45c.57,1.78.93,3.55,1.04,5.43.6,10.98,1.17,30.42-.01,40.95-.51,4.56-1.84,4.59-4.03,7.19-.62.73-.49,2.4-1.22,3.02-3.53,2.99-41.03,5.21-48.17,6.21l-2.26,1.62c.42,27.5.38,55.13.72,82.68.31,24.64,3.41,52.23,1.09,76.79-.9,9.52-7.07,10.52-15.48,11.45l-107.31-1.03c-2.66-2.75-6.69-4.48-7.04-8.42.85-62.46-1.03-125.29.09-187.47.14-7.79-1.5-27.37.51-33.4.33-1,2.54-3.93,3.49-4.49,5.31-3.1,34.98-1.31,43.4-1.5,22.01-.5,46.9-3.2,68.82-1.05,1.25.12,8.58,1.88,9.2,2.28.73.46,2.4,4.24,3.27,4.71v18.95c1.65,0,3.33.01,4.99,0,3.49-.04,6.52-.53,9.93-1.05,1.43-9.71-4.19-23.66,6.65-28.76,5.64-2.65,23.12-1.83,28.26,1.46.81.52,2.68,3.18,4.06,4.42Z"/>
+        <path fill="#f0f0f0" d="M313.8,241.77c-2.32-.07-4.67.05-6.99,0l-1.03-138.15c.24-2.57,2.83-11.68,4.33-13.12.64-.62,2.53-.64,3.79-1.69,1.07-.89,1.47-2.87,2.17-3.32,1.53-.98,10.86-3.09,13.17-3.3,25.94-2.29,56.65.92,82.82,2.07,5.81.26,11.71-.27,17.51-.05.07,1.32-.09,2.67,0,3.99,1.62,26.75-.62,54.46,1.05,81.32-.16,1.17-3.27,6.99-3.93,7.81-1.11,1.36-3.99-.49-4.54,2.47-22.78-3.9-45.79,1.2-68.75.09-3.82.91,2.24,18.14-.67,21.97,1.27.17,2.8-.21,3.99,0,20.01,3.7,44.42-3.07,64.3.06,4.11.65,7.23,5.7,9.54,8.91-2.38,9.68,3.07,28.5-10.54,30.85-8.4,1.45-21.95.86-30.86,1.07-1.97.05-3.99,1.16-6.04,1.1-1.87-.06-.93-1.94-2.89-2.19-18.97-2.42-46.21.65-66.43.08Z"/>
         <path fill="#e4ae27" d="M217,195.91c.06,2.29-4.6,9.18-6.38,11.52-2.2,2.88-6.69,6.57-8.87,9.65-3.63,5.12-8.89,17.4-14.13,20.79-2.03,1.31-3.49.53-4.55.92,2.35-4.99,7.05-9.21,9.98-13.46s7.13-13.66,10.25-17.18c.79-.89,2.72-.68,3.45-1.54,2.86-3.36,4.93-9.5,10.26-10.7Z"/>
         <path fill="#e4ae27" d="M161.12,3.46c2.29.21,4.69-.16,6.99,0-.88,11.2-6.48,21.21-11.22,31.18-1.77,3.71-1.92,4.77-4.88,8.07-1.7,1.89-4.12,3.37-5.59,5.58l-7.24,3.01c2.81-.35,6.74.67,9.33-.17.96-.31,3.19-3.8,4.39-4.8.78-.65,2.52-.52,3.06-1.26s0-2.53.19-2.74c.68-.72,8.35,4.57,10.96,1.96l-2.97-2.97,3.97-3.48-3.98-1.51,1.01-4.97-3.97.52c2.71-6.46,6.75-14.58,8.73-21.2.72-2.42-.74-5.56,1.75-7.25,1.26-.26,8.55,4.27,8.44,6.5-1.46,14.02,2.07,32.31-.05,45.78-.83,5.29-2.71,3.34-5.1,4.67-9.78,5.48-21.3,3.84-32.24,4.88-5.46.52-10.9,2.4-16.48,1.98l.08,95.3c-4.74,4.13-.61,6.65-.03,10.85,1.79,12.87,2.11,41.88.98,54.93-.17,1.99-.57,5.82-1.59,7.38-.37.56-5.57,4.05-5.93,4.05h-17.46v-4.98c.39-.46,11.12,4.03,8.48-3h-5.48s5.98-1,5.98-1l-1.21-7.74c-3.32-2.39-4.18,0-6.76,1.76.18-3.78-.31-7.67,0-11.45,3.99-47.51,4.61-97.89,1.99-145.6-.82-14.86,2.92-9.65,14.34-11.57,6.22-1.04,12.59-2.47,18.59-4.37,0-2.62-30.14,3.29-32.93,4.48-.97-15.41.21-31.6-2-46.86h17.96c.7.3,3.66,2.12,3.98,2.5,2.57,3.12.19,17.59,1.01,22.43,2.3-.15,4.71.21,6.99,0-.48,3.16,1.28,1.87,3.19,1.71,4.6-.38,9.12-1.2,13.77-.71V12.94l10.98-9.47Z"/>
         <path fill="#e4ae27" d="M62.33,11.44c-.58,4.26.42,9.55,0,13.96h-18.46c-1.37,0-3.22,4.38-2.5,5.98l21.96,1c-.26,4.57-.29,8.38,2.02,12.44-3.61,1.87-7.85-.17-12.2,1.62-.52.21-7.13,7.12-7.36,7.81-1.68,5.09.36,13.99-.35,19.59-.24,1.91-1.91.95-2.15,2.86-1.37,10.82,1.15,24.64.12,35.8-.51,2.18-7.67.01-9.01,5.17-.61,2.19,2.19,1.75,3.27,1.43.49-.14,3.16-4.01,5.69-2.94-2.3,3.08-4.97,4.45-3.98,8.96,3.7-1.5,3.54-.8,5.93,1.73,1.39,19.93-1.69,41.95.01,61.62.74,8.58,5.59,15.71,15.01,14.42,2.17,6.55-4.67,6.07-6.72,8.25-.31.32-3.11,7.49-3.22,8.29-.34,2.34,1.84,10.64,3.08,12.25.09.12,1.39-.8,2.89.5,1.9,1.65,4.77,6.37,1.32,7.5-2.47.81-4.01-.89-4.84-.89h-22.45c-1.29-19.32-2.32-38.88-3-58.32-1.67-47.66-2.05-96.16,1.99-143.61.72-8.42.63-17.01,2.01-25.41h30.94Z"/>
@@ -427,16 +236,14 @@
         <path fill="#e4ae27" d="M355.71,139.07c-1.5-.14-3.18.36-3.85-1.63l.86-13.31h30.93c.05.65-.04,1.32,0,1.99-9.14,2.34-18.57,2.11-27.95,1.99v10.97Z"/>
         <path fill="#e4ae27" d="M261.91,85.23c6.38-.06,7.28,2.19,12.06,5.59.63,4.52-10.97,14.44-12.05,19.34,4.21.55,4.14-3.42,5.26-4.7.99-1.14,7.4-5.38,8.48-6.48.95-.97,1.09-3.39,1.24-4.77l5.06,5.36c5.61.81,8.9,7.09,7.24,12.42-.24.78-2.95,6.13-3.26,6.46-3.01,3.18-2.6,2.39-5.61,6.61-7.74,10.88-15.81,22.27-23.69,31.61-1.46,1.73-3.65.88-3.8,4.87-.06,1.58,1.85,1.51,2.69,3.32,2.59,5.55,3.35,6.96,7.33,11.61,8.13,9.5,16.61,20.9,23.86,31.03,3.91,5.46,3.7,9.33.46,15.08-3.73,6.6-8.96,1.76-12.97-2.13-7.54-7.32-17.96-18.98-23.23-27.88-.61-1.03-2.9,0-2.04-2.63,2.07.96,7.31-3.79,5.98-4.99l-7.98,1.98,2.99-7.96c-2.83-.97-5.64,7.9-6.97,6.97-.59-5.17-6.98-6.15-9.64-8.34-4.97-4.09-8.75-9.69-13.22-14.3-.65-2.54,5.21-8.57,6.9-10.79.76-1,.73-2.64,1.23-3.2,1.36-1.53,5.17-.72,4.74-6.25,5.75-.04,3.76,6.99,9.96,5.98-.14-1.39.32-3.04.02-4.33-.27-1.18-2.44,0-2.01-1.64h4s0-3.99,0-3.99l-6.98-.99h6.98s0-3.99,0-3.99l-3.99-.5,16.96-19.44c-1.85-.33-2.75.32-4.08,1.42-3.54,2.93-7.86,9.61-11.22,13.18-7.46,7.93-12.12,12.38-18.02,21.35-1.27,1.93-3.77,7.96-6.08,7.97l-28.39-24.55c-8.3-10.25-16.66-23.55-26.49-32.37-1.91-1.72-5.92-1.11-5.53-5.38.46-4.97,4.53-4.38,6.69-5.89,1.02-.72,1.58-2.78,3.72-3.74,8.04-3.6,12.12.74,16.39,6.72,7.73,10.85,13.72,21.28,22.16,31.69,1.25,1.54,8.46,11,9.12,11.29,3.25,1.43,12.88-8.84,14.78-11.73,2.2.67,4.24-1.79,5.3-3.24,6.83-9.3,12.55-19.53,19.61-28.21,2.05-2.52,4.67-4.45,6.02-7.44Z"/>
         <path fill="#e4ae27" d="M151.14,101.18c1.17-.6,3.2-2.05,4.35-1.84,1.26,1.83,10.88,8.11,9.62,9.8-1.95.32-4.87,1.05-5,3.5l4.99.51-.98,5.97,3.98-3.98c-.78,2.24-.63,7.19,3,6.97.59-2.11-1.72-7.78,1.99-6.97.21,1.41,2.53,5.68,3.32,6.6,9.68,11.23,19.26,19.19,29.67,28.75,3.79,3.48,7.13,7.52,10.91,11.02l-33.91,43.36c.75.68,5.54-3.22,6.46-4.01,7-5.98,18.32-20.41,23.51-28.36,1.38-2.12,1.08-7.26,4.98-6.13,2.8,1.52,3.3,4.31,5.75,6.54,1.96,1.78,6.12,4,8.08,5.7,10.03,8.68,19.84,19.33,28.48,29.29,3.71,4.27,9.16,13.32,12.52,16.45,1.7,1.58,3.8,2.13,6.01,2.48,1.37,1.87-4.4,5-5.51,6-3.65,3.29-3.42,4.6-9.46,5.96-1.62-3.67-5.63-5.83-7.83-8.63-6.4-8.09-12.36-19.01-19.1-27.77-2.59-3.36-5.15-6.42-7.59-8.82-2.24-2.21-4.74-7.63-7.39-2.64-6.42-7.76-10.02,3.66-13.99,8.45-2.18,2.63-5.76,5.28-7.98,8.25-4.93,6.61-15.28,26.9-21.67,29.93-4.97,2.36-13.92-.37-15.14-5.46-1.09-4.54,8.38-9.05,6.88-14.24l-11.48,10.96c-1.39.36-3.71-2.91-4.48-3.99-.41-.58-2.89-5.05-2.98-5.5-1.55-7.93,1.26-10.99,5.97-16.44,2.21.98,4.28,4,6.97.5l-4.97-3.48,5.98.98-.09-3.9-2.91-.58c3.41-1.11,2.23-3.22,3-5.48,2.19-6.39,3.69-3.8,4.83-5.16.53-.63-.18-2.45.4-3.55,2.85-5.38,10.61-10.08,14.8-18.43.38-.75,1.7-.74,1.89-1.48,1.2-4.56-1.44-3.98-1.97-4.96-2.67-4.98-1.2-2.22-3.85-4.88-9.77-9.79-16.44-22.4-23.37-33.02-1.23-1.88-5.46-5.76-6.25-8.21-1.28-3.96,1.01-6.63-.45-10.03Z"/>
-        <path fill="#30271a" d="M368.68,225.82v-10.96s1.49,1.99,1.49,1.99c2.68-1.08,3.5-5.77,4.01-5.99,2.04-.88,1.73,2.44,1.56,3.55-.23,1.54-3.65,2.56-2.06,6.42l5.97-3.98-1.99,6.97c11.29.38,20.71-1.81,31.96.49,1.09.22,3.22.06,2.96,1.51h-43.91Z"/>
+        <path fill="#f0f0f0" d="M368.68,225.82v-10.96s1.49,1.99,1.49,1.99c2.68-1.08,3.5-5.77,4.01-5.99,2.04-.88,1.73,2.44,1.56,3.55-.23,1.54-3.65,2.56-2.06,6.42l5.97-3.98-1.99,6.97c11.29.38,20.71-1.81,31.96.49,1.09.22,3.22.06,2.96,1.51h-43.91Z"/>
       </g>
     </svg>
   </a>
-  <div class="header-right">
-    <button class="btn-wpp-header" onclick="openWpp('Olá! Vim pelo site da OxeIphone e gostaria de mais informações.')">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-      WhatsApp
-    </button>
-  </div>
+  <button class="btn-wpp-header" onclick="openWpp('Olá! Vim pelo site da OxeIphone e gostaria de mais informações.')">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    WhatsApp
+  </button>
 </header>
 
 <!-- HERO -->
@@ -444,516 +251,257 @@
   <div class="hero-badge">Tabela atualizada semanalmente</div>
   <h1>Os melhores preços em<br/><span>iPhones & Xiaomi</span></h1>
   <p>Lacrados, vitrine e seminovos com garantia. Recife e região.</p>
-
-  <!-- BANNER CAMPANHA — Para trocar: substitua apenas o src da imagem abaixo -->
   <a href="#tabela" class="hero-banner">
-    <img class="hero-banner-img"
-         src="/banneroxe.jpg"
-         alt="Black do Consumidor — 1 ano de combustível grátis — OxeIphone" />
-    <span class="hero-banner-cta">
-      Ver preços
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-    </span>
+    <img class="hero-banner-img" src="/banneroxe.jpg" alt="Campanha do mês — OxeIphone" />
+    <span class="hero-banner-cta">Ver preços <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg></span>
   </a>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Garantia em todos</div>
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Loja física em Recife</div>
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg> Pix · Cartão · 12x</div>
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Envio para todo Brasil</div>
 </div>
 
 <!-- OFERTAS -->
 <div class="section">
-  <div class="section-header">
-    <div class="section-title">Ofertas da semana <span class="hot-pill">QUENTE</span></div>
-  </div>
+  <div class="section-title">Ofertas da semana <span class="hot-pill">Quente</span></div>
   <div class="offers-grid" id="offersGrid">
-    <div class="loading-state"><div class="spinner"></div>Carregando ofertas...</div>
+    <div class="loading-state"><div class="spinner"></div></div>
   </div>
 </div>
 
 <!-- TABELA -->
 <div class="table-section" id="tabela">
   <div class="table-header">
-    <div class="section-title" style="margin-bottom:16px;">Tabela de preços</div>
-    <div class="update-tag" id="updateTag">Carregando dados...</div>
+    <div class="section-title" style="margin-bottom:12px;">Tabela de preços</div>
+    <div class="update-tag" id="updateTag"></div>
   </div>
-
   <div class="tabs-scroll"><div class="tabs" id="tabsEl"></div></div>
-
   <div class="toolbar">
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input class="search-input" id="searchInput" placeholder="Buscar modelo, ex: iPhone 15 Pro..." oninput="renderTable()" />
+      <input class="search-input" id="searchInput" placeholder="Buscar modelo..." oninput="renderTable()" />
     </div>
     <button class="btn-compare" id="btnCompare" onclick="toggleCompare()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-      Comparar
-      <span class="count-badge" id="cntBadge" style="display:none">0</span>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+      Comparar <span class="count-badge" id="cntBadge" style="display:none">0</span>
     </button>
   </div>
-
-  <div class="compare-bar" id="compareBar">
-    <span class="compare-bar-text" id="compareBarText">0 produtos selecionados</span>
-    <button class="btn-ver-compare" onclick="openModal()">Ver comparação</button>
+  <!-- Mobile filters -->
+  <div class="mobile-filters" id="mobileFilters">
+    <button class="btn-filter" id="btnFilterToggle" onclick="toggleFilterPanel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg> Filtrar
+    </button>
+    <button class="btn-filter" id="btnSort" onclick="toggleSort()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      <span id="sortLabel">Menor preço</span>
+    </button>
   </div>
-
+  <div class="filter-panel" id="filterPanel"></div>
+  <div class="compare-bar" id="compareBar">
+    <span class="compare-bar-text" id="compareBarText">0 selecionados</span>
+    <button class="btn-ver-compare" onclick="openModal()">Comparar</button>
+  </div>
   <div class="table-wrap">
-    <table>
-      <thead><tr id="tableHead"></tr></thead>
-      <tbody id="tableBody"><tr><td colspan="6" class="no-results"><div class="spinner" style="margin:0 auto 10px"></div></td></tr></tbody>
-    </table>
+    <table><thead><tr id="tableHead"></tr></thead><tbody id="tableBody"></tbody></table>
   </div>
   <div class="mobile-cards" id="mobileCards"></div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-title">Ficou interessado?</div>
-  <div class="footer-sub">Fale direto pelo WhatsApp para verificar disponibilidade e fechar negócio.</div>
+  <div class="footer-sub">Fale direto pelo WhatsApp e feche negócio.</div>
   <button class="btn-wpp-big" onclick="openWpp('Olá! Vim pelo site da OxeIphone e gostaria de mais informações.')">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
     Fale pelo WhatsApp
   </button>
-  <div class="footer-info">@oxeiphonepe · Preços sujeitos a disponibilidade de estoque · Recife/PE</div>
+  <div class="footer-info">@oxeiphonepe · Preços sujeitos a disponibilidade · Recife/PE</div>
 </footer>
 
 <button class="fab" onclick="openWpp('Olá! Vim pelo site da OxeIphone.')">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </button>
 
-<!-- COMPARE MODAL -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
-    <div class="modal-title">Comparação de produtos</div>
+    <div class="modal-title">Comparação</div>
     <div class="modal-grid" id="modalGrid"></div>
     <button class="btn-modal-close" onclick="closeModal()">Fechar</button>
   </div>
 </div>
 
 <script>
-  const CONFIG = {
-    WPP_NUMBER: "5581986893971",
-    ABAS: ["iPhones Lacrados","iPhones Vitrine","Produtos Apple","Outros","Xiaomi"]
-  };
+  const CONFIG = { WPP_NUMBER: "5581986893971", ABAS: ["iPhones Lacrados","iPhones Vitrine","Produtos Apple","Outros","Xiaomi"] };
+  const DADOS = {"iPhones Lacrados":[["iPhone SE","64GB Red","Lacrado","","","","Apple"],["iPhone 13","128GB","Lacrado",3049,"","","Apple"],["iPhone 13","128GB Rosa","Lacrado",3179,"","","Apple"],["iPhone 13","256GB","Lacrado",3499,"","","Apple"],["iPhone 14","128GB","Lacrado",3599,"","","Apple"],["iPhone 14","256GB","Lacrado",3819,"","","Apple"],["iPhone 14 Plus","128GB","Lacrado",3889,"","","Apple"],["iPhone 14 Pro Max","128GB","Lacrado",4799,"","","Apple"],["iPhone 15","128GB Preto","Lacrado",3849,"","","Apple"],["iPhone 15","128GB Azul/Rosa","Lacrado",3900,"","","Apple"],["iPhone 15","256GB","Lacrado",4399,"","","Apple"],["iPhone 16","128GB","Lacrado",4399,4799,"sim","Apple"],["iPhone 16","256GB","Lacrado",4959,"","","Apple"],["iPhone 16e","128GB","Lacrado",3399,"","","Apple"],["iPhone 16 Plus","128GB","Lacrado",4879,"","","Apple"],["iPhone 16 Pro","128GB","Lacrado",5999,"","","Apple"],["iPhone 17","256GB","Lacrado",5649,"","","Apple"],["iPhone 17 Pro","256GB Laranja","Lacrado",7699,"","","Apple"],["iPhone 17 Pro","256GB Branco","Lacrado",8129,"","","Apple"],["iPhone 17 Pro","512GB","Lacrado",9699,"","","Apple"],["iPhone 17 Pro Max","256GB Laranja","Lacrado",8649,"","","Apple"],["iPhone 17 Pro Max","256GB Azul","Lacrado",8649,"","","Apple"],["iPhone 17 Pro Max","256GB Branco","Lacrado",8999,"","","Apple"],["iPhone 17 Pro Max","512GB","Lacrado",9889,"","","Apple"],["iPhone 17 Pro Max","512GB Branco/Azul","Lacrado",10299,"","","Apple"]],"iPhones Vitrine":[["iPhone 8G","64GB","Vitrine",469,"","","Apple"],["iPhone SE 3ª Ger. 5G","64GB","Vitrine",799,"","","Apple"],["iPhone SE 3ª Ger. 5G","128GB","Vitrine",899,"","","Apple"],["iPhone XR","64GB","Vitrine",799,"","","Apple"],["iPhone XR","128GB","Vitrine",1119,"","","Apple"],["iPhone XS Max","256GB","Vitrine",999,"","","Apple"],["iPhone 11","64GB","Vitrine",1349,"","","Apple"],["iPhone 11","128GB","Vitrine",1399,"","","Apple"],["iPhone 11","256GB","Vitrine",1509,"","","Apple"],["iPhone 11 Pro","64GB","Vitrine",1449,"","","Apple"],["iPhone 11 Pro","256GB","Vitrine",1679,"","","Apple"],["iPhone 11 Pro Max","64GB","Vitrine",1699,"","","Apple"],["iPhone 11 Pro Max","256GB","Vitrine",1849,"","","Apple"],["iPhone 12 Mini","64GB","Vitrine",1099,"","","Apple"],["iPhone 12 Mini","256GB","Vitrine",1429,"","","Apple"],["iPhone 12","64GB","Vitrine",1439,"","","Apple"],["iPhone 12","128GB","Vitrine",1649,"","","Apple"],["iPhone 12","256GB","Vitrine",1859,"","","Apple"],["iPhone 12 Pro","128GB","Vitrine",1999,"","","Apple"],["iPhone 12 Pro","256GB","Vitrine",2199,"","","Apple"],["iPhone 12 Pro Max","128GB","Vitrine",2299,"","","Apple"],["iPhone 12 Pro Max","256GB","Vitrine",2549,"","","Apple"],["iPhone 12 Pro Max","512GB","Vitrine",2849,"","","Apple"],["iPhone 13","128GB","Vitrine",1999,"","","Apple"],["iPhone 13","128GB Branco/Rosa","Vitrine",2149,"","","Apple"],["iPhone 13","256GB","Vitrine",2259,"","","Apple"],["iPhone 13","512GB","Vitrine",2599,"","","Apple"],["iPhone 13 Mini","128GB","Vitrine",1739,"","","Apple"],["iPhone 13 Pro","128GB","Vitrine",2699,"","","Apple"],["iPhone 13 Pro","256GB","Vitrine",2899,"","","Apple"],["iPhone 13 Pro","512GB","Vitrine",2979,"","","Apple"],["iPhone 13 Pro","1TB Gold","Vitrine",3189,"","","Apple"],["iPhone 13 Pro Max","128GB","Vitrine",2879,"","","Apple"],["iPhone 13 Pro Max","256GB","Vitrine",3099,"","","Apple"],["iPhone 13 Pro Max","512GB","Vitrine",3349,"","","Apple"],["iPhone 13 Pro Max","1TB","Vitrine",3399,"","","Apple"],["iPhone 14","128GB","Vitrine",2299,"","","Apple"],["iPhone 14","256GB","Vitrine",2579,"","","Apple"],["iPhone 14 Plus","128GB","Vitrine",2549,"","","Apple"],["iPhone 14 Plus","128GB Branco","Vitrine",2599,"","","Apple"],["iPhone 14 Plus","256GB","Vitrine",2839,"","","Apple"],["iPhone 14 Plus","512GB","Vitrine",2949,"","","Apple"],["iPhone 14 Pro","128GB","Vitrine",2999,"","","Apple"],["iPhone 14 Pro","256GB","Vitrine",3349,"","","Apple"],["iPhone 14 Pro Max","128GB","Vitrine",3499,"","","Apple"],["iPhone 14 Pro Max","256GB","Vitrine",3749,"","","Apple"],["iPhone 14 Pro Max","512GB","Vitrine",4199,"","","Apple"],["iPhone 15","128GB","Vitrine",2979,"","","Apple"],["iPhone 15","256GB","Vitrine",3299,"","","Apple"],["iPhone 15 Plus","128GB","Vitrine",3219,"","","Apple"],["iPhone 15 Plus","256GB","Vitrine",3499,"","","Apple"],["iPhone 15 Pro","128GB","Vitrine",3579,3999,"sim","Apple"],["iPhone 15 Pro","256GB","Vitrine",3949,"","","Apple"],["iPhone 15 Pro","512GB","Vitrine",4349,"","","Apple"],["iPhone 15 Pro Max","256GB","Vitrine",4349,"","","Apple"],["iPhone 15 Pro Max","512GB","Vitrine",4769,"","","Apple"],["iPhone 15 Pro Max","1TB","Vitrine",4849,"","","Apple"],["iPhone 16e","128GB","Vitrine",2959,"","","Apple"],["iPhone 16","128GB","Vitrine",4099,"","","Apple"],["iPhone 16","256GB","Vitrine",4349,"","","Apple"],["iPhone 16 Plus","128GB","Vitrine",4279,"","","Apple"],["iPhone 16 Plus","256GB","Vitrine",4499,"","","Apple"],["iPhone 16 Pro","128GB","Vitrine",4949,"","","Apple"],["iPhone 16 Pro","256GB","Vitrine",5169,"","","Apple"],["iPhone 16 Pro","512GB","Vitrine",5279,"","","Apple"],["iPhone 16 Pro Max","256GB","Vitrine",5399,"","","Apple"],["iPhone 16 Pro Max","512GB","Vitrine",6249,"","","Apple"],["iPhone 17 Pro Max","256GB","Vitrine",7899,"","","Apple"]],"Produtos Apple":[["Apple Watch S8","45mm","Vitrine",1159,"","","Apple"],["Apple Watch SE 2","44mm","Lacrado",1759,"","","Apple"],["Apple Watch SE 3","40mm","Lacrado",2099,"","","Apple"],["Apple Watch SE 3","44mm","Lacrado",2249,"","","Apple"],["Apple Watch S10","46mm Gold","Lacrado",2549,"","","Apple"],["Apple Watch S10","46mm Preto","Lacrado",2799,"","","Apple"],["Apple Watch S11","42mm","Lacrado",2699,"","","Apple"],["Apple Watch S11","46mm","Lacrado",2849,"","","Apple"],["Apple Watch Ultra 2","","Lacrado",4239,"","","Apple"],["Apple Watch Ultra 3","49mm","Lacrado",5599,"","","Apple"],["MacBook Air M2","16/256GB","Lacrado",5399,"","","Apple"],["MacBook Air M4","16/256GB","Lacrado",7299,"","","Apple"],["iPad 11","128GB Todas as Cores","Lacrado",2849,"","","Apple"],["AirPods 1ª Ger.","","Lacrado",699,"","","Apple"],["AirPods 4","","Lacrado",999,"","","Apple"],["AirPods 4 Cancelamento de Ruído","","Lacrado",1299,"","","Apple"],["AirPods Pro 2ª Ger.","","Lacrado",1449,1699,"sim","Apple"],["AirPods Pro 3ª Ger.","","Lacrado",1719,"","","Apple"],["Apple Pencil 1ª Ger.","","Lacrado",659,"","","Apple"],["Apple Pencil USB-C","","Lacrado",799,"","","Apple"],["Apple Pencil Pro","","Lacrado",1099,"","","Apple"],["AirTag","","Lacrado",249,"","","Apple"]],"Outros":[["JBL Boombox 3","","Lacrado",2059,"","","JBL"],["JBL Boombox 4","","Lacrado",2699,"","","JBL"],["JBL Partybox Encore 2","","Lacrado",1459,"","","JBL"],["JBL Partybox 320","","Lacrado",2899,"","","JBL"],["PS5","825GB","Lacrado",3499,"","","Sony"],["PS5","1TB","Lacrado",3699,"","","Sony"],["Realme C61","8/256GB NFC","Lacrado",859,"","","Realme"],["Realme C63","8/256GB","Lacrado",839,"","","Realme"],["Realme C65","8/256GB","Lacrado",939,"","","Realme"],["Realme C67","6/128GB","Lacrado",949,"","","Realme"],["Realme C67","8/256GB","Lacrado",959,"","","Realme"],["Realme C71","4/128GB","Lacrado",769,"","","Realme"],["Realme C71","8/256GB 4G","Lacrado",979,"","","Realme"],["Realme C71","8/256GB 5G","Lacrado",1099,"","","Realme"],["Realme C75","8/256GB NFC","Lacrado",1129,"","","Realme"],["Realme C75X","6/128GB NFC","Lacrado",959,"","","Realme"],["Realme C75X","8/256GB NFC","Lacrado",1069,"","","Realme"],["Realme C85 Pro","8/256GB NFC","Lacrado",1259,"","","Realme"],["Realme Note 60X","3/64GB","Lacrado",549,"","","Realme"],["Realme Note 60X","4/128GB","Lacrado",639,"","","Realme"],["Realme Note 60","4/128GB","Lacrado",619,"","","Realme"],["Realme Note 70","4/256GB","Lacrado",849,"","","Realme"],["Realme Note 14","12/512GB 5G","Lacrado",1929,"","","Realme"],["Realme 14T","8/256GB 5G","Lacrado",1699,"","","Realme"],["Realme 14 Pro+","12/256GB 5G","Lacrado",2429,"","","Realme"],["Redmi Pad SE","4/128GB","Lacrado",1049,"","","Xiaomi"],["Redmi Pad SE","8/256GB","Lacrado",1229,"","","Xiaomi"],["Redmi Pad 2","4/128GB","Lacrado",1299,"","","Xiaomi"],["Redmi Pad 2","8/256GB","Lacrado",1449,"","","Xiaomi"]],"Xiaomi":[["Redmi A3 Pro","4/128GB","Lacrado",839,"","","Xiaomi"],["Redmi A5","3/64GB","Lacrado",599,"","","Xiaomi"],["Redmi A5","4/128GB","Lacrado",689,"","","Xiaomi"],["Redmi 14C","4/128GB","Lacrado",659,"","","Xiaomi"],["Redmi 14C","8/256GB","Lacrado",809,"","","Xiaomi"],["Redmi 13","8/128GB","Lacrado",829,"","","Xiaomi"],["Redmi 15C","4/256GB","Lacrado",849,"","","Xiaomi"],["Redmi 15C","8/256GB","Lacrado",949,"","","Xiaomi"],["Redmi 15","6/128GB","Lacrado",879,"","","Xiaomi"],["Redmi 15","8/256GB","Lacrado",959,"","","Xiaomi"],["Redmi 13","8/256GB","Lacrado",859,"","","Xiaomi"],["Redmi 13X","8/256GB","Lacrado",899,"","","Xiaomi"],["Redmi Note 12 Pro+","8/256GB","Lacrado",2180,"","","Xiaomi"],["Redmi Note 13 Pro","8/256GB 4G","Lacrado",1199,"","","Xiaomi"],["Redmi Note 13 Pro","12/512GB 5G","Lacrado",1999,"","","Xiaomi"],["Redmi Note 14S","8/256GB","Lacrado",1379,"","","Xiaomi"],["Redmi Note 14S","12/512GB","Lacrado",1499,"","","Xiaomi"],["Redmi Note 14 Pro","8/256GB 4G","Lacrado",1579,"","","Xiaomi"],["Redmi Note 14 Pro","12/512GB 4G","Lacrado",1819,"","","Xiaomi"],["Redmi Note 14 Pro","8/256GB 5G","Lacrado",1799,"","","Xiaomi"],["Redmi Note 14 Pro","12/512GB 5G","Lacrado",1989,"","","Xiaomi"],["Redmi Note 14 Pro+","8/256GB 5G","Lacrado",1949,"","","Xiaomi"],["Redmi Note 14 Pro+","12/512GB 5G","Lacrado",2399,"","","Xiaomi"],["Redmi Note 14","6/128GB 4G","Lacrado",949,"","","Xiaomi"],["Redmi Note 14","8/256GB 4G","Lacrado",1209,"","","Xiaomi"],["Redmi Note 14","8/256GB 5G","Lacrado",1439,"","","Xiaomi"],["Redmi Note 15","6/128GB","Lacrado",1159,"","","Xiaomi"],["Redmi Note 15","8/256GB 4G","Lacrado",1379,"","","Xiaomi"],["Redmi Note 15","8/256GB 5G","Lacrado",1699,"","","Xiaomi"],["Redmi Note 15 Pro","8/256GB 4G","Lacrado",1699,"","","Xiaomi"],["Redmi Note 15 Pro","8/256GB 5G","Lacrado",1969,"","","Xiaomi"],["Redmi Note 15 Pro","8/512GB 5G","Lacrado",2079,"","","Xiaomi"],["Redmi Note 15 Pro Plus","8/256GB 5G","Lacrado",2239,"","","Xiaomi"],["Xiaomi 14T","12/512GB 5G","Lacrado",3079,"","","Xiaomi"],["Xiaomi 15","12/512GB","Lacrado",4809,"","","Xiaomi"],["POCO M6 Pro","12/512GB","Lacrado",1469,"","","Xiaomi"],["POCO M7","8/256GB","Lacrado",949,"","","Xiaomi"],["POCO M7 Pro","12/512GB","Lacrado",1399,"","","Xiaomi"],["POCO M8","8/256GB","Lacrado",1499,"","","Xiaomi"],["POCO C85","6/128GB","Lacrado",779,"","","Xiaomi"],["POCO C85","8/256GB","Lacrado",939,"","","Xiaomi"],["POCO C71","4/128GB","Lacrado",649,"","","Xiaomi"],["POCO C75","8/256GB","Lacrado",799,"","","Xiaomi"],["POCO X6 Pro","12/512GB 5G","Lacrado",1899,"","","Xiaomi"],["POCO X7","8/256GB","Lacrado",1749,"","","Xiaomi"],["POCO X7","12/512GB","Lacrado",2039,"","","Xiaomi"],["POCO X7 Pro","8/256GB","Lacrado",2219,"","","Xiaomi"],["POCO X7 Pro","12/512GB 5G","Lacrado",2549,2899,"sim","Xiaomi"],["POCO F5","12/256GB","Lacrado",1699,"","","Xiaomi"],["POCO F5 Pro","12/256GB","Lacrado",2350,"","","Xiaomi"],["POCO F6 Pro","12/512GB","Lacrado",2299,"","","Xiaomi"],["POCO F7 Pro","12/512GB 5G","Lacrado",2999,"","","Xiaomi"]]};
 
-  const DADOS = {
-    "iPhones Lacrados": [
-      ["iPhone SE","64GB Red","Lacrado","","","","Apple"],
-      ["iPhone 13","128GB","Lacrado",3049,"","","Apple"],
-      ["iPhone 13","128GB Rosa","Lacrado",3179,"","","Apple"],
-      ["iPhone 13","256GB","Lacrado",3499,"","","Apple"],
-      ["iPhone 14","128GB","Lacrado",3599,"","","Apple"],
-      ["iPhone 14","256GB","Lacrado",3819,"","","Apple"],
-      ["iPhone 14 Plus","128GB","Lacrado",3889,"","","Apple"],
-      ["iPhone 14 Pro Max","128GB","Lacrado",4799,"","","Apple"],
-      ["iPhone 15","128GB Preto","Lacrado",3849,"","","Apple"],
-      ["iPhone 15","128GB Azul/Rosa","Lacrado",3900,"","","Apple"],
-      ["iPhone 15","256GB","Lacrado",4399,"","","Apple"],
-      ["iPhone 16","128GB","Lacrado",4399,4799,"sim","Apple"],
-      ["iPhone 16","256GB","Lacrado",4959,"","","Apple"],
-      ["iPhone 16e","128GB","Lacrado",3399,"","","Apple"],
-      ["iPhone 16 Plus","128GB","Lacrado",4879,"","","Apple"],
-      ["iPhone 16 Pro","128GB","Lacrado",5999,"","","Apple"],
-      ["iPhone 17","256GB","Lacrado",5649,"","","Apple"],
-      ["iPhone 17 Pro","256GB Laranja","Lacrado",7699,"","","Apple"],
-      ["iPhone 17 Pro","256GB Branco","Lacrado",8129,"","","Apple"],
-      ["iPhone 17 Pro","512GB","Lacrado",9699,"","","Apple"],
-      ["iPhone 17 Pro Max","256GB Laranja","Lacrado",8649,"","","Apple"],
-      ["iPhone 17 Pro Max","256GB Azul","Lacrado",8649,"","","Apple"],
-      ["iPhone 17 Pro Max","256GB Branco","Lacrado",8999,"","","Apple"],
-      ["iPhone 17 Pro Max","512GB","Lacrado",9889,"","","Apple"],
-      ["iPhone 17 Pro Max","512GB Branco/Azul","Lacrado",10299,"","","Apple"]
-    ],
-    "iPhones Vitrine": [
-      ["iPhone 8G","64GB","Vitrine",469,"","","Apple"],
-      ["iPhone SE 3ª Ger. 5G","64GB","Vitrine",799,"","","Apple"],
-      ["iPhone SE 3ª Ger. 5G","128GB","Vitrine",899,"","","Apple"],
-      ["iPhone XR","64GB","Vitrine",799,"","","Apple"],
-      ["iPhone XR","128GB","Vitrine",1119,"","","Apple"],
-      ["iPhone XS Max","256GB","Vitrine",999,"","","Apple"],
-      ["iPhone 11","64GB","Vitrine",1349,"","","Apple"],
-      ["iPhone 11","128GB","Vitrine",1399,"","","Apple"],
-      ["iPhone 11","256GB","Vitrine",1509,"","","Apple"],
-      ["iPhone 11 Pro","64GB","Vitrine",1449,"","","Apple"],
-      ["iPhone 11 Pro","256GB","Vitrine",1679,"","","Apple"],
-      ["iPhone 11 Pro Max","64GB","Vitrine",1699,"","","Apple"],
-      ["iPhone 11 Pro Max","256GB","Vitrine",1849,"","","Apple"],
-      ["iPhone 12 Mini","64GB","Vitrine",1099,"","","Apple"],
-      ["iPhone 12 Mini","256GB","Vitrine",1429,"","","Apple"],
-      ["iPhone 12","64GB","Vitrine",1439,"","","Apple"],
-      ["iPhone 12","128GB","Vitrine",1649,"","","Apple"],
-      ["iPhone 12","256GB","Vitrine",1859,"","","Apple"],
-      ["iPhone 12 Pro","128GB","Vitrine",1999,"","","Apple"],
-      ["iPhone 12 Pro","256GB","Vitrine",2199,"","","Apple"],
-      ["iPhone 12 Pro Max","128GB","Vitrine",2299,"","","Apple"],
-      ["iPhone 12 Pro Max","256GB","Vitrine",2549,"","","Apple"],
-      ["iPhone 12 Pro Max","512GB","Vitrine",2849,"","","Apple"],
-      ["iPhone 13","128GB","Vitrine",1999,"","","Apple"],
-      ["iPhone 13","128GB Branco/Rosa","Vitrine",2149,"","","Apple"],
-      ["iPhone 13","256GB","Vitrine",2259,"","","Apple"],
-      ["iPhone 13","512GB","Vitrine",2599,"","","Apple"],
-      ["iPhone 13 Mini","128GB","Vitrine",1739,"","","Apple"],
-      ["iPhone 13 Pro","128GB","Vitrine",2699,"","","Apple"],
-      ["iPhone 13 Pro","256GB","Vitrine",2899,"","","Apple"],
-      ["iPhone 13 Pro","512GB","Vitrine",2979,"","","Apple"],
-      ["iPhone 13 Pro","1TB Gold","Vitrine",3189,"","","Apple"],
-      ["iPhone 13 Pro Max","128GB","Vitrine",2879,"","","Apple"],
-      ["iPhone 13 Pro Max","256GB","Vitrine",3099,"","","Apple"],
-      ["iPhone 13 Pro Max","512GB","Vitrine",3349,"","","Apple"],
-      ["iPhone 13 Pro Max","1TB","Vitrine",3399,"","","Apple"],
-      ["iPhone 14","128GB","Vitrine",2299,"","","Apple"],
-      ["iPhone 14","256GB","Vitrine",2579,"","","Apple"],
-      ["iPhone 14 Plus","128GB","Vitrine",2549,"","","Apple"],
-      ["iPhone 14 Plus","128GB Branco","Vitrine",2599,"","","Apple"],
-      ["iPhone 14 Plus","256GB","Vitrine",2839,"","","Apple"],
-      ["iPhone 14 Plus","512GB","Vitrine",2949,"","","Apple"],
-      ["iPhone 14 Pro","128GB","Vitrine",2999,"","","Apple"],
-      ["iPhone 14 Pro","256GB","Vitrine",3349,"","","Apple"],
-      ["iPhone 14 Pro Max","128GB","Vitrine",3499,"","","Apple"],
-      ["iPhone 14 Pro Max","256GB","Vitrine",3749,"","","Apple"],
-      ["iPhone 14 Pro Max","512GB","Vitrine",4199,"","","Apple"],
-      ["iPhone 15","128GB","Vitrine",2979,"","","Apple"],
-      ["iPhone 15","256GB","Vitrine",3299,"","","Apple"],
-      ["iPhone 15 Plus","128GB","Vitrine",3219,"","","Apple"],
-      ["iPhone 15 Plus","256GB","Vitrine",3499,"","","Apple"],
-      ["iPhone 15 Pro","128GB","Vitrine",3579,3999,"sim","Apple"],
-      ["iPhone 15 Pro","256GB","Vitrine",3949,"","","Apple"],
-      ["iPhone 15 Pro","512GB","Vitrine",4349,"","","Apple"],
-      ["iPhone 15 Pro Max","256GB","Vitrine",4349,"","","Apple"],
-      ["iPhone 15 Pro Max","512GB","Vitrine",4769,"","","Apple"],
-      ["iPhone 15 Pro Max","1TB","Vitrine",4849,"","","Apple"],
-      ["iPhone 16e","128GB","Vitrine",2959,"","","Apple"],
-      ["iPhone 16","128GB","Vitrine",4099,"","","Apple"],
-      ["iPhone 16","256GB","Vitrine",4349,"","","Apple"],
-      ["iPhone 16 Plus","128GB","Vitrine",4279,"","","Apple"],
-      ["iPhone 16 Plus","256GB","Vitrine",4499,"","","Apple"],
-      ["iPhone 16 Pro","128GB","Vitrine",4949,"","","Apple"],
-      ["iPhone 16 Pro","256GB","Vitrine",5169,"","","Apple"],
-      ["iPhone 16 Pro","512GB","Vitrine",5279,"","","Apple"],
-      ["iPhone 16 Pro Max","256GB","Vitrine",5399,"","","Apple"],
-      ["iPhone 16 Pro Max","512GB","Vitrine",6249,"","","Apple"],
-      ["iPhone 17 Pro Max","256GB","Vitrine",7899,"","","Apple"]
-    ],
-    "Produtos Apple": [
-      ["Apple Watch S8","45mm","Vitrine",1159,"","","Apple"],
-      ["Apple Watch SE 2","44mm","Lacrado",1759,"","","Apple"],
-      ["Apple Watch SE 3","40mm","Lacrado",2099,"","","Apple"],
-      ["Apple Watch SE 3","44mm","Lacrado",2249,"","","Apple"],
-      ["Apple Watch S10","46mm Gold","Lacrado",2549,"","","Apple"],
-      ["Apple Watch S10","46mm Preto","Lacrado",2799,"","","Apple"],
-      ["Apple Watch S11","42mm","Lacrado",2699,"","","Apple"],
-      ["Apple Watch S11","46mm","Lacrado",2849,"","","Apple"],
-      ["Apple Watch Ultra 2","","Lacrado",4239,"","","Apple"],
-      ["Apple Watch Ultra 3","49mm","Lacrado",5599,"","","Apple"],
-      ["MacBook Air M2","16/256GB","Lacrado",5399,"","","Apple"],
-      ["MacBook Air M4","16/256GB","Lacrado",7299,"","","Apple"],
-      ["iPad 11","128GB Todas as Cores","Lacrado",2849,"","","Apple"],
-      ["AirPods 1ª Ger.","","Lacrado",699,"","","Apple"],
-      ["AirPods 4","","Lacrado",999,"","","Apple"],
-      ["AirPods 4 Cancelamento de Ruído","","Lacrado",1299,"","","Apple"],
-      ["AirPods Pro 2ª Ger.","","Lacrado",1449,1699,"sim","Apple"],
-      ["AirPods Pro 3ª Ger.","","Lacrado",1719,"","","Apple"],
-      ["Apple Pencil 1ª Ger.","","Lacrado",659,"","","Apple"],
-      ["Apple Pencil USB-C","","Lacrado",799,"","","Apple"],
-      ["Apple Pencil Pro","","Lacrado",1099,"","","Apple"],
-      ["AirTag","","Lacrado",249,"","","Apple"]
-    ],
-    "Outros": [
-      ["JBL Boombox 3","","Lacrado",2059,"","","JBL"],
-      ["JBL Boombox 4","","Lacrado",2699,"","","JBL"],
-      ["JBL Partybox Encore 2","","Lacrado",1459,"","","JBL"],
-      ["JBL Partybox 320","","Lacrado",2899,"","","JBL"],
-      ["PS5","825GB","Lacrado",3499,"","","Sony"],
-      ["PS5","1TB","Lacrado",3699,"","","Sony"],
-      ["Realme C61","8/256GB NFC","Lacrado",859,"","","Realme"],
-      ["Realme C63","8/256GB","Lacrado",839,"","","Realme"],
-      ["Realme C65","8/256GB","Lacrado",939,"","","Realme"],
-      ["Realme C67","6/128GB","Lacrado",949,"","","Realme"],
-      ["Realme C67","8/256GB","Lacrado",959,"","","Realme"],
-      ["Realme C71","4/128GB","Lacrado",769,"","","Realme"],
-      ["Realme C71","8/256GB 4G","Lacrado",979,"","","Realme"],
-      ["Realme C71","8/256GB 5G","Lacrado",1099,"","","Realme"],
-      ["Realme C75","8/256GB NFC","Lacrado",1129,"","","Realme"],
-      ["Realme C75X","6/128GB NFC","Lacrado",959,"","","Realme"],
-      ["Realme C75X","8/256GB NFC","Lacrado",1069,"","","Realme"],
-      ["Realme C85 Pro","8/256GB NFC","Lacrado",1259,"","","Realme"],
-      ["Realme Note 60X","3/64GB","Lacrado",549,"","","Realme"],
-      ["Realme Note 60X","4/128GB","Lacrado",639,"","","Realme"],
-      ["Realme Note 60","4/128GB","Lacrado",619,"","","Realme"],
-      ["Realme Note 70","4/256GB","Lacrado",849,"","","Realme"],
-      ["Realme Note 14","12/512GB 5G","Lacrado",1929,"","","Realme"],
-      ["Realme 14T","8/256GB 5G","Lacrado",1699,"","","Realme"],
-      ["Realme 14 Pro+","12/256GB 5G","Lacrado",2429,"","","Realme"],
-      ["Redmi Pad SE","4/128GB","Lacrado",1049,"","","Xiaomi"],
-      ["Redmi Pad SE","8/256GB","Lacrado",1229,"","","Xiaomi"],
-      ["Redmi Pad 2","4/128GB","Lacrado",1299,"","","Xiaomi"],
-      ["Redmi Pad 2","8/256GB","Lacrado",1449,"","","Xiaomi"]
-    ],
-    "Xiaomi": [
-      ["Redmi A3 Pro","4/128GB","Lacrado",839,"","","Xiaomi"],
-      ["Redmi A5","3/64GB","Lacrado",599,"","","Xiaomi"],
-      ["Redmi A5","4/128GB","Lacrado",689,"","","Xiaomi"],
-      ["Redmi 14C","4/128GB","Lacrado",659,"","","Xiaomi"],
-      ["Redmi 14C","8/256GB","Lacrado",809,"","","Xiaomi"],
-      ["Redmi 13","8/128GB","Lacrado",829,"","","Xiaomi"],
-      ["Redmi 15C","4/256GB","Lacrado",849,"","","Xiaomi"],
-      ["Redmi 15C","8/256GB","Lacrado",949,"","","Xiaomi"],
-      ["Redmi 15","6/128GB","Lacrado",879,"","","Xiaomi"],
-      ["Redmi 15","8/256GB","Lacrado",959,"","","Xiaomi"],
-      ["Redmi 13","8/256GB","Lacrado",859,"","","Xiaomi"],
-      ["Redmi 13X","8/256GB","Lacrado",899,"","","Xiaomi"],
-      ["Redmi Note 12 Pro+","8/256GB","Lacrado",2180,"","","Xiaomi"],
-      ["Redmi Note 13 Pro","8/256GB 4G","Lacrado",1199,"","","Xiaomi"],
-      ["Redmi Note 13 Pro","12/512GB 5G","Lacrado",1999,"","","Xiaomi"],
-      ["Redmi Note 14S","8/256GB","Lacrado",1379,"","","Xiaomi"],
-      ["Redmi Note 14S","12/512GB","Lacrado",1499,"","","Xiaomi"],
-      ["Redmi Note 14 Pro","8/256GB 4G","Lacrado",1579,"","","Xiaomi"],
-      ["Redmi Note 14 Pro","12/512GB 4G","Lacrado",1819,"","","Xiaomi"],
-      ["Redmi Note 14 Pro","8/256GB 5G","Lacrado",1799,"","","Xiaomi"],
-      ["Redmi Note 14 Pro","12/512GB 5G","Lacrado",1989,"","","Xiaomi"],
-      ["Redmi Note 14 Pro+","8/256GB 5G","Lacrado",1949,"","","Xiaomi"],
-      ["Redmi Note 14 Pro+","12/512GB 5G","Lacrado",2399,"","","Xiaomi"],
-      ["Redmi Note 14","6/128GB 4G","Lacrado",949,"","","Xiaomi"],
-      ["Redmi Note 14","8/256GB 4G","Lacrado",1209,"","","Xiaomi"],
-      ["Redmi Note 14","8/256GB 5G","Lacrado",1439,"","","Xiaomi"],
-      ["Redmi Note 15","6/128GB","Lacrado",1159,"","","Xiaomi"],
-      ["Redmi Note 15","8/256GB 4G","Lacrado",1379,"","","Xiaomi"],
-      ["Redmi Note 15","8/256GB 5G","Lacrado",1699,"","","Xiaomi"],
-      ["Redmi Note 15 Pro","8/256GB 4G","Lacrado",1699,"","","Xiaomi"],
-      ["Redmi Note 15 Pro","8/256GB 5G","Lacrado",1969,"","","Xiaomi"],
-      ["Redmi Note 15 Pro","8/512GB 5G","Lacrado",2079,"","","Xiaomi"],
-      ["Redmi Note 15 Pro Plus","8/256GB 5G","Lacrado",2239,"","","Xiaomi"],
-      ["Xiaomi 14T","12/512GB 5G","Lacrado",3079,"","","Xiaomi"],
-      ["Xiaomi 15","12/512GB","Lacrado",4809,"","","Xiaomi"],
-      ["POCO M6 Pro","12/512GB","Lacrado",1469,"","","Xiaomi"],
-      ["POCO M7","8/256GB","Lacrado",949,"","","Xiaomi"],
-      ["POCO M7 Pro","12/512GB","Lacrado",1399,"","","Xiaomi"],
-      ["POCO M8","8/256GB","Lacrado",1499,"","","Xiaomi"],
-      ["POCO C85","6/128GB","Lacrado",779,"","","Xiaomi"],
-      ["POCO C85","8/256GB","Lacrado",939,"","","Xiaomi"],
-      ["POCO C71","4/128GB","Lacrado",649,"","","Xiaomi"],
-      ["POCO C75","8/256GB","Lacrado",799,"","","Xiaomi"],
-      ["POCO X6 Pro","12/512GB 5G","Lacrado",1899,"","","Xiaomi"],
-      ["POCO X7","8/256GB","Lacrado",1749,"","","Xiaomi"],
-      ["POCO X7","12/512GB","Lacrado",2039,"","","Xiaomi"],
-      ["POCO X7 Pro","8/256GB","Lacrado",2219,"","","Xiaomi"],
-      ["POCO X7 Pro","12/512GB 5G","Lacrado",2549,2899,"sim","Xiaomi"],
-      ["POCO F5","12/256GB","Lacrado",1699,"","","Xiaomi"],
-      ["POCO F5 Pro","12/256GB","Lacrado",2350,"","","Xiaomi"],
-      ["POCO F6 Pro","12/512GB","Lacrado",2299,"","","Xiaomi"],
-      ["POCO F7 Pro","12/512GB 5G","Lacrado",2999,"","","Xiaomi"]
-    ]
-  };
+  let dadosCache = {}, abaAtiva = CONFIG.ABAS[0], comparando = false, selecionados = [];
+  let sortAsc = true, activeFilters = { storage: null, cond: null };
+  const wppSvg = '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>';
 
-  let dadosCache = {};
-  let abaAtiva = CONFIG.ABAS[0];
-  let comparando = false;
-  let selecionados = [];
+  function openWpp(msg) { window.open("https://wa.me/" + CONFIG.WPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank"); }
 
-  function openWpp(msg) {
-    window.open("https://wa.me/" + CONFIG.WPP_NUMBER + "?text=" + encodeURIComponent(msg), "_blank");
-  }
-
-  async function fetchAba(aba) {
+  function fetchAba(aba) {
     if (dadosCache[aba]) return dadosCache[aba];
-    const rows = DADOS[aba] || [];
-    const data = rows.filter(r => r[0]).map(r => ({
-      modelo:   String(r[0] || "").trim(),
-      storage:  String(r[1] || "-").trim(),
-      cond:     String(r[2] || "").trim(),
-      preco:    parseFloat(String(r[3] || "0").replace(/[^0-9.]/g, "")) || 0,
-      precoAnt: parseFloat(String(r[4] || "0").replace(/[^0-9.]/g, "")) || 0,
-      oferta:   String(r[5] || "").toLowerCase() === "sim",
-      marca:    String(r[6] || "Apple").trim()
-    }));
+    const data = (DADOS[aba] || []).filter(r => r[0]).map(r => {
+      const raw = String(r[1] || "-").trim();
+      const storageMatch = raw.match(/^(\d+\/?\.?\d*\s*[GTM]B)/i);
+      const storage = storageMatch ? storageMatch[1] : raw;
+      const colorPart = storageMatch ? raw.slice(storageMatch[0].length).trim() : "";
+      return { modelo: String(r[0]).trim(), storage, color: colorPart, rawStorage: raw, cond: String(r[2] || "").trim(), preco: parseFloat(String(r[3] || "0").replace(/[^0-9.]/g, "")) || 0, precoAnt: parseFloat(String(r[4] || "0").replace(/[^0-9.]/g, "")) || 0, oferta: String(r[5] || "").toLowerCase() === "sim", marca: String(r[6] || "Apple").trim() };
+    });
     dadosCache[aba] = data;
     return data;
   }
 
-  function csvToRows(csv) {
-    const rows = []; let cur = ""; let inQ = false; let row = [];
-    for (let i = 0; i < csv.length; i++) {
-      const ch = csv[i];
-      if (ch === '"') { if (inQ && csv[i+1] === '"') { cur += '"'; i++; } else { inQ = !inQ; } }
-      else if (ch === ',' && !inQ) { row.push(cur); cur = ""; }
-      else if ((ch === '\n' || ch === '\r') && !inQ) {
-        row.push(cur); rows.push(row); cur = ""; row = [];
-        if (ch === '\r' && csv[i+1] === '\n') i++;
-      } else { cur += ch; }
-    }
-    if (cur || row.length) { row.push(cur); rows.push(row); }
-    return rows;
+  function groupByModel(lista) {
+    const map = new Map();
+    lista.forEach(p => {
+      if (!map.has(p.modelo)) map.set(p.modelo, { modelo: p.modelo, marca: p.marca, cond: p.cond, items: [] });
+      map.get(p.modelo).items.push(p);
+    });
+    const groups = [...map.values()];
+    groups.forEach(g => {
+      g.items.sort((a, b) => a.preco - b.preco);
+      g.minPreco = Math.min(...g.items.map(i => i.preco));
+      g.storages = [...new Set(g.items.map(i => i.storage).filter(Boolean).filter(s => s !== '-'))];
+      g.colors = [...new Set(g.items.map(i => i.color).filter(Boolean))];
+      g.conds = [...new Set(g.items.map(i => i.cond).filter(Boolean))];
+    });
+    if (sortAsc) groups.sort((a, b) => a.minPreco - b.minPreco);
+    else groups.sort((a, b) => b.minPreco - a.minPreco);
+    return groups;
   }
 
-  function getBrandPill(marca) {
-    const map = { Apple: "pill-apple", Xiaomi: "pill-xiaomi", Samsung: "pill-samsung" };
-    return `<span class="pill ${map[marca] || 'pill-outros'}">${marca}</span>`;
-  }
-  function getCondSpan(cond) {
-    const map = { Lacrado: "cond-lacrado", Vitrine: "cond-vitrine", Seminovo: "cond-semi", Novo: "cond-novo" };
-    return `<span class="cond ${map[cond] || 'cond-novo'}">${cond}</span>`;
-  }
+  function getBrandPill(m) { const map = { Apple: "pill-apple", Xiaomi: "pill-xiaomi", Samsung: "pill-samsung" }; return `<span class="pill ${map[m]||'pill-outros'}">${m}</span>`; }
+  function getCondSpan(c) { const map = { Lacrado: "cond-lacrado", Vitrine: "cond-vitrine", Seminovo: "cond-semi", Novo: "cond-novo" }; return `<span class="cond ${map[c]||'cond-novo'}">${c}</span>`; }
 
   function renderTabs() {
-    document.getElementById("tabsEl").innerHTML = CONFIG.ABAS.map(a =>
-      `<button class="tab ${a === abaAtiva ? 'active' : ''}" onclick="setAba('${a}')">${a}</button>`
-    ).join("");
+    document.getElementById("tabsEl").innerHTML = CONFIG.ABAS.map(a => `<button class="tab ${a===abaAtiva?'active':''}" onclick="setAba('${a}')">${a}</button>`).join("");
   }
 
-  async function setAba(aba) {
-    abaAtiva = aba;
-    selecionados = [];
-    renderTabs();
-    document.getElementById("searchInput").value = "";
-    await renderTable();
-    updateCompareUI();
-  }
+  function setAba(aba) { abaAtiva = aba; selecionados = []; activeFilters = { storage: null, cond: null }; renderTabs(); document.getElementById("searchInput").value = ""; renderTable(); updateCompareUI(); buildFilterPanel(); }
 
-  async function renderTable() {
-    const tbody = document.getElementById("tableBody");
-    const mCards = document.getElementById("mobileCards");
-    tbody.innerHTML = `<tr><td colspan="6" class="no-results"><div class="spinner" style="margin:0 auto 10px"></div></td></tr>`;
-    mCards.innerHTML = `<div class="m-no-results"><div class="spinner" style="margin:0 auto 10px"></div></div>`;
-    let lista;
-    try { lista = await fetchAba(abaAtiva); }
-    catch(e) {
-      const errMsg = '⚠️ Erro ao carregar dados.';
-      tbody.innerHTML = `<tr><td colspan="6" class="no-results">${errMsg}</td></tr>`;
-      mCards.innerHTML = `<div class="m-no-results">${errMsg}</div>`;
-      return;
+  function buildFilterPanel() {
+    const lista = fetchAba(abaAtiva);
+    const storages = [...new Set(lista.map(p => p.storage).filter(s => s && s !== '-'))].sort();
+    const conds = [...new Set(lista.map(p => p.cond).filter(Boolean))];
+    const panel = document.getElementById("filterPanel");
+    let html = '<div class="filter-group"><div class="filter-label">Armazenamento</div><div class="filter-chips">';
+    storages.forEach(s => { html += `<span class="filter-chip ${activeFilters.storage===s?'on':''}" onclick="setFilter('storage','${s}')">${s}</span>`; });
+    html += '</div></div>';
+    if (conds.length > 1) {
+      html += '<div class="filter-group"><div class="filter-label">Condição</div><div class="filter-chips">';
+      conds.forEach(c => { html += `<span class="filter-chip ${activeFilters.cond===c?'on':''}" onclick="setFilter('cond','${c}')">${c}</span>`; });
+      html += '</div></div>';
     }
+    panel.innerHTML = html;
+  }
+
+  function setFilter(type, val) { activeFilters[type] = activeFilters[type] === val ? null : val; buildFilterPanel(); renderTable(); }
+  function toggleFilterPanel() { const p = document.getElementById("filterPanel"); p.classList.toggle("show"); document.getElementById("btnFilterToggle").classList.toggle("active", p.classList.contains("show")); }
+  function toggleSort() { sortAsc = !sortAsc; document.getElementById("sortLabel").textContent = sortAsc ? "Menor preço" : "Maior preço"; renderTable(); }
+
+  function renderTable() {
+    const tbody = document.getElementById("tableBody"), mCards = document.getElementById("mobileCards");
+    let lista = fetchAba(abaAtiva);
     const q = document.getElementById("searchInput").value.toLowerCase();
-    const filtrada = lista.filter(p => (p.modelo + " " + p.storage).toLowerCase().includes(q));
+    let filtrada = lista.filter(p => (p.modelo + " " + p.rawStorage).toLowerCase().includes(q));
+    if (activeFilters.storage) filtrada = filtrada.filter(p => p.storage === activeFilters.storage);
+    if (activeFilters.cond) filtrada = filtrada.filter(p => p.cond === activeFilters.cond);
 
+    // Desktop table (flat, sorted by price)
     const thead = document.getElementById("tableHead");
-    thead.innerHTML = (comparando ? '<th style="width:32px"></th>' : '') +
-      "<th>Modelo</th><th>Armazen.</th><th>Condição</th><th>Preço</th><th></th>";
-
-    if (!filtrada.length) {
+    thead.innerHTML = (comparando ? '<th style="width:28px"></th>' : '') + "<th>Modelo</th><th>Armazen.</th><th>Condição</th><th>Preço</th><th></th>";
+    const sorted = [...filtrada].sort((a,b) => sortAsc ? a.preco - b.preco : b.preco - a.preco);
+    if (!sorted.length) {
       tbody.innerHTML = `<tr><td colspan="${comparando?6:5}" class="no-results">Nenhum produto encontrado</td></tr>`;
-      mCards.innerHTML = `<div class="m-no-results">Nenhum produto encontrado</div>`;
+      mCards.innerHTML = '<div class="m-no-results">Nenhum produto encontrado</div>';
       return;
     }
-
-    // Desktop table
-    tbody.innerHTML = filtrada.map((p, i) => {
-      const sel = selecionados.includes(abaAtiva + "-" + i);
-      const wppMsg = `Olá! Me interessei pelo ${p.modelo}${p.storage !== '-' ? ' ' + p.storage : ''} (${p.cond}) — R$ ${p.preco.toLocaleString('pt-BR')}. Gostaria de saber mais!`;
-      return `<tr class="${sel ? 'sel' : ''}">
-        ${comparando ? `<td><input type="checkbox" class="chk-compare" ${sel ? 'checked' : ''} onchange="toggleSel(${i})" /></td>` : ''}
-        <td>${getBrandPill(p.marca)} <span style="margin-left:6px">${p.modelo}</span></td>
-        <td>${p.storage}</td>
-        <td>${getCondSpan(p.cond)}</td>
+    tbody.innerHTML = sorted.map((p, i) => {
+      const sel = selecionados.includes(abaAtiva+"-"+i);
+      const msg = `Olá! Me interessei pelo ${p.modelo} ${p.rawStorage} (${p.cond}) — R$ ${p.preco.toLocaleString('pt-BR')}. Gostaria de saber mais!`;
+      return `<tr>${comparando?`<td><input type="checkbox" class="chk-compare" ${sel?'checked':''} onchange="toggleSel(${i})"/></td>`:''}
+        <td>${getBrandPill(p.marca)} <span style="margin-left:5px">${p.modelo}</span></td>
+        <td>${p.rawStorage}</td><td>${getCondSpan(p.cond)}</td>
         <td class="price-col">R$ ${p.preco.toLocaleString('pt-BR')}</td>
-        <td><button class="btn-interesse" onclick="openWpp(decodeURIComponent('${encodeURIComponent(wppMsg)}'))">Tenho interesse</button></td>
-      </tr>`;
+        <td><button class="btn-interesse" onclick="openWpp(decodeURIComponent('${encodeURIComponent(msg)}'))">Quero este</button></td></tr>`;
     }).join("");
 
-    // Mobile cards
-    const wppSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>';
-    mCards.innerHTML = filtrada.map((p, i) => {
-      const sel = selecionados.includes(abaAtiva + "-" + i);
-      const wppMsg = `Olá! Me interessei pelo ${p.modelo}${p.storage !== '-' ? ' ' + p.storage : ''} (${p.cond}) — R$ ${p.preco.toLocaleString('pt-BR')}. Gostaria de saber mais!`;
-      return `<div class="m-card ${sel ? 'sel' : ''}">
-        ${comparando ? `<div class="m-card-compare"><input type="checkbox" id="mc${i}" ${sel ? 'checked' : ''} onchange="toggleSel(${i})" /><label for="mc${i}">Selecionar para comparar</label></div>` : ''}
-        <div class="m-card-top">
-          ${getBrandPill(p.marca)}
-          <span class="m-card-modelo">${p.modelo}</span>
+    // Mobile: grouped cards
+    const groups = groupByModel(filtrada);
+    mCards.innerHTML = groups.map(g => {
+      const p = g.items[0];
+      const multi = g.items.length > 1;
+      const msg = multi
+        ? `Olá! Me interessei pelo ${g.modelo} (${g.cond}). Quais opções disponíveis?`
+        : `Olá! Quero o ${p.modelo} ${p.rawStorage} (${p.cond}) — R$ ${p.preco.toLocaleString('pt-BR')}!`;
+      const priceLabel = multi ? `<span class="g-card-from">a partir de</span>R$ ${g.minPreco.toLocaleString('pt-BR')}` : `R$ ${p.preco.toLocaleString('pt-BR')}`;
+      let tags = '';
+      g.storages.forEach(s => { tags += `<span class="g-tag g-tag-storage">${s}</span>`; });
+      g.colors.forEach(c => { tags += `<span class="g-tag g-tag-color">${c}</span>`; });
+      g.conds.forEach(c => { tags += `<span class="g-tag g-tag-cond ${c.toLowerCase()}">${c}</span>`; });
+      return `<div class="g-card">
+        <div class="g-card-head">
+          <div class="g-card-name">${g.modelo}</div>
+          <div class="g-card-price">${priceLabel}</div>
         </div>
-        <div class="m-card-mid">
-          <span class="m-card-storage">${p.storage}</span>
-          ${getCondSpan(p.cond)}
-        </div>
-        <div class="m-card-bottom">
-          <span class="m-card-preco">R$ ${p.preco.toLocaleString('pt-BR')}</span>
-          <button class="m-card-btn" onclick="openWpp(decodeURIComponent('${encodeURIComponent(wppMsg)}'))">
-            ${wppSvg} Tenho interesse
+        ${tags ? `<div class="g-card-tags">${tags}</div>` : ''}
+        <div class="g-card-footer">
+          <button class="g-card-btn" onclick="openWpp(decodeURIComponent('${encodeURIComponent(msg)}'))">
+            ${wppSvg} ${multi ? 'Ver opções' : 'Quero este'}
           </button>
+          ${multi ? `<span class="g-card-variants">${g.items.length} opções</span>` : ''}
         </div>
       </div>`;
     }).join("");
   }
 
-  async function renderOfertas() {
+  function renderOfertas() {
     const grid = document.getElementById("offersGrid");
     try {
-      const todas = (await Promise.all(CONFIG.ABAS.map(a => fetchAba(a).catch(() => [])))).flat();
+      const todas = CONFIG.ABAS.map(a => fetchAba(a)).flat();
       const ofertas = todas.filter(p => p.oferta).slice(0, 4);
-      if (!ofertas.length) { grid.innerHTML = '<p style="color:var(--text3);font-size:13px">Sem ofertas no momento.</p>'; return; }
+      if (!ofertas.length) { grid.innerHTML = '<p style="color:var(--text3);font-size:12px">Sem ofertas no momento.</p>'; return; }
       grid.innerHTML = ofertas.map((p, i) => `
-        <div class="offer-card ${i === 0 ? 'top' : ''}">
-          ${i === 0 ? '<span class="offer-top-tag">Destaque</span>' : ''}
+        <div class="offer-card ${i===0?'top':''}">
+          ${i===0?'<span class="offer-top-tag">Destaque</span>':''}
           <div class="offer-marca">${p.marca}</div>
           <div class="offer-modelo">${p.modelo}</div>
-          <div class="offer-storage">${p.storage} · ${p.cond}</div>
+          <div class="offer-storage">${p.rawStorage} · ${p.cond}</div>
           ${p.precoAnt > 0 ? `<div class="offer-old">R$ ${p.precoAnt.toLocaleString('pt-BR')}</div>` : ''}
           <div class="offer-preco">R$ ${p.preco.toLocaleString('pt-BR')}</div>
           <div class="offer-parcel">ou 12x no cartão</div>
-        </div>
-      `).join("");
-    } catch { grid.innerHTML = '<p style="color:var(--text3);font-size:13px">Sem ofertas no momento.</p>'; }
+        </div>`).join("");
+    } catch { grid.innerHTML = ''; }
   }
 
-  function toggleCompare() {
-    comparando = !comparando;
-    selecionados = [];
-    updateCompareUI();
-    renderTable();
-  }
-
-  function toggleSel(idx) {
-    const key = abaAtiva + "-" + idx;
-    const i = selecionados.indexOf(key);
-    if (i >= 0) selecionados.splice(i, 1);
-    else if (selecionados.length < 4) selecionados.push(key);
-    updateCompareUI();
-    renderTable();
-  }
-
+  function toggleCompare() { comparando = !comparando; selecionados = []; updateCompareUI(); renderTable(); }
+  function toggleSel(idx) { const k = abaAtiva+"-"+idx; const i = selecionados.indexOf(k); if(i>=0) selecionados.splice(i,1); else if(selecionados.length<4) selecionados.push(k); updateCompareUI(); renderTable(); }
   function updateCompareUI() {
-    const btn = document.getElementById("btnCompare");
-    const badge = document.getElementById("cntBadge");
-    const bar = document.getElementById("compareBar");
-    const barText = document.getElementById("compareBarText");
+    const btn = document.getElementById("btnCompare"), badge = document.getElementById("cntBadge"), bar = document.getElementById("compareBar"), barText = document.getElementById("compareBarText");
     btn.classList.toggle("on", comparando);
-    if (comparando && selecionados.length > 0) {
-      badge.style.display = ""; badge.textContent = selecionados.length;
-      bar.classList.add("show");
-      barText.textContent = selecionados.length + " produto" + (selecionados.length > 1 ? "s" : "") + " selecionado" + (selecionados.length > 1 ? "s" : "");
-    } else {
-      badge.style.display = "none";
-      bar.classList.remove("show");
-    }
+    if (comparando && selecionados.length > 0) { badge.style.display=""; badge.textContent=selecionados.length; bar.classList.add("show"); barText.textContent=selecionados.length+" selecionado"+(selecionados.length>1?"s":""); }
+    else { badge.style.display="none"; bar.classList.remove("show"); }
   }
-
-  async function openModal() {
-    if (selecionados.length < 2) { alert("Selecione pelo menos 2 produtos para comparar."); return; }
-    const items = selecionados.map(key => {
-      const parts = key.split("-");
-      const idx = parseInt(parts[parts.length - 1]);
-      const catName = parts.slice(0, parts.length - 1).join("-");
-      return dadosCache[catName] ? dadosCache[catName][idx] : null;
-    }).filter(Boolean);
-    const minPreco = Math.min(...items.map(p => p.preco));
-    document.getElementById("modalGrid").innerHTML = items.map(p => `
-      <div class="modal-card">
-        <div class="modal-card-name">${p.modelo}</div>
-        <div class="modal-row"><span class="modal-row-label">Marca</span><span class="modal-row-val">${p.marca}</span></div>
-        <div class="modal-row"><span class="modal-row-label">Armazenamento</span><span class="modal-row-val">${p.storage}</span></div>
-        <div class="modal-row"><span class="modal-row-label">Condição</span><span class="modal-row-val">${p.cond}</span></div>
-        <div class="modal-row"><span class="modal-row-label">Preço</span><span class="modal-row-val ${p.preco === minPreco ? 'best' : ''}">R$ ${p.preco.toLocaleString('pt-BR')}</span></div>
-      </div>
-    `).join("");
+  function openModal() {
+    if(selecionados.length<2){alert("Selecione pelo menos 2.");return;}
+    const items=selecionados.map(k=>{const p=k.split("-");const idx=parseInt(p[p.length-1]);const cat=p.slice(0,p.length-1).join("-");return dadosCache[cat]?dadosCache[cat][idx]:null;}).filter(Boolean);
+    const min=Math.min(...items.map(p=>p.preco));
+    document.getElementById("modalGrid").innerHTML=items.map(p=>`<div class="modal-card"><div class="modal-card-name">${p.modelo}</div><div class="modal-row"><span class="modal-row-label">Armazen.</span><span class="modal-row-val">${p.rawStorage}</span></div><div class="modal-row"><span class="modal-row-label">Condição</span><span class="modal-row-val">${p.cond}</span></div><div class="modal-row"><span class="modal-row-label">Preço</span><span class="modal-row-val ${p.preco===min?'best':''}">R$ ${p.preco.toLocaleString('pt-BR')}</span></div></div>`).join("");
     document.getElementById("modal").classList.add("show");
   }
-
   function closeModal() { document.getElementById("modal").classList.remove("show"); }
 
-  const hoje = new Date();
-  document.getElementById("updateTag").textContent =
-    "Atualizado em " + hoje.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+  document.getElementById("updateTag").textContent = "Atualizado em " + new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
 
-  // INICIALIZAR
   renderTabs();
   renderTable();
   renderOfertas();
-
+  buildFilterPanel();
 </script>
 </body>
 </html>
