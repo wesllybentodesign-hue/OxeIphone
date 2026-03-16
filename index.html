@@ -135,23 +135,22 @@
 
     /* ─── MOBILE GROUPED CARDS ─── */
     .mobile-cards { display: none; }
-    .g-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px; }
-    .g-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
-    .g-card-name { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.25; }
-    .g-card-price { font-size: 17px; font-weight: 700; color: var(--green); white-space: nowrap; letter-spacing: -0.02em; flex-shrink: 0; }
-    .g-card-from { font-size: 10px; font-weight: 400; color: var(--text2); display: block; }
-    .g-card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
-    .g-tag { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 4px; }
-    .g-tag-storage { background: rgba(255,255,255,0.06); color: var(--text2); }
-    .g-tag-color { background: rgba(228,174,39,0.1); color: var(--gold); }
+    .g-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 6px; }
+    .g-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
+    .g-card-name { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
+    .g-card-price { font-size: 16px; font-weight: 700; color: var(--green); white-space: nowrap; letter-spacing: -0.02em; flex-shrink: 0; text-align: right; line-height: 1.2; }
+    .g-card-from { font-size: 9px; font-weight: 400; color: var(--text3); display: block; margin-bottom: 1px; }
+    .g-card-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 7px; }
+    .g-tag { font-size: 10px; font-weight: 500; padding: 1px 7px; border-radius: 3px; line-height: 1.5; }
+    .g-tag-storage { background: rgba(255,255,255,0.05); color: var(--text2); }
+    .g-tag-color { background: rgba(228,174,39,0.08); color: #d4a424; }
     .g-tag-cond { font-weight: 600; }
-    .g-tag-cond.lacrado { background: rgba(0,230,118,0.1); color: var(--green); }
-    .g-tag-cond.vitrine { background: rgba(255,167,38,0.1); color: #ffa726; }
-    .g-card-footer { display: flex; align-items: center; gap: 8px; }
-    .g-card-btn { flex: 1; background: var(--wpp); color: #fff; border: none; padding: 9px 0; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: var(--font); display: flex; align-items: center; justify-content: center; gap: 5px; transition: opacity 0.2s; }
+    .g-tag-cond.lacrado { background: rgba(0,230,118,0.08); color: var(--green); }
+    .g-tag-cond.vitrine { background: rgba(255,167,38,0.08); color: #ffa726; }
+    .g-card-footer { display: flex; }
+    .g-card-btn { flex: 1; background: var(--wpp); color: #fff; border: none; padding: 7px 0; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: var(--font); display: flex; align-items: center; justify-content: center; gap: 5px; transition: opacity 0.2s; }
     .g-card-btn:hover { opacity: 0.88; }
-    .g-card-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-    .g-card-variants { font-size: 10px; color: var(--text3); flex-shrink: 0; }
+    .g-card-btn svg { width: 12px; height: 12px; flex-shrink: 0; }
     .m-no-results { text-align: center; padding: 36px 16px; color: var(--text3); font-size: 13px; }
 
     /* LOADING */
@@ -220,10 +219,7 @@
 <header>
   <a class="logo" href="#">
     <svg class="logo-svg" viewBox="0 0 434.73 249.03" xmlns="http://www.w3.org/2000/svg">
-      <g>
-        <path fill="#f0f0f0" d="M183.07,7.45c.57,1.78.93,3.55,1.04,5.43.6,10.98,1.17,30.42-.01,40.95-.51,4.56-1.84,4.59-4.03,7.19-.62.73-.49,2.4-1.22,3.02-3.53,2.99-41.03,5.21-48.17,6.21l-2.26,1.62c.42,27.5.38,55.13.72,82.68.31,24.64,3.41,52.23,1.09,76.79-.9,9.52-7.07,10.52-15.48,11.45l-107.31-1.03c-2.66-2.75-6.69-4.48-7.04-8.42.85-62.46-1.03-125.29.09-187.47.14-7.79-1.5-27.37.51-33.4.33-1,2.54-3.93,3.49-4.49,5.31-3.1,34.98-1.31,43.4-1.5,22.01-.5,46.9-3.2,68.82-1.05,1.25.12,8.58,1.88,9.2,2.28.73.46,2.4,4.24,3.27,4.71v18.95c1.65,0,3.33.01,4.99,0,3.49-.04,6.52-.53,9.93-1.05,1.43-9.71-4.19-23.66,6.65-28.76,5.64-2.65,23.12-1.83,28.26,1.46.81.52,2.68,3.18,4.06,4.42Z"/>
-        <path fill="#f0f0f0" d="M313.8,241.77c-2.32-.07-4.67.05-6.99,0l-1.03-138.15c.24-2.57,2.83-11.68,4.33-13.12.64-.62,2.53-.64,3.79-1.69,1.07-.89,1.47-2.87,2.17-3.32,1.53-.98,10.86-3.09,13.17-3.3,25.94-2.29,56.65.92,82.82,2.07,5.81.26,11.71-.27,17.51-.05.07,1.32-.09,2.67,0,3.99,1.62,26.75-.62,54.46,1.05,81.32-.16,1.17-3.27,6.99-3.93,7.81-1.11,1.36-3.99-.49-4.54,2.47-22.78-3.9-45.79,1.2-68.75.09-3.82.91,2.24,18.14-.67,21.97,1.27.17,2.8-.21,3.99,0,20.01,3.7,44.42-3.07,64.3.06,4.11.65,7.23,5.7,9.54,8.91-2.38,9.68,3.07,28.5-10.54,30.85-8.4,1.45-21.95.86-30.86,1.07-1.97.05-3.99,1.16-6.04,1.1-1.87-.06-.93-1.94-2.89-2.19-18.97-2.42-46.21.65-66.43.08Z"/>
-        <path fill="#e4ae27" d="M217,195.91c.06,2.29-4.6,9.18-6.38,11.52-2.2,2.88-6.69,6.57-8.87,9.65-3.63,5.12-8.89,17.4-14.13,20.79-2.03,1.31-3.49.53-4.55.92,2.35-4.99,7.05-9.21,9.98-13.46s7.13-13.66,10.25-17.18c.79-.89,2.72-.68,3.45-1.54,2.86-3.36,4.93-9.5,10.26-10.7Z"/>
+      <g>        <path fill="#e4ae27" d="M217,195.91c.06,2.29-4.6,9.18-6.38,11.52-2.2,2.88-6.69,6.57-8.87,9.65-3.63,5.12-8.89,17.4-14.13,20.79-2.03,1.31-3.49.53-4.55.92,2.35-4.99,7.05-9.21,9.98-13.46s7.13-13.66,10.25-17.18c.79-.89,2.72-.68,3.45-1.54,2.86-3.36,4.93-9.5,10.26-10.7Z"/>
         <path fill="#e4ae27" d="M161.12,3.46c2.29.21,4.69-.16,6.99,0-.88,11.2-6.48,21.21-11.22,31.18-1.77,3.71-1.92,4.77-4.88,8.07-1.7,1.89-4.12,3.37-5.59,5.58l-7.24,3.01c2.81-.35,6.74.67,9.33-.17.96-.31,3.19-3.8,4.39-4.8.78-.65,2.52-.52,3.06-1.26s0-2.53.19-2.74c.68-.72,8.35,4.57,10.96,1.96l-2.97-2.97,3.97-3.48-3.98-1.51,1.01-4.97-3.97.52c2.71-6.46,6.75-14.58,8.73-21.2.72-2.42-.74-5.56,1.75-7.25,1.26-.26,8.55,4.27,8.44,6.5-1.46,14.02,2.07,32.31-.05,45.78-.83,5.29-2.71,3.34-5.1,4.67-9.78,5.48-21.3,3.84-32.24,4.88-5.46.52-10.9,2.4-16.48,1.98l.08,95.3c-4.74,4.13-.61,6.65-.03,10.85,1.79,12.87,2.11,41.88.98,54.93-.17,1.99-.57,5.82-1.59,7.38-.37.56-5.57,4.05-5.93,4.05h-17.46v-4.98c.39-.46,11.12,4.03,8.48-3h-5.48s5.98-1,5.98-1l-1.21-7.74c-3.32-2.39-4.18,0-6.76,1.76.18-3.78-.31-7.67,0-11.45,3.99-47.51,4.61-97.89,1.99-145.6-.82-14.86,2.92-9.65,14.34-11.57,6.22-1.04,12.59-2.47,18.59-4.37,0-2.62-30.14,3.29-32.93,4.48-.97-15.41.21-31.6-2-46.86h17.96c.7.3,3.66,2.12,3.98,2.5,2.57,3.12.19,17.59,1.01,22.43,2.3-.15,4.71.21,6.99,0-.48,3.16,1.28,1.87,3.19,1.71,4.6-.38,9.12-1.2,13.77-.71V12.94l10.98-9.47Z"/>
         <path fill="#e4ae27" d="M62.33,11.44c-.58,4.26.42,9.55,0,13.96h-18.46c-1.37,0-3.22,4.38-2.5,5.98l21.96,1c-.26,4.57-.29,8.38,2.02,12.44-3.61,1.87-7.85-.17-12.2,1.62-.52.21-7.13,7.12-7.36,7.81-1.68,5.09.36,13.99-.35,19.59-.24,1.91-1.91.95-2.15,2.86-1.37,10.82,1.15,24.64.12,35.8-.51,2.18-7.67.01-9.01,5.17-.61,2.19,2.19,1.75,3.27,1.43.49-.14,3.16-4.01,5.69-2.94-2.3,3.08-4.97,4.45-3.98,8.96,3.7-1.5,3.54-.8,5.93,1.73,1.39,19.93-1.69,41.95.01,61.62.74,8.58,5.59,15.71,15.01,14.42,2.17,6.55-4.67,6.07-6.72,8.25-.31.32-3.11,7.49-3.22,8.29-.34,2.34,1.84,10.64,3.08,12.25.09.12,1.39-.8,2.89.5,1.9,1.65,4.77,6.37,1.32,7.5-2.47.81-4.01-.89-4.84-.89h-22.45c-1.29-19.32-2.32-38.88-3-58.32-1.67-47.66-2.05-96.16,1.99-143.61.72-8.42.63-17.01,2.01-25.41h30.94Z"/>
         <path fill="#e4ae27" d="M100.25,9.45c-.92,8.8,1.52,17.59,1.99,26.43,2.8,53.1,3.61,118.6,0,171.48-.67,9.85-3.97,20.64-3.95,30.73-.17.67-2.26,1.69-2.52,1.69h-32.43v-3.96c11.67-.04,16.34-7.37,14.99-18.49-.69-5.68-6.11-8.81-11-10.45,4.16-.94,9.52,2.08,13.33.83.48-.16,6.58-6.14,6.6-7.34l.03-96.19c5.61.49,6.12-3.79,4.41-4l-3.42-.48c-.02-.38,6.75-1.19,3.37-5.5h-3.35s1.09-3.36,1.09-3.36l-2.09-.61c-.93-1.32.58-27.35-.08-32.36-.47-3.51-2.12-3.26-3.91-5.53-5.47-6.94-5.2-7.16-15.08-7.56l-1.89-12.38c3.46-.06,7.3.42,10.59-.88,1.15-.45,1.51.47,1.44-1.62-.26-7.33-8.58-2.85-12.59-5.42-1.02-1.47-.13-12.99.56-15.02h33.93Z"/>
@@ -235,9 +231,7 @@
         <path fill="#e4ae27" d="M392.63,134.09c7.39-1.24,10.17.08,16.36-.1,5.61-.16,12.07-3.01,17.57-.9v19.94h-9.98s0,2.99,0,2.99l7.98,1.5c-2.81.75-7.65.1-5.47,4.5l3.47-1.01-.98,5.98,4.97-3.99c.58,5.1-.08,9.76-4.67,12.78l-52.2,1.17,3.93-17.51c-.94-4.09-1.21-8.21-.94-12.39h19.96s0-12.96,0-12.96Z"/>
         <path fill="#e4ae27" d="M355.71,139.07c-1.5-.14-3.18.36-3.85-1.63l.86-13.31h30.93c.05.65-.04,1.32,0,1.99-9.14,2.34-18.57,2.11-27.95,1.99v10.97Z"/>
         <path fill="#e4ae27" d="M261.91,85.23c6.38-.06,7.28,2.19,12.06,5.59.63,4.52-10.97,14.44-12.05,19.34,4.21.55,4.14-3.42,5.26-4.7.99-1.14,7.4-5.38,8.48-6.48.95-.97,1.09-3.39,1.24-4.77l5.06,5.36c5.61.81,8.9,7.09,7.24,12.42-.24.78-2.95,6.13-3.26,6.46-3.01,3.18-2.6,2.39-5.61,6.61-7.74,10.88-15.81,22.27-23.69,31.61-1.46,1.73-3.65.88-3.8,4.87-.06,1.58,1.85,1.51,2.69,3.32,2.59,5.55,3.35,6.96,7.33,11.61,8.13,9.5,16.61,20.9,23.86,31.03,3.91,5.46,3.7,9.33.46,15.08-3.73,6.6-8.96,1.76-12.97-2.13-7.54-7.32-17.96-18.98-23.23-27.88-.61-1.03-2.9,0-2.04-2.63,2.07.96,7.31-3.79,5.98-4.99l-7.98,1.98,2.99-7.96c-2.83-.97-5.64,7.9-6.97,6.97-.59-5.17-6.98-6.15-9.64-8.34-4.97-4.09-8.75-9.69-13.22-14.3-.65-2.54,5.21-8.57,6.9-10.79.76-1,.73-2.64,1.23-3.2,1.36-1.53,5.17-.72,4.74-6.25,5.75-.04,3.76,6.99,9.96,5.98-.14-1.39.32-3.04.02-4.33-.27-1.18-2.44,0-2.01-1.64h4s0-3.99,0-3.99l-6.98-.99h6.98s0-3.99,0-3.99l-3.99-.5,16.96-19.44c-1.85-.33-2.75.32-4.08,1.42-3.54,2.93-7.86,9.61-11.22,13.18-7.46,7.93-12.12,12.38-18.02,21.35-1.27,1.93-3.77,7.96-6.08,7.97l-28.39-24.55c-8.3-10.25-16.66-23.55-26.49-32.37-1.91-1.72-5.92-1.11-5.53-5.38.46-4.97,4.53-4.38,6.69-5.89,1.02-.72,1.58-2.78,3.72-3.74,8.04-3.6,12.12.74,16.39,6.72,7.73,10.85,13.72,21.28,22.16,31.69,1.25,1.54,8.46,11,9.12,11.29,3.25,1.43,12.88-8.84,14.78-11.73,2.2.67,4.24-1.79,5.3-3.24,6.83-9.3,12.55-19.53,19.61-28.21,2.05-2.52,4.67-4.45,6.02-7.44Z"/>
-        <path fill="#e4ae27" d="M151.14,101.18c1.17-.6,3.2-2.05,4.35-1.84,1.26,1.83,10.88,8.11,9.62,9.8-1.95.32-4.87,1.05-5,3.5l4.99.51-.98,5.97,3.98-3.98c-.78,2.24-.63,7.19,3,6.97.59-2.11-1.72-7.78,1.99-6.97.21,1.41,2.53,5.68,3.32,6.6,9.68,11.23,19.26,19.19,29.67,28.75,3.79,3.48,7.13,7.52,10.91,11.02l-33.91,43.36c.75.68,5.54-3.22,6.46-4.01,7-5.98,18.32-20.41,23.51-28.36,1.38-2.12,1.08-7.26,4.98-6.13,2.8,1.52,3.3,4.31,5.75,6.54,1.96,1.78,6.12,4,8.08,5.7,10.03,8.68,19.84,19.33,28.48,29.29,3.71,4.27,9.16,13.32,12.52,16.45,1.7,1.58,3.8,2.13,6.01,2.48,1.37,1.87-4.4,5-5.51,6-3.65,3.29-3.42,4.6-9.46,5.96-1.62-3.67-5.63-5.83-7.83-8.63-6.4-8.09-12.36-19.01-19.1-27.77-2.59-3.36-5.15-6.42-7.59-8.82-2.24-2.21-4.74-7.63-7.39-2.64-6.42-7.76-10.02,3.66-13.99,8.45-2.18,2.63-5.76,5.28-7.98,8.25-4.93,6.61-15.28,26.9-21.67,29.93-4.97,2.36-13.92-.37-15.14-5.46-1.09-4.54,8.38-9.05,6.88-14.24l-11.48,10.96c-1.39.36-3.71-2.91-4.48-3.99-.41-.58-2.89-5.05-2.98-5.5-1.55-7.93,1.26-10.99,5.97-16.44,2.21.98,4.28,4,6.97.5l-4.97-3.48,5.98.98-.09-3.9-2.91-.58c3.41-1.11,2.23-3.22,3-5.48,2.19-6.39,3.69-3.8,4.83-5.16.53-.63-.18-2.45.4-3.55,2.85-5.38,10.61-10.08,14.8-18.43.38-.75,1.7-.74,1.89-1.48,1.2-4.56-1.44-3.98-1.97-4.96-2.67-4.98-1.2-2.22-3.85-4.88-9.77-9.79-16.44-22.4-23.37-33.02-1.23-1.88-5.46-5.76-6.25-8.21-1.28-3.96,1.01-6.63-.45-10.03Z"/>
-        <path fill="#f0f0f0" d="M368.68,225.82v-10.96s1.49,1.99,1.49,1.99c2.68-1.08,3.5-5.77,4.01-5.99,2.04-.88,1.73,2.44,1.56,3.55-.23,1.54-3.65,2.56-2.06,6.42l5.97-3.98-1.99,6.97c11.29.38,20.71-1.81,31.96.49,1.09.22,3.22.06,2.96,1.51h-43.91Z"/>
-      </g>
+        <path fill="#e4ae27" d="M151.14,101.18c1.17-.6,3.2-2.05,4.35-1.84,1.26,1.83,10.88,8.11,9.62,9.8-1.95.32-4.87,1.05-5,3.5l4.99.51-.98,5.97,3.98-3.98c-.78,2.24-.63,7.19,3,6.97.59-2.11-1.72-7.78,1.99-6.97.21,1.41,2.53,5.68,3.32,6.6,9.68,11.23,19.26,19.19,29.67,28.75,3.79,3.48,7.13,7.52,10.91,11.02l-33.91,43.36c.75.68,5.54-3.22,6.46-4.01,7-5.98,18.32-20.41,23.51-28.36,1.38-2.12,1.08-7.26,4.98-6.13,2.8,1.52,3.3,4.31,5.75,6.54,1.96,1.78,6.12,4,8.08,5.7,10.03,8.68,19.84,19.33,28.48,29.29,3.71,4.27,9.16,13.32,12.52,16.45,1.7,1.58,3.8,2.13,6.01,2.48,1.37,1.87-4.4,5-5.51,6-3.65,3.29-3.42,4.6-9.46,5.96-1.62-3.67-5.63-5.83-7.83-8.63-6.4-8.09-12.36-19.01-19.1-27.77-2.59-3.36-5.15-6.42-7.59-8.82-2.24-2.21-4.74-7.63-7.39-2.64-6.42-7.76-10.02,3.66-13.99,8.45-2.18,2.63-5.76,5.28-7.98,8.25-4.93,6.61-15.28,26.9-21.67,29.93-4.97,2.36-13.92-.37-15.14-5.46-1.09-4.54,8.38-9.05,6.88-14.24l-11.48,10.96c-1.39.36-3.71-2.91-4.48-3.99-.41-.58-2.89-5.05-2.98-5.5-1.55-7.93,1.26-10.99,5.97-16.44,2.21.98,4.28,4,6.97.5l-4.97-3.48,5.98.98-.09-3.9-2.91-.58c3.41-1.11,2.23-3.22,3-5.48,2.19-6.39,3.69-3.8,4.83-5.16.53-.63-.18-2.45.4-3.55,2.85-5.38,10.61-10.08,14.8-18.43.38-.75,1.7-.74,1.89-1.48,1.2-4.56-1.44-3.98-1.97-4.96-2.67-4.98-1.2-2.22-3.85-4.88-9.77-9.79-16.44-22.4-23.37-33.02-1.23-1.88-5.46-5.76-6.25-8.21-1.28-3.96,1.01-6.63-.45-10.03Z"/>      </g>
     </svg>
   </a>
   <button class="btn-wpp-header" onclick="openWpp('Olá! Vim pelo site da OxeIphone e gostaria de mais informações.')">
@@ -365,9 +359,13 @@
     const groups = [...map.values()];
     groups.forEach(g => {
       g.items.sort((a, b) => a.preco - b.preco);
-      g.minPreco = Math.min(...g.items.map(i => i.preco));
+      g.minPreco = Math.min(...g.items.filter(i => i.preco > 0).map(i => i.preco));
+      if (!isFinite(g.minPreco)) g.minPreco = 0;
       g.storages = [...new Set(g.items.map(i => i.storage).filter(Boolean).filter(s => s !== '-'))];
-      g.colors = [...new Set(g.items.map(i => i.color).filter(Boolean))];
+      // Split compound colors like "Azul/Rosa" into individual tags
+      const rawColors = g.items.map(i => i.color).filter(Boolean);
+      const splitColors = rawColors.flatMap(c => c.split('/').map(s => s.trim())).filter(Boolean);
+      g.colors = [...new Set(splitColors)];
       g.conds = [...new Set(g.items.map(i => i.cond).filter(Boolean))];
     });
     if (sortAsc) groups.sort((a, b) => a.minPreco - b.minPreco);
@@ -408,7 +406,7 @@
     const tbody = document.getElementById("tableBody"), mCards = document.getElementById("mobileCards");
     let lista = fetchAba(abaAtiva);
     const q = document.getElementById("searchInput").value.toLowerCase();
-    let filtrada = lista.filter(p => (p.modelo + " " + p.rawStorage).toLowerCase().includes(q));
+    let filtrada = lista.filter(p => (p.modelo + " " + p.rawStorage).toLowerCase().includes(q) && p.preco > 0);
     if (activeFilters.storage) filtrada = filtrada.filter(p => p.storage === activeFilters.storage);
     if (activeFilters.cond) filtrada = filtrada.filter(p => p.cond === activeFilters.cond);
 
@@ -427,7 +425,7 @@
       return `<tr>${comparando?`<td><input type="checkbox" class="chk-compare" ${sel?'checked':''} onchange="toggleSel(${i})"/></td>`:''}
         <td>${getBrandPill(p.marca)} <span style="margin-left:5px">${p.modelo}</span></td>
         <td>${p.rawStorage}</td><td>${getCondSpan(p.cond)}</td>
-        <td class="price-col">R$ ${p.preco.toLocaleString('pt-BR')}</td>
+        <td class="price-col">${p.preco > 0 ? 'R$ '+p.preco.toLocaleString('pt-BR') : '<span style="font-weight:400;color:var(--text3)">Sob consulta</span>'}</td>
         <td><button class="btn-interesse" onclick="openWpp(decodeURIComponent('${encodeURIComponent(msg)}'))">Quero este</button></td></tr>`;
     }).join("");
 
@@ -436,14 +434,20 @@
     mCards.innerHTML = groups.map(g => {
       const p = g.items[0];
       const multi = g.items.length > 1;
+      const hasPrice = g.minPreco > 0;
       const msg = multi
         ? `Olá! Me interessei pelo ${g.modelo} (${g.cond}). Quais opções disponíveis?`
-        : `Olá! Quero o ${p.modelo} ${p.rawStorage} (${p.cond}) — R$ ${p.preco.toLocaleString('pt-BR')}!`;
-      const priceLabel = multi ? `<span class="g-card-from">a partir de</span>R$ ${g.minPreco.toLocaleString('pt-BR')}` : `R$ ${p.preco.toLocaleString('pt-BR')}`;
+        : `Olá! Quero o ${p.modelo} ${p.rawStorage} (${p.cond})${hasPrice ? ' — R$ '+p.preco.toLocaleString('pt-BR') : ''}!`;
+      const priceLabel = !hasPrice
+        ? `<span style="font-size:12px;color:var(--text2)">Sob consulta</span>`
+        : multi
+          ? `<span class="g-card-from">a partir de</span>R$ ${g.minPreco.toLocaleString('pt-BR')}`
+          : `R$ ${p.preco.toLocaleString('pt-BR')}`;
       let tags = '';
       g.storages.forEach(s => { tags += `<span class="g-tag g-tag-storage">${s}</span>`; });
       g.colors.forEach(c => { tags += `<span class="g-tag g-tag-color">${c}</span>`; });
       g.conds.forEach(c => { tags += `<span class="g-tag g-tag-cond ${c.toLowerCase()}">${c}</span>`; });
+      const btnLabel = multi ? `Ver ${g.items.length} opções` : 'Quero este';
       return `<div class="g-card">
         <div class="g-card-head">
           <div class="g-card-name">${g.modelo}</div>
@@ -452,9 +456,8 @@
         ${tags ? `<div class="g-card-tags">${tags}</div>` : ''}
         <div class="g-card-footer">
           <button class="g-card-btn" onclick="openWpp(decodeURIComponent('${encodeURIComponent(msg)}'))">
-            ${wppSvg} ${multi ? 'Ver opções' : 'Quero este'}
+            ${wppSvg} ${btnLabel}
           </button>
-          ${multi ? `<span class="g-card-variants">${g.items.length} opções</span>` : ''}
         </div>
       </div>`;
     }).join("");
