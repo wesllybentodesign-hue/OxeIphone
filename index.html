@@ -62,7 +62,7 @@
 
     /* ─── HERO ─── */
     .hero {
-      padding: 64px 24px 52px;
+      padding: 64px 24px 32px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -87,15 +87,32 @@
       color: #fff; margin-bottom: 14px;
     }
     .hero h1 span { color: var(--green); }
-    .hero p { font-size: 15px; color: var(--text2); max-width: 440px; margin: 0 auto 28px; }
-    .hero-stats {
-      display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
-      border-top: 1px solid var(--border);
-      padding-top: 28px; margin-top: 8px;
+    .hero p { font-size: 15px; color: var(--text2); max-width: 440px; margin: 0 auto 0; }
+
+    /* ─── BANNER (dentro do hero, no lugar dos stats) ─── */
+    .hero-banner {
+      display: block; max-width: 520px; margin: 28px auto 0;
+      border-radius: var(--radius); overflow: hidden;
+      position: relative; border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .hero-stat { text-align: center; }
-    .hero-stat-num { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--green); }
-    .hero-stat-label { font-size: 11px; color: var(--text3); margin-top: 2px; }
+    .hero-banner:hover { border-color: var(--border2); transform: translateY(-2px); }
+    .hero-banner:active { transform: translateY(0); }
+    .hero-banner-img {
+      width: 100%; height: auto; display: block;
+      aspect-ratio: 2.5 / 1; object-fit: cover;
+      background: var(--bg2);
+    }
+    .hero-banner-cta {
+      position: absolute; bottom: 10px; right: 10px;
+      background: var(--green); color: #000;
+      font-family: var(--font); font-size: 11px; font-weight: 600;
+      padding: 5px 12px; border-radius: 6px;
+      display: flex; align-items: center; gap: 4px;
+      pointer-events: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .hero-banner-cta svg { width: 11px; height: 11px; }
 
     /* ─── OFFERS ─── */
     .section { padding: 32px 24px; max-width: 900px; margin: 0 auto; }
@@ -339,12 +356,13 @@
       header { padding: 0 14px; height: 56px; }
       .logo-svg { height: 30px; }
       .section, .table-section { padding-left: 14px; padding-right: 14px; }
-      .hero { padding: 36px 14px 28px; }
+
+      /* Hero mobile */
+      .hero { padding: 36px 14px 24px; }
       .hero h1 { font-size: 24px; }
-      .hero p { font-size: 13px; margin-bottom: 20px; }
-      .hero-stats { gap: 16px; padding-top: 20px; }
-      .hero-stat-num { font-size: 18px; }
-      .hero-stat-label { font-size: 10px; }
+      .hero p { font-size: 13px; }
+      .hero-banner { max-width: 100%; margin-top: 22px; }
+      .hero-banner-img { aspect-ratio: 2.2 / 1; }
 
       /* Offers grid → 2 columns tight */
       .offers-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -426,11 +444,17 @@
   <div class="hero-badge">Tabela atualizada semanalmente</div>
   <h1>Os melhores preços em<br/><span>iPhones & Xiaomi</span></h1>
   <p>Lacrados, vitrine e seminovos com garantia. Recife e região.</p>
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="hero-stat-num" id="statTotal">—</div><div class="hero-stat-label">Produtos disponíveis</div></div>
-    <div class="hero-stat"><div class="hero-stat-num" id="statOfertas">—</div><div class="hero-stat-label">Ofertas da semana</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Categorias</div></div>
-  </div>
+
+  <!-- BANNER CAMPANHA — Para trocar: substitua apenas o src da imagem abaixo -->
+  <a href="#tabela" class="hero-banner">
+    <img class="hero-banner-img"
+         src="banneroxe.jpg"
+         alt="Black do Consumidor — 1 ano de combustível grátis — OxeIphone" />
+    <span class="hero-banner-cta">
+      Ver preços
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </span>
+  </a>
 </div>
 
 <!-- OFERTAS -->
@@ -444,7 +468,7 @@
 </div>
 
 <!-- TABELA -->
-<div class="table-section">
+<div class="table-section" id="tabela">
   <div class="table-header">
     <div class="section-title" style="margin-bottom:16px;">Tabela de preços</div>
     <div class="update-tag" id="updateTag">Carregando dados...</div>
@@ -863,9 +887,6 @@
           <div class="offer-parcel">ou 12x no cartão</div>
         </div>
       `).join("");
-      document.getElementById("statOfertas").textContent = ofertas.length;
-      const total = todas.length;
-      document.getElementById("statTotal").textContent = total + "+";
     } catch { grid.innerHTML = '<p style="color:var(--text3);font-size:13px">Sem ofertas no momento.</p>'; }
   }
 
