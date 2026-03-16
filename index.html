@@ -306,11 +306,89 @@
     /* UPDATE TAG */
     .update-tag { font-size: 11px; color: var(--text3); margin-bottom: 14px; }
 
-    @media (max-width: 480px) {
-      header { padding: 0 16px; }
-      .section, .table-section { padding-left: 16px; padding-right: 16px; }
-      .hero { padding: 44px 16px 36px; }
-      .hero-stats { gap: 20px; }
+    /* ─── MOBILE CARDS (hidden on desktop) ─── */
+    .mobile-cards { display: none; }
+    .m-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px;
+      margin-bottom: 10px; transition: border-color 0.2s;
+    }
+    .m-card:active { border-color: var(--border2); }
+    .m-card.sel { border-color: #1565c0; background: rgba(21,101,192,0.08); }
+    .m-card-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .m-card-top .pill { flex-shrink: 0; }
+    .m-card-modelo { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.3; }
+    .m-card-mid { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .m-card-storage { font-size: 12px; color: var(--text2); background: var(--bg3); padding: 2px 8px; border-radius: 4px; }
+    .m-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .m-card-preco { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: var(--text); white-space: nowrap; }
+    .m-card-btn {
+      background: var(--wpp); color: #fff; border: none;
+      padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      display: flex; align-items: center; gap: 6px;
+      white-space: nowrap; flex-shrink: 0;
+      min-height: 40px;
+    }
+    .m-card-btn svg { flex-shrink: 0; }
+    .m-card-compare { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .m-card-compare input { width: 18px; height: 18px; accent-color: #1976d2; }
+    .m-card-compare label { font-size: 12px; color: var(--text2); }
+    .m-no-results { text-align: center; padding: 40px 16px; color: var(--text3); font-size: 14px; }
+
+    @media (max-width: 640px) {
+      /* Show mobile cards, hide desktop table */
+      .table-wrap { display: none; }
+      .mobile-cards { display: block; }
+
+      /* General spacing */
+      header { padding: 0 14px; height: 56px; }
+      .section, .table-section { padding-left: 14px; padding-right: 14px; }
+      .hero { padding: 36px 14px 28px; }
+      .hero h1 { font-size: 24px; }
+      .hero p { font-size: 13px; margin-bottom: 20px; }
+      .hero-stats { gap: 16px; padding-top: 20px; }
+      .hero-stat-num { font-size: 18px; }
+      .hero-stat-label { font-size: 10px; }
+
+      /* Offers grid → 2 columns tight */
+      .offers-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .offer-card { padding: 12px; }
+      .offer-preco { font-size: 17px; }
+
+      /* Tabs scroll */
+      .tabs { gap: 5px; }
+      .tab { padding: 6px 13px; font-size: 11px; }
+
+      /* Toolbar */
+      .toolbar { gap: 6px; }
+      .search-input { padding: 9px 12px 9px 32px; font-size: 14px; }
+      .btn-compare { padding: 9px 12px; font-size: 11px; }
+
+      /* Compare bar */
+      .compare-bar { padding: 8px 12px; font-size: 12px; }
+
+      /* Footer */
+      footer { padding: 32px 14px; }
+      .btn-wpp-big { padding: 12px 24px; font-size: 14px; width: 100%; justify-content: center; }
+
+      /* FAB position */
+      .fab { bottom: 16px; right: 16px; width: 48px; height: 48px; font-size: 20px; }
+
+      /* Table section less bottom padding */
+      .table-section { padding-bottom: 40px; }
+
+      /* Header WhatsApp btn compact */
+      .btn-wpp-header { padding: 7px 12px; font-size: 12px; }
+      .btn-wpp-header svg { width: 13px; height: 13px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 21px; }
+      .offers-grid { grid-template-columns: 1fr; }
+      .m-card-bottom { flex-direction: column; align-items: stretch; }
+      .m-card-preco { text-align: center; }
+      .m-card-btn { justify-content: center; }
     }
   </style>
 </head>
@@ -387,6 +465,7 @@
       <tbody id="tableBody"><tr><td colspan="6" class="no-results"><div class="spinner" style="margin:0 auto 10px"></div></td></tr></tbody>
     </table>
   </div>
+  <div class="mobile-cards" id="mobileCards"></div>
 </div>
 
 <!-- FOOTER -->
@@ -694,11 +773,15 @@
 
   async function renderTable() {
     const tbody = document.getElementById("tableBody");
+    const mCards = document.getElementById("mobileCards");
     tbody.innerHTML = `<tr><td colspan="6" class="no-results"><div class="spinner" style="margin:0 auto 10px"></div></td></tr>`;
+    mCards.innerHTML = `<div class="m-no-results"><div class="spinner" style="margin:0 auto 10px"></div></div>`;
     let lista;
     try { lista = await fetchAba(abaAtiva); }
     catch(e) {
-      tbody.innerHTML = `<tr><td colspan="6" class="no-results">⚠️ Erro ao carregar dados. Verifique a configuração da planilha.</td></tr>`;
+      const errMsg = '⚠️ Erro ao carregar dados.';
+      tbody.innerHTML = `<tr><td colspan="6" class="no-results">${errMsg}</td></tr>`;
+      mCards.innerHTML = `<div class="m-no-results">${errMsg}</div>`;
       return;
     }
     const q = document.getElementById("searchInput").value.toLowerCase();
@@ -710,8 +793,11 @@
 
     if (!filtrada.length) {
       tbody.innerHTML = `<tr><td colspan="${comparando?6:5}" class="no-results">Nenhum produto encontrado</td></tr>`;
+      mCards.innerHTML = `<div class="m-no-results">Nenhum produto encontrado</div>`;
       return;
     }
+
+    // Desktop table
     tbody.innerHTML = filtrada.map((p, i) => {
       const sel = selecionados.includes(abaAtiva + "-" + i);
       const wppMsg = `Olá! Me interessei pelo ${p.modelo}${p.storage !== '-' ? ' ' + p.storage : ''} (${p.cond}) — R$ ${p.preco.toLocaleString('pt-BR')}. Gostaria de saber mais!`;
@@ -723,6 +809,30 @@
         <td class="price-col">R$ ${p.preco.toLocaleString('pt-BR')}</td>
         <td><button class="btn-interesse" onclick="openWpp(decodeURIComponent('${encodeURIComponent(wppMsg)}'))">Tenho interesse</button></td>
       </tr>`;
+    }).join("");
+
+    // Mobile cards
+    const wppSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>';
+    mCards.innerHTML = filtrada.map((p, i) => {
+      const sel = selecionados.includes(abaAtiva + "-" + i);
+      const wppMsg = `Olá! Me interessei pelo ${p.modelo}${p.storage !== '-' ? ' ' + p.storage : ''} (${p.cond}) — R$ ${p.preco.toLocaleString('pt-BR')}. Gostaria de saber mais!`;
+      return `<div class="m-card ${sel ? 'sel' : ''}">
+        ${comparando ? `<div class="m-card-compare"><input type="checkbox" id="mc${i}" ${sel ? 'checked' : ''} onchange="toggleSel(${i})" /><label for="mc${i}">Selecionar para comparar</label></div>` : ''}
+        <div class="m-card-top">
+          ${getBrandPill(p.marca)}
+          <span class="m-card-modelo">${p.modelo}</span>
+        </div>
+        <div class="m-card-mid">
+          <span class="m-card-storage">${p.storage}</span>
+          ${getCondSpan(p.cond)}
+        </div>
+        <div class="m-card-bottom">
+          <span class="m-card-preco">R$ ${p.preco.toLocaleString('pt-BR')}</span>
+          <button class="m-card-btn" onclick="openWpp(decodeURIComponent('${encodeURIComponent(wppMsg)}'))">
+            ${wppSvg} Tenho interesse
+          </button>
+        </div>
+      </div>`;
     }).join("");
   }
 
