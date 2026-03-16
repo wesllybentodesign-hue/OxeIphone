@@ -135,22 +135,23 @@
 
     /* ─── MOBILE GROUPED CARDS ─── */
     .mobile-cards { display: none; }
-    .g-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 6px; }
-    .g-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
+    .g-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 6px; cursor: pointer; transition: border-color 0.15s, background 0.15s; display: block; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    .g-card:active { background: var(--bg3); border-color: var(--border2); }
+    .g-card-row1 { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
     .g-card-name { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
     .g-card-price { font-size: 16px; font-weight: 700; color: var(--green); white-space: nowrap; letter-spacing: -0.02em; flex-shrink: 0; text-align: right; line-height: 1.2; }
     .g-card-from { font-size: 9px; font-weight: 400; color: var(--text3); display: block; margin-bottom: 1px; }
-    .g-card-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 7px; }
+    .g-card-row2 { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+    .g-card-tags { display: flex; flex-wrap: wrap; gap: 3px; flex: 1; min-width: 0; }
     .g-tag { font-size: 10px; font-weight: 500; padding: 1px 7px; border-radius: 3px; line-height: 1.5; }
     .g-tag-storage { background: rgba(255,255,255,0.05); color: var(--text2); }
     .g-tag-color { background: rgba(228,174,39,0.08); color: #d4a424; }
     .g-tag-cond { font-weight: 600; }
     .g-tag-cond.lacrado { background: rgba(0,230,118,0.08); color: var(--green); }
     .g-tag-cond.vitrine { background: rgba(255,167,38,0.08); color: #ffa726; }
-    .g-card-footer { display: flex; }
-    .g-card-btn { flex: 1; background: var(--wpp); color: #fff; border: none; padding: 7px 0; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: var(--font); display: flex; align-items: center; justify-content: center; gap: 5px; transition: opacity 0.2s; }
-    .g-card-btn:hover { opacity: 0.88; }
-    .g-card-btn svg { width: 12px; height: 12px; flex-shrink: 0; }
+    .g-card-action { font-size: 11px; color: var(--text3); white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; gap: 3px; transition: color 0.15s; }
+    .g-card:active .g-card-action { color: var(--green); }
+    .g-card-action svg { width: 12px; height: 12px; }
     .m-no-results { text-align: center; padding: 36px 16px; color: var(--text3); font-size: 13px; }
 
     /* LOADING */
@@ -439,7 +440,7 @@
         ? `Olá! Me interessei pelo ${g.modelo} (${g.cond}). Quais opções disponíveis?`
         : `Olá! Quero o ${p.modelo} ${p.rawStorage} (${p.cond})${hasPrice ? ' — R$ '+p.preco.toLocaleString('pt-BR') : ''}!`;
       const priceLabel = !hasPrice
-        ? `<span style="font-size:12px;color:var(--text2)">Sob consulta</span>`
+        ? `<span style="font-size:11px;color:var(--text3)">Sob consulta</span>`
         : multi
           ? `<span class="g-card-from">a partir de</span>R$ ${g.minPreco.toLocaleString('pt-BR')}`
           : `R$ ${p.preco.toLocaleString('pt-BR')}`;
@@ -447,19 +448,20 @@
       g.storages.forEach(s => { tags += `<span class="g-tag g-tag-storage">${s}</span>`; });
       g.colors.forEach(c => { tags += `<span class="g-tag g-tag-color">${c}</span>`; });
       g.conds.forEach(c => { tags += `<span class="g-tag g-tag-cond ${c.toLowerCase()}">${c}</span>`; });
-      const btnLabel = multi ? `Ver ${g.items.length} opções` : 'Quero este';
-      return `<div class="g-card">
-        <div class="g-card-head">
+      const actionText = multi ? `${g.items.length} opções` : 'Chamar';
+      const arrowSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      const wppUrl = "https://wa.me/" + CONFIG.WPP_NUMBER + "?text=" + encodeURIComponent(msg);
+      return `<div class="g-card" onclick="window.open('${wppUrl}','_blank')">
+        <div class="g-card-row1">
           <div class="g-card-name">${g.modelo}</div>
           <div class="g-card-price">${priceLabel}</div>
         </div>
-        ${tags ? `<div class="g-card-tags">${tags}</div>` : ''}
-        <div class="g-card-footer">
-          <button class="g-card-btn" onclick="openWpp(decodeURIComponent('${encodeURIComponent(msg)}'))">
-            ${wppSvg} ${btnLabel}
-          </button>
+        <div class="g-card-row2">
+          <div class="g-card-tags">${tags}</div>
+          <span class="g-card-action">${actionText} ${arrowSvg}</span>
         </div>
       </div>`;
+    }).join("");
     }).join("");
   }
 
