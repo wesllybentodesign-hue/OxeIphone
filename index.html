@@ -135,11 +135,11 @@
 
     /* ─── MOBILE GROUPED CARDS ─── */
     .mobile-cards { display: none; }
-    .g-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 6px; cursor: pointer; transition: border-color 0.15s, background 0.15s; display: block; text-decoration: none; -webkit-tap-highlight-color: transparent; position: relative; }
-    .g-card:active { background: var(--bg3); border-color: rgba(37,211,102,0.3); }
+    .g-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 6px; display: block; position: relative; }
     .g-card-row1 { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
     .g-card-name { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
-    .g-card-price { font-size: 20px; font-weight: 700; color: #fff; white-space: nowrap; letter-spacing: -0.02em; flex-shrink: 0; text-align: right; line-height: 1.2; }
+    .g-card-price { font-size: 20px; font-weight: 700; color: #fff; white-space: nowrap; letter-spacing: -0.02em; flex-shrink: 0; text-align: right; line-height: 1.2; cursor: pointer; -webkit-tap-highlight-color: transparent; border-radius: 4px; transition: color 0.15s; }
+    .g-card-price:active { color: var(--green); }
     .g-card-from { font-size: 9px; font-weight: 400; color: var(--text3); display: block; margin-bottom: 1px; }
     .g-card-row2 { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
     .g-card-tags { display: flex; flex-wrap: wrap; gap: 3px; flex: 1; min-width: 0; }
@@ -169,10 +169,11 @@
     .g-tag-cond { font-weight: 600; }
     .g-tag-cond.lacrado { background: rgba(0,230,118,0.08); color: var(--green); }
     .g-tag-cond.vitrine { background: rgba(255,167,38,0.08); color: #ffa726; }
-    .g-card-action { font-size: 11px; color: var(--wpp); white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; gap: 4px; font-weight: 500; }
+    .g-card-action { font-size: 11px; color: var(--wpp); white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; gap: 4px; font-weight: 500; cursor: pointer; -webkit-tap-highlight-color: transparent; padding: 4px 0 4px 8px; border-radius: 4px; transition: opacity 0.15s; }
+    .g-card-action:active { opacity: 0.7; }
     .g-card-action svg { width: 14px; height: 14px; }
     .g-card-action .arrow { width: 10px; height: 10px; opacity: 0.5; transition: transform 0.15s, opacity 0.15s; }
-    .g-card:active .g-card-action .arrow { transform: translateX(2px); opacity: 1; }
+    .g-card-action:active .arrow { transform: translateX(2px); opacity: 1; }
     .m-no-results { text-align: center; padding: 36px 16px; color: var(--text3); font-size: 13px; }
 
     /* LOADING */
@@ -494,14 +495,14 @@
       const wppIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>';
       const arrowIcon = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
 
-      return `<div class="g-card" id="gc${gi}" onclick="cardTap(${gi})" data-gi="${gi}">
+      return `<div class="g-card" id="gc${gi}" data-gi="${gi}">
         <div class="g-card-row1">
           <div class="g-card-name">${g.modelo}</div>
-          <div class="g-card-price" id="gp${gi}">${priceLabel}</div>
+          <div class="g-card-price" id="gp${gi}" onclick="cardTap(${gi})">${priceLabel}</div>
         </div>
         <div class="g-card-row2">
           <div class="g-card-tags">${storageTags}${colorTags}${condTags}</div>
-          <span class="g-card-action">${wppIcon} Quero este ${arrowIcon}</span>
+          <span class="g-card-action" onclick="cardTap(${gi})">${wppIcon} Quero este ${arrowIcon}</span>
         </div>
       </div>`;
     }).join("");
