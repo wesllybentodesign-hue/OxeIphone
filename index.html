@@ -46,22 +46,50 @@
     .trust-bar { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 16px 24px; border-bottom: 1px solid var(--border); }
     .trust-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); white-space: nowrap; }
     .trust-item svg { width: 13px; height: 13px; opacity: 0.5; flex-shrink: 0; }
+    .trust-highlight { color: var(--green); font-weight: 600; }
+    .trust-highlight svg { opacity: 0.8; stroke: var(--green); }
 
     /* ─── OFFERS ─── */
     .section { padding: 28px 24px; max-width: 900px; margin: 0 auto; }
     .section-title { font-size: 15px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
     .hot-pill { background: #ff5722; color: #fff; font-size: 9px; font-weight: 600; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.03em; }
-    .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
-    .offer-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; position: relative; transition: border-color 0.2s; cursor: pointer; }
+    .offers-scroll { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+    .offers-scroll::-webkit-scrollbar { height: 3px; }
+    .offers-scroll::-webkit-scrollbar-track { background: transparent; }
+    .offers-scroll::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+    .offer-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; position: relative; overflow: hidden; cursor: pointer; transition: border-color 0.2s; flex-shrink: 0; scroll-snap-align: start; }
     .offer-card:hover { border-color: var(--border2); }
-    .offer-card.top { border-color: rgba(0,230,118,0.3); }
-    .offer-top-tag { position: absolute; top: -1px; right: 10px; background: var(--green); color: #000; font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 0 0 6px 6px; text-transform: uppercase; }
+    .offer-card.featured { border-color: rgba(0,230,118,0.25); }
+    .offer-top-tag { position: absolute; top: 10px; right: 10px; background: var(--green); color: #000; font-size: 9px; font-weight: 700; padding: 3px 10px; border-radius: 5px; text-transform: uppercase; z-index: 2; letter-spacing: 0.03em; }
+    .offer-img-wrap { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, var(--bg3) 0%, var(--bg) 100%); }
+    .offer-img { object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4)); }
+    .offer-info { padding: 12px 14px 14px; }
     .offer-marca { font-size: 10px; color: var(--text3); margin-bottom: 2px; }
-    .offer-modelo { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 1px; }
-    .offer-storage { font-size: 11px; color: var(--text2); margin-bottom: 8px; }
-    .offer-old { font-size: 11px; color: var(--text3); text-decoration: line-through; }
-    .offer-preco { font-size: 18px; font-weight: 700; color: var(--green); letter-spacing: -0.02em; }
-    .offer-parcel { font-size: 10px; color: var(--text3); margin-top: 1px; }
+    .offer-modelo { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; letter-spacing: -0.01em; }
+    .offer-storage { font-size: 11px; color: var(--text2); margin-bottom: 10px; }
+    .offer-prices { display: flex; align-items: baseline; gap: 8px; margin-bottom: 3px; }
+    .offer-old { font-size: 12px; color: var(--text3); text-decoration: line-through; }
+    .offer-preco { font-size: 22px; font-weight: 700; color: var(--green); letter-spacing: -0.02em; }
+    .offer-parcel { font-size: 10px; color: var(--text3); }
+
+    /* Desktop: 2 cards side by side */
+    @media (min-width: 641px) {
+      .offer-card { width: calc(50% - 5px); display: flex; flex-direction: column; }
+      .offer-img-wrap { height: 160px; }
+      .offer-img { height: 140px; width: auto; }
+    }
+
+    /* Mobile: horizontal swipe, 1 card visible */
+    @media (max-width: 640px) {
+      .section.offers-section { padding-left: 14px; padding-right: 0; }
+      .offers-scroll { padding-right: 14px; }
+      .offer-card { width: 85vw; max-width: 360px; display: flex; flex-direction: row; }
+      .offer-img-wrap { width: 130px; min-height: 140px; flex-shrink: 0; }
+      .offer-img { height: 110px; width: auto; }
+      .offer-info { padding: 12px 14px; display: flex; flex-direction: column; justify-content: center; }
+      .offer-modelo { font-size: 16px; }
+      .offer-preco { font-size: 20px; }
+    }
 
     /* ─── TABLE SECTION ─── */
     .table-section { max-width: 900px; margin: 0 auto; padding: 0 24px 50px; }
@@ -140,7 +168,7 @@
     .g-card-name { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
     .g-card-price { font-size: 20px; font-weight: 700; color: #fff; white-space: nowrap; letter-spacing: -0.02em; flex-shrink: 0; text-align: right; line-height: 1.2; cursor: pointer; -webkit-tap-highlight-color: transparent; border-radius: 4px; transition: color 0.15s; }
     .g-card-price:active { color: var(--green); }
-    .g-card-from { font-size: 9px; font-weight: 400; color: var(--text3); display: block; margin-bottom: 1px; }
+    .g-card-parcel { display: block; font-size: 9px; font-weight: 400; color: var(--text3); margin-top: 1px; }
     .g-card-row2 { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
     .g-card-tags { display: flex; flex-wrap: wrap; gap: 3px; flex: 1; min-width: 0; }
     .g-tag { font-size: 10px; font-weight: 500; padding: 1px 7px; border-radius: 3px; line-height: 1.5; cursor: default; transition: all 0.12s; }
@@ -149,23 +177,6 @@
     .g-tag.selectable.active { opacity: 1; border-color: rgba(255,255,255,0.15); }
     .g-tag-storage { background: rgba(255,255,255,0.05); color: var(--text2); }
     .g-tag-storage.active { background: rgba(255,255,255,0.1); color: var(--text); }
-    /* Color tags with intuitive hues */
-    .g-tag-color { background: rgba(228,174,39,0.08); color: #d4a424; }
-    .g-tag-color.active { background: rgba(228,174,39,0.15); }
-    .g-tag-color[data-color="azul"] { background: rgba(66,165,245,0.1); color: #64b5f6; }
-    .g-tag-color[data-color="azul"].active { background: rgba(66,165,245,0.2); }
-    .g-tag-color[data-color="rosa"] { background: rgba(236,64,122,0.1); color: #f06292; }
-    .g-tag-color[data-color="rosa"].active { background: rgba(236,64,122,0.2); }
-    .g-tag-color[data-color="preto"] { background: rgba(255,255,255,0.06); color: #aaa; }
-    .g-tag-color[data-color="preto"].active { background: rgba(255,255,255,0.12); }
-    .g-tag-color[data-color="branco"] { background: rgba(255,255,255,0.1); color: #ddd; }
-    .g-tag-color[data-color="branco"].active { background: rgba(255,255,255,0.18); }
-    .g-tag-color[data-color="laranja"] { background: rgba(255,152,0,0.1); color: #ffb74d; }
-    .g-tag-color[data-color="laranja"].active { background: rgba(255,152,0,0.2); }
-    .g-tag-color[data-color="gold"] { background: rgba(228,174,39,0.1); color: #e4ae27; }
-    .g-tag-color[data-color="gold"].active { background: rgba(228,174,39,0.2); }
-    .g-tag-color[data-color="red"] { background: rgba(244,67,54,0.1); color: #ef5350; }
-    .g-tag-color[data-color="red"].active { background: rgba(244,67,54,0.2); }
     .g-tag-cond { font-weight: 600; }
     .g-tag-cond.lacrado { background: rgba(0,230,118,0.08); color: var(--green); }
     .g-tag-cond.vitrine { background: rgba(255,167,38,0.08); color: #ffa726; }
@@ -175,6 +186,25 @@
     .g-card-action .arrow { width: 10px; height: 10px; opacity: 0.5; transition: transform 0.15s, opacity 0.15s; }
     .g-card-action:active .arrow { transform: translateX(2px); opacity: 1; }
     .m-no-results { text-align: center; padding: 36px 16px; color: var(--text3); font-size: 13px; }
+
+    /* ─── GENERATION ACCORDION (Lacrados) ─── */
+    .gen-group { margin-bottom: 4px; }
+    .gen-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; -webkit-tap-highlight-color: transparent; transition: border-color 0.15s; }
+    .gen-header:active { border-color: var(--border2); }
+    .gen-header-left { display: flex; align-items: center; gap: 8px; }
+    .gen-header-name { font-size: 15px; font-weight: 700; color: #fff; }
+    .gen-header-count { font-size: 11px; color: var(--text3); font-weight: 400; }
+    .gen-header-price { font-size: 14px; color: #fff; font-weight: 700; }
+    .gen-header-price-wrap { text-align: right; }
+    .gen-header-from { display: block; font-size: 9px; color: var(--text3); font-weight: 400; margin-bottom: 1px; }
+    .gen-header-right { display: flex; align-items: center; gap: 8px; }
+    .gen-chevron { width: 16px; height: 16px; color: var(--text3); transition: transform 0.2s; flex-shrink: 0; }
+    .gen-group.open .gen-chevron { transform: rotate(180deg); }
+    .gen-group.open .gen-header { border-radius: var(--radius) var(--radius) 0 0; border-bottom-color: transparent; }
+    .gen-body { display: none; border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 6px; background: var(--bg); }
+    .gen-group.open .gen-body { display: block; }
+    .gen-body .g-card { margin-bottom: 4px; border-color: rgba(255,255,255,0.04); }
+    .gen-body .g-card:last-child { margin-bottom: 0; }
 
     /* LOADING */
     .loading-state { text-align: center; padding: 40px; color: var(--text3); }
@@ -278,15 +308,47 @@
 <div class="trust-bar">
   <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Garantia em todos</div>
   <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Loja física em Recife</div>
-  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg> Pix · Cartão · 12x</div>
+  <div class="trust-item trust-highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg> PIX · Cartão · 18x sem juros</div>
   <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Envio para todo Brasil</div>
 </div>
 
 <!-- OFERTAS -->
-<div class="section">
+<div class="section offers-section">
   <div class="section-title">Ofertas da semana <span class="hot-pill">Quente</span></div>
-  <div class="offers-grid" id="offersGrid">
-    <div class="loading-state"><div class="spinner"></div></div>
+  <div class="offers-scroll" id="offersGrid">
+    <!-- OFERTA 1: iPhone 14 Plus -->
+    <div class="offer-card featured" onclick="openWpp('Olá! Quero o iPhone 14 Plus 128GB Vitrine por R$ 2.839 em 18x!')">
+      <span class="offer-top-tag">Destaque</span>
+      <div class="offer-img-wrap">
+        <img class="offer-img" src="/iphone14plus.jpg" alt="iPhone 14 Plus" />
+      </div>
+      <div class="offer-info">
+        <div class="offer-marca">Apple</div>
+        <div class="offer-modelo">iPhone 14 Plus</div>
+        <div class="offer-storage">128GB · Vitrine</div>
+        <div class="offer-prices">
+          <span class="offer-old">R$ 4.499</span>
+          <span class="offer-preco">R$ 2.839</span>
+        </div>
+        <div class="offer-parcel">em até 18x sem juros no cartão</div>
+      </div>
+    </div>
+    <!-- OFERTA 2: iPhone 16 -->
+    <div class="offer-card" onclick="openWpp('Olá! Quero o iPhone 16 128GB Lacrado por R$ 4.399!')">
+      <div class="offer-img-wrap">
+        <img class="offer-img" src="/iphone14plus.jpg" alt="iPhone 16" />
+      </div>
+      <div class="offer-info">
+        <div class="offer-marca">Apple</div>
+        <div class="offer-modelo">iPhone 16</div>
+        <div class="offer-storage">128GB · Lacrado</div>
+        <div class="offer-prices">
+          <span class="offer-old">R$ 5.099</span>
+          <span class="offer-preco">R$ 4.399</span>
+        </div>
+        <div class="offer-parcel">em até 18x sem juros no cartão</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -352,7 +414,7 @@
 
 <script>
   const CONFIG = { WPP_NUMBER: "5581986893971", ABAS: ["iPhones Lacrados","iPhones Vitrine","Produtos Apple","Outros","Xiaomi"] };
-  const DADOS = {"iPhones Lacrados":[["iPhone SE","64GB Red","Lacrado","","","","Apple"],["iPhone 13","128GB","Lacrado",3049,"","","Apple"],["iPhone 13","128GB Rosa","Lacrado",3179,"","","Apple"],["iPhone 13","256GB","Lacrado",3499,"","","Apple"],["iPhone 14","128GB","Lacrado",3599,"","","Apple"],["iPhone 14","256GB","Lacrado",3819,"","","Apple"],["iPhone 14 Plus","128GB","Lacrado",3889,"","","Apple"],["iPhone 14 Pro Max","128GB","Lacrado",4799,"","","Apple"],["iPhone 15","128GB Preto","Lacrado",3849,"","","Apple"],["iPhone 15","128GB Azul/Rosa","Lacrado",3900,"","","Apple"],["iPhone 15","256GB","Lacrado",4399,"","","Apple"],["iPhone 16","128GB","Lacrado",4399,4799,"sim","Apple"],["iPhone 16","256GB","Lacrado",4959,"","","Apple"],["iPhone 16e","128GB","Lacrado",3399,"","","Apple"],["iPhone 16 Plus","128GB","Lacrado",4879,"","","Apple"],["iPhone 16 Pro","128GB","Lacrado",5999,"","","Apple"],["iPhone 17","256GB","Lacrado",5649,"","","Apple"],["iPhone 17 Pro","256GB Laranja","Lacrado",7699,"","","Apple"],["iPhone 17 Pro","256GB Branco","Lacrado",8129,"","","Apple"],["iPhone 17 Pro","512GB","Lacrado",9699,"","","Apple"],["iPhone 17 Pro Max","256GB Laranja","Lacrado",8649,"","","Apple"],["iPhone 17 Pro Max","256GB Azul","Lacrado",8649,"","","Apple"],["iPhone 17 Pro Max","256GB Branco","Lacrado",8999,"","","Apple"],["iPhone 17 Pro Max","512GB","Lacrado",9889,"","","Apple"],["iPhone 17 Pro Max","512GB Branco/Azul","Lacrado",10299,"","","Apple"]],"iPhones Vitrine":[["iPhone 8G","64GB","Vitrine",469,"","","Apple"],["iPhone SE 3ª Ger. 5G","64GB","Vitrine",799,"","","Apple"],["iPhone SE 3ª Ger. 5G","128GB","Vitrine",899,"","","Apple"],["iPhone XR","64GB","Vitrine",799,"","","Apple"],["iPhone XR","128GB","Vitrine",1119,"","","Apple"],["iPhone XS Max","256GB","Vitrine",999,"","","Apple"],["iPhone 11","64GB","Vitrine",1349,"","","Apple"],["iPhone 11","128GB","Vitrine",1399,"","","Apple"],["iPhone 11","256GB","Vitrine",1509,"","","Apple"],["iPhone 11 Pro","64GB","Vitrine",1449,"","","Apple"],["iPhone 11 Pro","256GB","Vitrine",1679,"","","Apple"],["iPhone 11 Pro Max","64GB","Vitrine",1699,"","","Apple"],["iPhone 11 Pro Max","256GB","Vitrine",1849,"","","Apple"],["iPhone 12 Mini","64GB","Vitrine",1099,"","","Apple"],["iPhone 12 Mini","256GB","Vitrine",1429,"","","Apple"],["iPhone 12","64GB","Vitrine",1439,"","","Apple"],["iPhone 12","128GB","Vitrine",1649,"","","Apple"],["iPhone 12","256GB","Vitrine",1859,"","","Apple"],["iPhone 12 Pro","128GB","Vitrine",1999,"","","Apple"],["iPhone 12 Pro","256GB","Vitrine",2199,"","","Apple"],["iPhone 12 Pro Max","128GB","Vitrine",2299,"","","Apple"],["iPhone 12 Pro Max","256GB","Vitrine",2549,"","","Apple"],["iPhone 12 Pro Max","512GB","Vitrine",2849,"","","Apple"],["iPhone 13","128GB","Vitrine",1999,"","","Apple"],["iPhone 13","128GB Branco/Rosa","Vitrine",2149,"","","Apple"],["iPhone 13","256GB","Vitrine",2259,"","","Apple"],["iPhone 13","512GB","Vitrine",2599,"","","Apple"],["iPhone 13 Mini","128GB","Vitrine",1739,"","","Apple"],["iPhone 13 Pro","128GB","Vitrine",2699,"","","Apple"],["iPhone 13 Pro","256GB","Vitrine",2899,"","","Apple"],["iPhone 13 Pro","512GB","Vitrine",2979,"","","Apple"],["iPhone 13 Pro","1TB Gold","Vitrine",3189,"","","Apple"],["iPhone 13 Pro Max","128GB","Vitrine",2879,"","","Apple"],["iPhone 13 Pro Max","256GB","Vitrine",3099,"","","Apple"],["iPhone 13 Pro Max","512GB","Vitrine",3349,"","","Apple"],["iPhone 13 Pro Max","1TB","Vitrine",3399,"","","Apple"],["iPhone 14","128GB","Vitrine",2299,"","","Apple"],["iPhone 14","256GB","Vitrine",2579,"","","Apple"],["iPhone 14 Plus","128GB","Vitrine",2549,"","","Apple"],["iPhone 14 Plus","128GB Branco","Vitrine",2599,"","","Apple"],["iPhone 14 Plus","256GB","Vitrine",2839,"","","Apple"],["iPhone 14 Plus","512GB","Vitrine",2949,"","","Apple"],["iPhone 14 Pro","128GB","Vitrine",2999,"","","Apple"],["iPhone 14 Pro","256GB","Vitrine",3349,"","","Apple"],["iPhone 14 Pro Max","128GB","Vitrine",3499,"","","Apple"],["iPhone 14 Pro Max","256GB","Vitrine",3749,"","","Apple"],["iPhone 14 Pro Max","512GB","Vitrine",4199,"","","Apple"],["iPhone 15","128GB","Vitrine",2979,"","","Apple"],["iPhone 15","256GB","Vitrine",3299,"","","Apple"],["iPhone 15 Plus","128GB","Vitrine",3219,"","","Apple"],["iPhone 15 Plus","256GB","Vitrine",3499,"","","Apple"],["iPhone 15 Pro","128GB","Vitrine",3579,3999,"sim","Apple"],["iPhone 15 Pro","256GB","Vitrine",3949,"","","Apple"],["iPhone 15 Pro","512GB","Vitrine",4349,"","","Apple"],["iPhone 15 Pro Max","256GB","Vitrine",4349,"","","Apple"],["iPhone 15 Pro Max","512GB","Vitrine",4769,"","","Apple"],["iPhone 15 Pro Max","1TB","Vitrine",4849,"","","Apple"],["iPhone 16e","128GB","Vitrine",2959,"","","Apple"],["iPhone 16","128GB","Vitrine",4099,"","","Apple"],["iPhone 16","256GB","Vitrine",4349,"","","Apple"],["iPhone 16 Plus","128GB","Vitrine",4279,"","","Apple"],["iPhone 16 Plus","256GB","Vitrine",4499,"","","Apple"],["iPhone 16 Pro","128GB","Vitrine",4949,"","","Apple"],["iPhone 16 Pro","256GB","Vitrine",5169,"","","Apple"],["iPhone 16 Pro","512GB","Vitrine",5279,"","","Apple"],["iPhone 16 Pro Max","256GB","Vitrine",5399,"","","Apple"],["iPhone 16 Pro Max","512GB","Vitrine",6249,"","","Apple"],["iPhone 17 Pro Max","256GB","Vitrine",7899,"","","Apple"]],"Produtos Apple":[["Apple Watch S8","45mm","Vitrine",1159,"","","Apple"],["Apple Watch SE 2","44mm","Lacrado",1759,"","","Apple"],["Apple Watch SE 3","40mm","Lacrado",2099,"","","Apple"],["Apple Watch SE 3","44mm","Lacrado",2249,"","","Apple"],["Apple Watch S10","46mm Gold","Lacrado",2549,"","","Apple"],["Apple Watch S10","46mm Preto","Lacrado",2799,"","","Apple"],["Apple Watch S11","42mm","Lacrado",2699,"","","Apple"],["Apple Watch S11","46mm","Lacrado",2849,"","","Apple"],["Apple Watch Ultra 2","","Lacrado",4239,"","","Apple"],["Apple Watch Ultra 3","49mm","Lacrado",5599,"","","Apple"],["MacBook Air M2","16/256GB","Lacrado",5399,"","","Apple"],["MacBook Air M4","16/256GB","Lacrado",7299,"","","Apple"],["iPad 11","128GB Todas as Cores","Lacrado",2849,"","","Apple"],["AirPods 1ª Ger.","","Lacrado",699,"","","Apple"],["AirPods 4","","Lacrado",999,"","","Apple"],["AirPods 4 Cancelamento de Ruído","","Lacrado",1299,"","","Apple"],["AirPods Pro 2ª Ger.","","Lacrado",1449,1699,"sim","Apple"],["AirPods Pro 3ª Ger.","","Lacrado",1719,"","","Apple"],["Apple Pencil 1ª Ger.","","Lacrado",659,"","","Apple"],["Apple Pencil USB-C","","Lacrado",799,"","","Apple"],["Apple Pencil Pro","","Lacrado",1099,"","","Apple"],["AirTag","","Lacrado",249,"","","Apple"]],"Outros":[["JBL Boombox 3","","Lacrado",2059,"","","JBL"],["JBL Boombox 4","","Lacrado",2699,"","","JBL"],["JBL Partybox Encore 2","","Lacrado",1459,"","","JBL"],["JBL Partybox 320","","Lacrado",2899,"","","JBL"],["PS5","825GB","Lacrado",3499,"","","Sony"],["PS5","1TB","Lacrado",3699,"","","Sony"],["Realme C61","8/256GB NFC","Lacrado",859,"","","Realme"],["Realme C63","8/256GB","Lacrado",839,"","","Realme"],["Realme C65","8/256GB","Lacrado",939,"","","Realme"],["Realme C67","6/128GB","Lacrado",949,"","","Realme"],["Realme C67","8/256GB","Lacrado",959,"","","Realme"],["Realme C71","4/128GB","Lacrado",769,"","","Realme"],["Realme C71","8/256GB 4G","Lacrado",979,"","","Realme"],["Realme C71","8/256GB 5G","Lacrado",1099,"","","Realme"],["Realme C75","8/256GB NFC","Lacrado",1129,"","","Realme"],["Realme C75X","6/128GB NFC","Lacrado",959,"","","Realme"],["Realme C75X","8/256GB NFC","Lacrado",1069,"","","Realme"],["Realme C85 Pro","8/256GB NFC","Lacrado",1259,"","","Realme"],["Realme Note 60X","3/64GB","Lacrado",549,"","","Realme"],["Realme Note 60X","4/128GB","Lacrado",639,"","","Realme"],["Realme Note 60","4/128GB","Lacrado",619,"","","Realme"],["Realme Note 70","4/256GB","Lacrado",849,"","","Realme"],["Realme Note 14","12/512GB 5G","Lacrado",1929,"","","Realme"],["Realme 14T","8/256GB 5G","Lacrado",1699,"","","Realme"],["Realme 14 Pro+","12/256GB 5G","Lacrado",2429,"","","Realme"],["Redmi Pad SE","4/128GB","Lacrado",1049,"","","Xiaomi"],["Redmi Pad SE","8/256GB","Lacrado",1229,"","","Xiaomi"],["Redmi Pad 2","4/128GB","Lacrado",1299,"","","Xiaomi"],["Redmi Pad 2","8/256GB","Lacrado",1449,"","","Xiaomi"]],"Xiaomi":[["Redmi A3 Pro","4/128GB","Lacrado",839,"","","Xiaomi"],["Redmi A5","3/64GB","Lacrado",599,"","","Xiaomi"],["Redmi A5","4/128GB","Lacrado",689,"","","Xiaomi"],["Redmi 14C","4/128GB","Lacrado",659,"","","Xiaomi"],["Redmi 14C","8/256GB","Lacrado",809,"","","Xiaomi"],["Redmi 13","8/128GB","Lacrado",829,"","","Xiaomi"],["Redmi 15C","4/256GB","Lacrado",849,"","","Xiaomi"],["Redmi 15C","8/256GB","Lacrado",949,"","","Xiaomi"],["Redmi 15","6/128GB","Lacrado",879,"","","Xiaomi"],["Redmi 15","8/256GB","Lacrado",959,"","","Xiaomi"],["Redmi 13","8/256GB","Lacrado",859,"","","Xiaomi"],["Redmi 13X","8/256GB","Lacrado",899,"","","Xiaomi"],["Redmi Note 12 Pro+","8/256GB","Lacrado",2180,"","","Xiaomi"],["Redmi Note 13 Pro","8/256GB 4G","Lacrado",1199,"","","Xiaomi"],["Redmi Note 13 Pro","12/512GB 5G","Lacrado",1999,"","","Xiaomi"],["Redmi Note 14S","8/256GB","Lacrado",1379,"","","Xiaomi"],["Redmi Note 14S","12/512GB","Lacrado",1499,"","","Xiaomi"],["Redmi Note 14 Pro","8/256GB 4G","Lacrado",1579,"","","Xiaomi"],["Redmi Note 14 Pro","12/512GB 4G","Lacrado",1819,"","","Xiaomi"],["Redmi Note 14 Pro","8/256GB 5G","Lacrado",1799,"","","Xiaomi"],["Redmi Note 14 Pro","12/512GB 5G","Lacrado",1989,"","","Xiaomi"],["Redmi Note 14 Pro+","8/256GB 5G","Lacrado",1949,"","","Xiaomi"],["Redmi Note 14 Pro+","12/512GB 5G","Lacrado",2399,"","","Xiaomi"],["Redmi Note 14","6/128GB 4G","Lacrado",949,"","","Xiaomi"],["Redmi Note 14","8/256GB 4G","Lacrado",1209,"","","Xiaomi"],["Redmi Note 14","8/256GB 5G","Lacrado",1439,"","","Xiaomi"],["Redmi Note 15","6/128GB","Lacrado",1159,"","","Xiaomi"],["Redmi Note 15","8/256GB 4G","Lacrado",1379,"","","Xiaomi"],["Redmi Note 15","8/256GB 5G","Lacrado",1699,"","","Xiaomi"],["Redmi Note 15 Pro","8/256GB 4G","Lacrado",1699,"","","Xiaomi"],["Redmi Note 15 Pro","8/256GB 5G","Lacrado",1969,"","","Xiaomi"],["Redmi Note 15 Pro","8/512GB 5G","Lacrado",2079,"","","Xiaomi"],["Redmi Note 15 Pro Plus","8/256GB 5G","Lacrado",2239,"","","Xiaomi"],["Xiaomi 14T","12/512GB 5G","Lacrado",3079,"","","Xiaomi"],["Xiaomi 15","12/512GB","Lacrado",4809,"","","Xiaomi"],["POCO M6 Pro","12/512GB","Lacrado",1469,"","","Xiaomi"],["POCO M7","8/256GB","Lacrado",949,"","","Xiaomi"],["POCO M7 Pro","12/512GB","Lacrado",1399,"","","Xiaomi"],["POCO M8","8/256GB","Lacrado",1499,"","","Xiaomi"],["POCO C85","6/128GB","Lacrado",779,"","","Xiaomi"],["POCO C85","8/256GB","Lacrado",939,"","","Xiaomi"],["POCO C71","4/128GB","Lacrado",649,"","","Xiaomi"],["POCO C75","8/256GB","Lacrado",799,"","","Xiaomi"],["POCO X6 Pro","12/512GB 5G","Lacrado",1899,"","","Xiaomi"],["POCO X7","8/256GB","Lacrado",1749,"","","Xiaomi"],["POCO X7","12/512GB","Lacrado",2039,"","","Xiaomi"],["POCO X7 Pro","8/256GB","Lacrado",2219,"","","Xiaomi"],["POCO X7 Pro","12/512GB 5G","Lacrado",2549,2899,"sim","Xiaomi"],["POCO F5","12/256GB","Lacrado",1699,"","","Xiaomi"],["POCO F5 Pro","12/256GB","Lacrado",2350,"","","Xiaomi"],["POCO F6 Pro","12/512GB","Lacrado",2299,"","","Xiaomi"],["POCO F7 Pro","12/512GB 5G","Lacrado",2999,"","","Xiaomi"]]};
+  const DADOS = {"iPhones Lacrados": [["iPhone 13", "128GB", "Lacrado", 3829, "", "", "Apple"], ["iPhone 13", "256GB", "Lacrado", 4059, "", "", "Apple"], ["iPhone 14", "128GB", "Lacrado", 4179, "", "", "Apple"], ["iPhone 14", "256GB", "Lacrado", 4429, "", "", "Apple"], ["iPhone 14 Plus", "128GB", "Lacrado", 4499, "", "", "Apple"], ["iPhone 14 Pro Max", "128GB", "Lacrado", 5449, "", "", "Apple"], ["iPhone 15", "128GB", "Lacrado", 4519, "", "", "Apple"], ["iPhone 15", "256GB Azul/Preto", "Lacrado", 5099, "", "", "Apple"], ["iPhone 15", "256GB Rosa", "Lacrado", 5339, "", "", "Apple"], ["iPhone 15 Plus", "128GB", "Lacrado", 4689, "", "", "Apple"], ["iPhone 16", "128GB", "Lacrado", 5099, "", "", "Apple"], ["iPhone 16", "256GB", "Lacrado", 5759, "", "", "Apple"], ["iPhone 16", "256GB Rosa/Verde", "Lacrado", 5789, "", "", "Apple"], ["iPhone 16e", "128GB", "Lacrado", 3939, "", "", "Apple"], ["iPhone 16 Plus", "128GB", "Lacrado", 5669, "", "", "Apple"], ["iPhone 16 Pro", "128GB", "Lacrado", 6599, "", "", "Apple"], ["iPhone 17", "256GB", "Lacrado", 6469, "", "", "Apple"], ["iPhone 17 Pro", "256GB Laranja", "Lacrado", 8929, "", "", "Apple"], ["iPhone 17 Pro", "256GB Branco", "Lacrado", 9419, "", "", "Apple"], ["iPhone 17 Pro", "512GB", "Lacrado", 11259, "", "", "Apple"], ["iPhone 17 Pro Max", "256GB Laranja", "Lacrado", 9859, "", "", "Apple"], ["iPhone 17 Pro Max", "256GB Azul", "Lacrado", 9859, "", "", "Apple"], ["iPhone 17 Pro Max", "256GB Branco", "Lacrado", 10199, "", "", "Apple"], ["iPhone 17 Pro Max", "512GB", "Lacrado", 11479, "", "", "Apple"], ["iPhone 17 Pro Max", "512GB Branco/Azul", "Lacrado", 11949, "", "", "Apple"]], "iPhones Vitrine": [["iPhone 8G", "64GB", "Vitrine", 469, "", "", "Apple"], ["iPhone SE 3ª Ger. 5G", "64GB", "Vitrine", 799, "", "", "Apple"], ["iPhone SE 3ª Ger. 5G", "128GB", "Vitrine", 899, "", "", "Apple"], ["iPhone XR", "64GB", "Vitrine", 799, "", "", "Apple"], ["iPhone XR", "128GB", "Vitrine", 1119, "", "", "Apple"], ["iPhone XS Max", "256GB", "Vitrine", 999, "", "", "Apple"], ["iPhone 11", "64GB", "Vitrine", 1349, "", "", "Apple"], ["iPhone 11", "128GB", "Vitrine", 1399, "", "", "Apple"], ["iPhone 11", "256GB", "Vitrine", 1509, "", "", "Apple"], ["iPhone 11 Pro", "64GB", "Vitrine", 1449, "", "", "Apple"], ["iPhone 11 Pro", "256GB", "Vitrine", 1679, "", "", "Apple"], ["iPhone 11 Pro Max", "64GB", "Vitrine", 1699, "", "", "Apple"], ["iPhone 11 Pro Max", "256GB", "Vitrine", 1849, "", "", "Apple"], ["iPhone 12 Mini", "64GB", "Vitrine", 1099, "", "", "Apple"], ["iPhone 12 Mini", "256GB", "Vitrine", 1429, "", "", "Apple"], ["iPhone 12", "64GB", "Vitrine", 1439, "", "", "Apple"], ["iPhone 12", "128GB", "Vitrine", 1649, "", "", "Apple"], ["iPhone 12", "256GB", "Vitrine", 1859, "", "", "Apple"], ["iPhone 12 Pro", "128GB", "Vitrine", 1999, "", "", "Apple"], ["iPhone 12 Pro", "256GB", "Vitrine", 2199, "", "", "Apple"], ["iPhone 12 Pro Max", "128GB", "Vitrine", 2299, "", "", "Apple"], ["iPhone 12 Pro Max", "256GB", "Vitrine", 2549, "", "", "Apple"], ["iPhone 12 Pro Max", "512GB", "Vitrine", 2849, "", "", "Apple"], ["iPhone 13", "128GB", "Vitrine", 1999, "", "", "Apple"], ["iPhone 13", "128GB Branco/Rosa", "Vitrine", 2149, "", "", "Apple"], ["iPhone 13", "256GB", "Vitrine", 2259, "", "", "Apple"], ["iPhone 13", "512GB", "Vitrine", 2599, "", "", "Apple"], ["iPhone 13 Mini", "128GB", "Vitrine", 1739, "", "", "Apple"], ["iPhone 13 Pro", "128GB", "Vitrine", 2699, "", "", "Apple"], ["iPhone 13 Pro", "256GB", "Vitrine", 2899, "", "", "Apple"], ["iPhone 13 Pro", "512GB", "Vitrine", 2979, "", "", "Apple"], ["iPhone 13 Pro", "1TB Gold", "Vitrine", 3189, "", "", "Apple"], ["iPhone 13 Pro Max", "128GB", "Vitrine", 2879, "", "", "Apple"], ["iPhone 13 Pro Max", "256GB", "Vitrine", 3099, "", "", "Apple"], ["iPhone 13 Pro Max", "512GB", "Vitrine", 3349, "", "", "Apple"], ["iPhone 13 Pro Max", "1TB", "Vitrine", 3399, "", "", "Apple"], ["iPhone 14", "128GB", "Vitrine", 2299, "", "", "Apple"], ["iPhone 14", "256GB", "Vitrine", 2579, "", "", "Apple"], ["iPhone 14 Plus", "128GB", "Vitrine", 2549, "", "", "Apple"], ["iPhone 14 Plus", "128GB Branco", "Vitrine", 2599, "", "", "Apple"], ["iPhone 14 Plus", "256GB", "Vitrine", 2839, "", "", "Apple"], ["iPhone 14 Plus", "512GB", "Vitrine", 2949, "", "", "Apple"], ["iPhone 14 Pro", "128GB", "Vitrine", 2999, "", "", "Apple"], ["iPhone 14 Pro", "256GB", "Vitrine", 3349, "", "", "Apple"], ["iPhone 14 Pro Max", "128GB", "Vitrine", 3499, "", "", "Apple"], ["iPhone 14 Pro Max", "256GB", "Vitrine", 3749, "", "", "Apple"], ["iPhone 14 Pro Max", "512GB", "Vitrine", 4199, "", "", "Apple"], ["iPhone 15", "128GB", "Vitrine", 2979, "", "", "Apple"], ["iPhone 15", "256GB", "Vitrine", 3299, "", "", "Apple"], ["iPhone 15 Plus", "128GB", "Vitrine", 3219, "", "", "Apple"], ["iPhone 15 Plus", "256GB", "Vitrine", 3499, "", "", "Apple"], ["iPhone 15 Pro", "128GB", "Vitrine", 3579, 3999, "sim", "Apple"], ["iPhone 15 Pro", "256GB", "Vitrine", 3949, "", "", "Apple"], ["iPhone 15 Pro", "512GB", "Vitrine", 4349, "", "", "Apple"], ["iPhone 15 Pro Max", "256GB", "Vitrine", 4349, "", "", "Apple"], ["iPhone 15 Pro Max", "512GB", "Vitrine", 4769, "", "", "Apple"], ["iPhone 15 Pro Max", "1TB", "Vitrine", 4849, "", "", "Apple"], ["iPhone 16e", "128GB", "Vitrine", 2959, "", "", "Apple"], ["iPhone 16", "128GB", "Vitrine", 4099, "", "", "Apple"], ["iPhone 16", "256GB", "Vitrine", 4349, "", "", "Apple"], ["iPhone 16 Plus", "128GB", "Vitrine", 4279, "", "", "Apple"], ["iPhone 16 Plus", "256GB", "Vitrine", 4499, "", "", "Apple"], ["iPhone 16 Pro", "128GB", "Vitrine", 4949, "", "", "Apple"], ["iPhone 16 Pro", "256GB", "Vitrine", 5169, "", "", "Apple"], ["iPhone 16 Pro", "512GB", "Vitrine", 5279, "", "", "Apple"], ["iPhone 16 Pro Max", "256GB", "Vitrine", 5399, "", "", "Apple"], ["iPhone 16 Pro Max", "512GB", "Vitrine", 6249, "", "", "Apple"], ["iPhone 17 Pro Max", "256GB", "Vitrine", 7899, "", "", "Apple"]], "Produtos Apple": [["Apple Watch SE 2", "44mm Cell", "Lacrado", 2059, "", "", "Apple"], ["Apple Watch SE 3", "40mm", "Lacrado", 2429, "", "", "Apple"], ["Apple Watch SE 3", "44mm", "Lacrado", 2549, "", "", "Apple"], ["Apple Watch S10", "46mm Gold", "Lacrado", 2899, "", "", "Apple"], ["Apple Watch S10", "46mm Preto", "Lacrado", 3249, "", "", "Apple"], ["Apple Watch S11", "42mm", "Lacrado", 2779, "", "", "Apple"], ["Apple Watch S11", "46mm", "Lacrado", 3069, "", "", "Apple"], ["Apple Watch Ultra 2", "", "Lacrado", 4829, "", "", "Apple"], ["MacBook Air M4", "16/256GB", "Lacrado", 7599, "", "", "Apple"], ["iPad 11", "128GB Todas as Cores", "Lacrado", 3129, "", "", "Apple"], ["Apple Pencil 1ª Ger.", "", "Lacrado", 759, "", "", "Apple"], ["Apple Pencil USB-C", "", "Lacrado", 839, "", "", "Apple"], ["Apple Pencil Pro", "", "Lacrado", 1269, "", "", "Apple"], ["AirPods 1ª Ger.", "", "Lacrado", 819, "", "", "Apple"], ["AirPods 4", "", "Lacrado", 1149, "", "", "Apple"], ["AirPods 4 Cancelamento de Ruído", "", "Lacrado", 1499, "", "", "Apple"], ["AirPods Pro 2ª Ger.", "", "Lacrado", 1679, "", "", "Apple"], ["AirPods Pro 3ª Ger.", "", "Lacrado", 1969, "", "", "Apple"], ["AirTag", "", "Lacrado", 289, "", "", "Apple"]], "Outros": [["JBL Boombox 3", "", "Lacrado", 2389, "", "", "JBL"], ["JBL Boombox 4", "", "Lacrado", 3019, "", "", "JBL"], ["JBL Partybox Encore 2", "", "Lacrado", 1689, "", "", "JBL"], ["JBL Partybox 320", "", "Lacrado", 3359, "", "", "JBL"], ["PS5", "825GB", "Lacrado", 3499, "", "", "Sony"], ["PS5", "1TB", "Lacrado", 3699, "", "", "Sony"], ["Realme C61", "8/256GB NFC", "Lacrado", 859, "", "", "Realme"], ["Realme C63", "8/256GB", "Lacrado", 839, "", "", "Realme"], ["Realme C65", "8/256GB", "Lacrado", 939, "", "", "Realme"], ["Realme C67", "6/128GB", "Lacrado", 949, "", "", "Realme"], ["Realme C67", "8/256GB", "Lacrado", 959, "", "", "Realme"], ["Realme C71", "4/128GB", "Lacrado", 769, "", "", "Realme"], ["Realme C71", "8/256GB 4G", "Lacrado", 979, "", "", "Realme"], ["Realme C71", "8/256GB 5G", "Lacrado", 1099, "", "", "Realme"], ["Realme C75", "8/256GB NFC", "Lacrado", 1129, "", "", "Realme"], ["Realme C75X", "6/128GB NFC", "Lacrado", 959, "", "", "Realme"], ["Realme C75X", "8/256GB NFC", "Lacrado", 1069, "", "", "Realme"], ["Realme C85 Pro", "8/256GB NFC", "Lacrado", 1259, "", "", "Realme"], ["Realme Note 60X", "3/64GB", "Lacrado", 549, "", "", "Realme"], ["Realme Note 60X", "4/128GB", "Lacrado", 639, "", "", "Realme"], ["Realme Note 60", "4/128GB", "Lacrado", 619, "", "", "Realme"], ["Realme Note 70", "4/256GB", "Lacrado", 849, "", "", "Realme"], ["Realme Note 14", "12/512GB 5G", "Lacrado", 1929, "", "", "Realme"], ["Realme 14T", "8/256GB 5G", "Lacrado", 1699, "", "", "Realme"], ["Realme 14 Pro+", "12/256GB 5G", "Lacrado", 2429, "", "", "Realme"], ["Redmi Pad SE", "4/128GB", "Lacrado", 1049, "", "", "Xiaomi"], ["Redmi Pad SE", "8/256GB", "Lacrado", 1229, "", "", "Xiaomi"], ["Redmi Pad 2", "4/128GB", "Lacrado", 1299, "", "", "Xiaomi"], ["Redmi Pad 2", "8/256GB", "Lacrado", 1449, "", "", "Xiaomi"]], "Xiaomi": [["Redmi A3 Pro", "4/128GB", "Lacrado", 839, "", "", "Xiaomi"], ["Redmi A5", "3/64GB", "Lacrado", 599, "", "", "Xiaomi"], ["Redmi A5", "4/128GB", "Lacrado", 689, "", "", "Xiaomi"], ["Redmi 14C", "4/128GB", "Lacrado", 659, "", "", "Xiaomi"], ["Redmi 14C", "8/256GB", "Lacrado", 809, "", "", "Xiaomi"], ["Redmi 13", "8/128GB", "Lacrado", 829, "", "", "Xiaomi"], ["Redmi 15C", "4/256GB", "Lacrado", 849, "", "", "Xiaomi"], ["Redmi 15C", "8/256GB", "Lacrado", 949, "", "", "Xiaomi"], ["Redmi 15", "6/128GB", "Lacrado", 879, "", "", "Xiaomi"], ["Redmi 15", "8/256GB", "Lacrado", 959, "", "", "Xiaomi"], ["Redmi 13", "8/256GB", "Lacrado", 859, "", "", "Xiaomi"], ["Redmi 13X", "8/256GB", "Lacrado", 899, "", "", "Xiaomi"], ["Redmi Note 12 Pro+", "8/256GB", "Lacrado", 2180, "", "", "Xiaomi"], ["Redmi Note 13 Pro", "8/256GB 4G", "Lacrado", 1199, "", "", "Xiaomi"], ["Redmi Note 13 Pro", "12/512GB 5G", "Lacrado", 1999, "", "", "Xiaomi"], ["Redmi Note 14S", "8/256GB", "Lacrado", 1379, "", "", "Xiaomi"], ["Redmi Note 14S", "12/512GB", "Lacrado", 1499, "", "", "Xiaomi"], ["Redmi Note 14 Pro", "8/256GB 4G", "Lacrado", 1579, "", "", "Xiaomi"], ["Redmi Note 14 Pro", "12/512GB 4G", "Lacrado", 1819, "", "", "Xiaomi"], ["Redmi Note 14 Pro", "8/256GB 5G", "Lacrado", 1799, "", "", "Xiaomi"], ["Redmi Note 14 Pro", "12/512GB 5G", "Lacrado", 1989, "", "", "Xiaomi"], ["Redmi Note 14 Pro+", "8/256GB 5G", "Lacrado", 1949, "", "", "Xiaomi"], ["Redmi Note 14 Pro+", "12/512GB 5G", "Lacrado", 2399, "", "", "Xiaomi"], ["Redmi Note 14", "6/128GB 4G", "Lacrado", 949, "", "", "Xiaomi"], ["Redmi Note 14", "8/256GB 4G", "Lacrado", 1209, "", "", "Xiaomi"], ["Redmi Note 14", "8/256GB 5G", "Lacrado", 1439, "", "", "Xiaomi"], ["Redmi Note 15", "6/128GB", "Lacrado", 1159, "", "", "Xiaomi"], ["Redmi Note 15", "8/256GB 4G", "Lacrado", 1379, "", "", "Xiaomi"], ["Redmi Note 15", "8/256GB 5G", "Lacrado", 1699, "", "", "Xiaomi"], ["Redmi Note 15 Pro", "8/256GB 4G", "Lacrado", 1699, "", "", "Xiaomi"], ["Redmi Note 15 Pro", "8/256GB 5G", "Lacrado", 1969, "", "", "Xiaomi"], ["Redmi Note 15 Pro", "8/512GB 5G", "Lacrado", 2079, "", "", "Xiaomi"], ["Redmi Note 15 Pro Plus", "8/256GB 5G", "Lacrado", 2239, "", "", "Xiaomi"], ["Xiaomi 14T", "12/512GB 5G", "Lacrado", 3079, "", "", "Xiaomi"], ["Xiaomi 15", "12/512GB", "Lacrado", 4809, "", "", "Xiaomi"], ["POCO M6 Pro", "12/512GB", "Lacrado", 1469, "", "", "Xiaomi"], ["POCO M7", "8/256GB", "Lacrado", 949, "", "", "Xiaomi"], ["POCO M7 Pro", "12/512GB", "Lacrado", 1399, "", "", "Xiaomi"], ["POCO M8", "8/256GB", "Lacrado", 1499, "", "", "Xiaomi"], ["POCO C85", "6/128GB", "Lacrado", 779, "", "", "Xiaomi"], ["POCO C85", "8/256GB", "Lacrado", 939, "", "", "Xiaomi"], ["POCO C71", "4/128GB", "Lacrado", 649, "", "", "Xiaomi"], ["POCO C75", "8/256GB", "Lacrado", 799, "", "", "Xiaomi"], ["POCO X6 Pro", "12/512GB 5G", "Lacrado", 1899, "", "", "Xiaomi"], ["POCO X7", "8/256GB", "Lacrado", 1749, "", "", "Xiaomi"], ["POCO X7", "12/512GB", "Lacrado", 2039, "", "", "Xiaomi"], ["POCO X7 Pro", "8/256GB", "Lacrado", 2219, "", "", "Xiaomi"], ["POCO X7 Pro", "12/512GB 5G", "Lacrado", 2549, 2899, "sim", "Xiaomi"], ["POCO F5", "12/256GB", "Lacrado", 1699, "", "", "Xiaomi"], ["POCO F5 Pro", "12/256GB", "Lacrado", 2350, "", "", "Xiaomi"], ["POCO F6 Pro", "12/512GB", "Lacrado", 2299, "", "", "Xiaomi"], ["POCO F7 Pro", "12/512GB 5G", "Lacrado", 2999, "", "", "Xiaomi"]]};
 
   let dadosCache = {}, abaAtiva = CONFIG.ABAS[0], comparando = false, selecionados = [];
   let sortAsc = true, activeFilters = { storage: null, cond: null };
@@ -398,6 +460,56 @@
 
   function getBrandPill(m) { const map = { Apple: "pill-apple", Xiaomi: "pill-xiaomi", Samsung: "pill-samsung" }; return `<span class="pill ${map[m]||'pill-outros'}">${m}</span>`; }
   function getCondSpan(c) { const map = { Lacrado: "cond-lacrado", Vitrine: "cond-vitrine", Seminovo: "cond-semi", Novo: "cond-novo" }; return `<span class="cond ${map[c]||'cond-novo'}">${c}</span>`; }
+
+  // Extract iPhone generation number for sorting (iPhone 17 → 17, iPhone SE → 0)
+  function getGeneration(modelo) {
+    const m = modelo.match(/iPhone\s+(\d+)/i);
+    return m ? parseInt(m[1]) : 0;
+  }
+
+  // Group models by generation line (iPhone 17, iPhone 16, etc.)
+  function groupByGeneration(groups) {
+    const genMap = new Map();
+    groups.forEach(g => {
+      const gen = getGeneration(g.modelo);
+      const genName = gen > 0 ? `iPhone ${gen}` : 'Outros iPhone';
+      if (!genMap.has(genName)) genMap.set(genName, { name: genName, gen, models: [], minPreco: Infinity });
+      genMap.get(genName).models.push(g);
+      if (g.minPreco > 0 && g.minPreco < genMap.get(genName).minPreco) genMap.get(genName).minPreco = g.minPreco;
+    });
+    return [...genMap.values()].sort((a, b) => b.gen - a.gen);
+  }
+
+  // Group Produtos Apple by product line
+  function groupByProductLine(groups) {
+    const lineOrder = ['Apple Watch', 'MacBook', 'iPad', 'AirPods', 'Apple Pencil', 'AirTag'];
+    const lineMap = new Map();
+    groups.forEach(g => {
+      let line = 'Outros';
+      for (const l of lineOrder) {
+        if (g.modelo.startsWith(l)) { line = l; break; }
+      }
+      if (!lineMap.has(line)) lineMap.set(line, { name: line, gen: lineOrder.indexOf(line) >= 0 ? lineOrder.length - lineOrder.indexOf(line) : -1, models: [], minPreco: Infinity });
+      lineMap.get(line).models.push(g);
+      if (g.minPreco > 0 && g.minPreco < lineMap.get(line).minPreco) lineMap.get(line).minPreco = g.minPreco;
+    });
+    return [...lineMap.values()].sort((a, b) => b.gen - a.gen);
+  }
+
+  // Decide which accordion grouping to use for current tab
+  function getAccordionGroups(groups) {
+    if (abaAtiva === "iPhones Lacrados" || abaAtiva === "iPhones Vitrine") {
+      return groupByGeneration(groups);
+    }
+    if (abaAtiva === "Produtos Apple") {
+      return groupByProductLine(groups);
+    }
+    return null; // no accordion
+  }
+
+  function toggleGen(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
 
   function renderTabs() {
     document.getElementById("tabsEl").innerHTML = CONFIG.ABAS.map(a => `<button class="tab ${a===abaAtiva?'active':''}" onclick="setAba('${a}')">${a}</button>`).join("");
@@ -454,19 +566,18 @@
 
     // Mobile: grouped cards with interactive selectors
     const groups = groupByModel(filtrada);
-    // Store groups globally for interaction
     window._cardGroups = groups;
-    mCards.innerHTML = groups.map((g, gi) => {
+
+    // Build card HTML for a single group
+    function buildCardHTML(g, gi) {
       const hasPrice = g.minPreco > 0;
       const firstItem = g.items[0];
       const multi = g.items.length > 1;
       const priceLabel = !hasPrice
         ? `<span style="font-size:11px;color:var(--text3)">Sob consulta</span>`
         : multi
-          ? `<span class="g-card-from">a partir de</span>R$ ${g.minPreco.toLocaleString('pt-BR')}`
-          : `R$ ${firstItem.preco.toLocaleString('pt-BR')}`;
-
-      // Build selectable storage tags
+          ? `R$ ${g.minPreco.toLocaleString('pt-BR')}<span class="g-card-parcel">em até 18x sem juros</span>`
+          : `R$ ${firstItem.preco.toLocaleString('pt-BR')}<span class="g-card-parcel">em até 18x sem juros</span>`;
       let storageTags = '';
       if (g.storages.length > 1) {
         g.storages.forEach((s, si) => {
@@ -475,26 +586,12 @@
       } else if (g.storages.length === 1) {
         storageTags += `<span class="g-tag g-tag-storage active">${g.storages[0]}</span>`;
       }
-
-      // Build selectable color tags
       let colorTags = '';
-      if (g.colors.length > 1) {
-        g.colors.forEach((c, ci) => {
-          const colorKey = c.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-          colorTags += `<span class="g-tag g-tag-color selectable ${ci===0?'active':''}" data-gi="${gi}" data-type="color" data-val="${c}" data-color="${colorKey}" onclick="selectTag(event,this)">${c}</span>`;
-        });
-      } else if (g.colors.length === 1) {
-        const colorKey = g.colors[0].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-        colorTags += `<span class="g-tag g-tag-color active" data-color="${colorKey}">${g.colors[0]}</span>`;
-      }
-
-      // Condition tags (not selectable)
+      // Color tags removed — only storage + condition
       let condTags = '';
       g.conds.forEach(c => { condTags += `<span class="g-tag g-tag-cond ${c.toLowerCase()}">${c}</span>`; });
-
       const wppIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.112 1.52 5.842L.057 23.5l5.833-1.53A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.944 0-3.77-.498-5.363-1.372l-.385-.224-3.99 1.046 1.065-3.9-.247-.404A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>';
       const arrowIcon = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-
       return `<div class="g-card" id="gc${gi}" data-gi="${gi}">
         <div class="g-card-row1">
           <div class="g-card-name">${g.modelo}</div>
@@ -505,26 +602,40 @@
           <span class="g-card-action" onclick="cardTap(${gi})">${wppIcon} Quero este ${arrowIcon}</span>
         </div>
       </div>`;
-    }).join("");
-  }
+    }
 
-  function renderOfertas() {
-    const grid = document.getElementById("offersGrid");
-    try {
-      const todas = CONFIG.ABAS.map(a => fetchAba(a)).flat();
-      const ofertas = todas.filter(p => p.oferta).slice(0, 4);
-      if (!ofertas.length) { grid.innerHTML = '<p style="color:var(--text3);font-size:12px">Sem ofertas no momento.</p>'; return; }
-      grid.innerHTML = ofertas.map((p, i) => `
-        <div class="offer-card ${i===0?'top':''}">
-          ${i===0?'<span class="offer-top-tag">Destaque</span>':''}
-          <div class="offer-marca">${p.marca}</div>
-          <div class="offer-modelo">${p.modelo}</div>
-          <div class="offer-storage">${p.rawStorage} · ${p.cond}</div>
-          ${p.precoAnt > 0 ? `<div class="offer-old">R$ ${p.precoAnt.toLocaleString('pt-BR')}</div>` : ''}
-          <div class="offer-preco">R$ ${p.preco.toLocaleString('pt-BR')}</div>
-          <div class="offer-parcel">ou 12x no cartão</div>
-        </div>`).join("");
-    } catch { grid.innerHTML = ''; }
+    const useAccordion = getAccordionGroups(groups);
+
+    if (useAccordion && useAccordion.length > 0) {
+      const gens = useAccordion;
+      const chevronSvg = '<svg class="gen-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
+      mCards.innerHTML = gens.map((gen, geni) => {
+        const modelCount = gen.models.reduce((sum, g) => sum + g.items.length, 0);
+        const priceStr = isFinite(gen.minPreco) && gen.minPreco > 0 ? `R$ ${gen.minPreco.toLocaleString('pt-BR')}` : '';
+        const cardsHTML = gen.models.map(g => {
+          const gi = groups.indexOf(g);
+          return buildCardHTML(g, gi);
+        }).join('');
+        return `<div class="gen-group ${geni === 0 ? 'open' : ''}" id="gg${geni}">
+          <div class="gen-header" onclick="toggleGen('gg${geni}')">
+            <div class="gen-header-left">
+              <span class="gen-header-name">${gen.name}</span>
+              <span class="gen-header-count">${modelCount} opç${modelCount > 1 ? 'ões' : 'ão'}</span>
+            </div>
+            <div class="gen-header-right">
+              <div class="gen-header-price-wrap">
+                ${priceStr ? '<span class="gen-header-from">a partir de</span>' : ''}
+                <span class="gen-header-price">${priceStr}</span>
+              </div>
+              ${chevronSvg}
+            </div>
+          </div>
+          <div class="gen-body">${cardsHTML}</div>
+        </div>`;
+      }).join('');
+    } else {
+      mCards.innerHTML = groups.map((g, gi) => buildCardHTML(g, gi)).join("");
+    }
   }
 
   function toggleCompare() { comparando = !comparando; selecionados = []; updateCompareUI(); renderTable(); }
@@ -563,24 +674,18 @@
     if (!g) return;
     const card = document.getElementById('gc' + gi);
     const activeStorage = card.querySelector('.g-tag-storage.selectable.active');
-    const activeColor = card.querySelector('.g-tag-color.selectable.active');
     const selStorage = activeStorage ? activeStorage.dataset.val : null;
-    const selColor = activeColor ? activeColor.dataset.val : null;
     // Find matching items
     let matches = g.items;
     if (selStorage) matches = matches.filter(i => i.storage === selStorage);
-    if (selColor) matches = matches.filter(i => {
-      const colors = i.color.split('/').map(s => s.trim());
-      return colors.includes(selColor);
-    });
     // Get best price from matches
     const priced = matches.filter(i => i.preco > 0);
     const priceEl = document.getElementById('gp' + gi);
     if (priced.length === 1) {
-      priceEl.innerHTML = `R$ ${priced[0].preco.toLocaleString('pt-BR')}`;
+      priceEl.innerHTML = `R$ ${priced[0].preco.toLocaleString('pt-BR')}<span class="g-card-parcel">em até 18x sem juros</span>`;
     } else if (priced.length > 1) {
       const min = Math.min(...priced.map(i => i.preco));
-      priceEl.innerHTML = `<span class="g-card-from">a partir de</span>R$ ${min.toLocaleString('pt-BR')}`;
+      priceEl.innerHTML = `R$ ${min.toLocaleString('pt-BR')}<span class="g-card-parcel">em até 18x sem juros</span>`;
     } else {
       priceEl.innerHTML = '<span style="font-size:11px;color:var(--text3)">Sob consulta</span>';
     }
@@ -591,13 +696,10 @@
     if (!g) return;
     const card = document.getElementById('gc' + gi);
     const activeStorage = card.querySelector('.g-tag-storage.selectable.active');
-    const activeColor = card.querySelector('.g-tag-color.selectable.active');
     const selStorage = activeStorage ? activeStorage.dataset.val : (g.storages[0] || '');
-    const selColor = activeColor ? activeColor.dataset.val : (g.colors[0] || '');
     // Find best match
     let matches = g.items;
     if (selStorage) matches = matches.filter(i => i.storage === selStorage);
-    if (selColor) matches = matches.filter(i => i.color.split('/').map(s=>s.trim()).includes(selColor));
     const best = matches.length > 0 ? matches[0] : g.items[0];
     const desc = [best.modelo, best.rawStorage, best.cond].filter(Boolean).join(' ');
     const priceStr = best.preco > 0 ? ` — R$ ${best.preco.toLocaleString('pt-BR')}` : '';
@@ -609,7 +711,6 @@
 
   renderTabs();
   renderTable();
-  renderOfertas();
   buildFilterPanel();
 </script>
 </body>
